@@ -1,0 +1,52 @@
+﻿# encoding: utf-8
+# Release 16.0
+SetScriptVersion(Version="16.0.361")
+template1 = GetTemplate(
+    TemplateName="Static Structural",
+    Solver="ANSYS")
+system1 = template1.CreateSystem()
+favorites1 = EngData.LoadFavoriteItems()
+library1 = EngData.OpenLibrary(
+    Name="General Materials",
+    Source="General_Materials.xml")
+engineeringData1 = system1.GetContainer(ComponentName="Engineering Data")
+matl1 = engineeringData1.ImportMaterial(
+    Name="Aluminum Alloy",
+    Source="General_Materials.xml")
+matl2 = engineeringData1.ImportMaterial(
+    Name="Polyethylene",
+    Source="General_Materials.xml")
+geometry1 = system1.GetContainer(ComponentName="Geometry")
+geometry1.Edit()
+geometry1.Edit()
+Save(Overwrite=True)
+geometry1.Exit()
+modelComponent1 = system1.GetComponent(Name="Model")
+modelComponent1.Refresh()
+model1 = system1.GetContainer(ComponentName="Model")
+model1.Edit()
+model1.Exit()
+geometry1.Edit()
+geometry1.Edit()
+Save(Overwrite=True)
+geometry1.Exit()
+Update()
+geometry1.Edit()
+Save(Overwrite=True)
+geometry1.Exit()
+modelComponent1.Refresh()
+model1.Edit()
+model1.Exit()
+Update()
+setup1 = system1.GetContainer(ComponentName="Setup")
+setup1.Edit()
+model1.Exit()
+setup1.Edit()
+model1.Exit()
+Update()
+solution1 = system1.GetContainer(ComponentName="Solution")
+solution1.Edit()
+model1.Exit()
+matl1.SetSuppression(Suppressed=True)
+matl2.SetSuppression(Suppressed=True)
+Save(Overwrite=True)

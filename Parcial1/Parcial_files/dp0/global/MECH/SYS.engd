@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EngineeringData version="16.0.0.429" versiondate="03/12/2014 9:54:00 am">
+  <Notes>
+  </Notes>
+  <Materials>
+    <MatML_Doc>
+      <Material>
+        <BulkDetails>
+          <Name>Concrete</Name>
+          <PropertyData property="pr0">
+            <Data format="float">41000000</Data>
+            <Qualifier name="Variable Type">Dependent</Qualifier>
+            <Qualifier name="Localized Name">Compressive Ultimate Strength</Qualifier>
+          </PropertyData>
+          <PropertyData property="pr1">
+            <Data format="float">0</Data>
+            <Qualifier name="Variable Type">Dependent</Qualifier>
+            <Qualifier name="Localized Name">Compressive Yield Strength</Qualifier>
+          </PropertyData>
+          <PropertyData property="pr2">
+            <Data format="float">2300</Data>
+            <Qualifier name="Variable Type">Dependent</Qualifier>
+            <Qualifier name="Localized Name">Density</Qualifier>
+            <ParameterValue parameter="pa0" format="float">
+              <Data>7.88860905221012e-31</Data>
+              <Qualifier name="Variable Type">Independent</Qualifier>
+              <Qualifier name="Localized Name">Temperature</Qualifier>
+            </ParameterValue>
+          </PropertyData>
+          <PropertyData property="pr3">
+            <Data format="float">0</Data>
+            <Qualifier name="Variable Type">Dependent</Qualifier>
+            <Qualifier name="Localized Name">Tensile Yield Strength</Qualifier>
+          </PropertyData>
+          <PropertyData property="pr4">
+            <Data format="float">5000000</Data>
+            <Qualifier name="Variable Type">Dependent</Qualifier>
+            <Qualifier name="Localized Name">Tensile Ultimate Strength</Qualifier>
+          </PropertyData>
+          <PropertyData property="pr5">
+            <Data format="string">-</Data>
+            <Qualifier name="Definition">Secant</Qualifier>
+            <Qualifier name="Behavior">Isotropic</Qualifier>
+            <Qualifier name="Localized Name">Isotropic Secant Coefficient of Thermal Expansion</Qualifier>
+            <ParameterValue parameter="pa1" format="float">
+              <Data>1.4e-05</Data>
+              <Qualifier name="Variable Type">Dependent</Qualifier>
+              <Qualifier name="Localized Name">Coefficient of Thermal Expansion</Qualifier>
+            </ParameterValue>
+            <ParameterValue parameter="pa0" format="float">
+              <Data>7.88860905221012e-31</Data>
+              <Qualifier name="Variable Type">Independent</Qualifier>
+              <Qualifier name="Localized Name">Temperature</Qualifier>
+            </ParameterValue>
+          </PropertyData>
+          <PropertyData property="pr6">
+            <Data format="string">-</Data>
+            <Qualifier name="Definition">Secant</Qualifier>
+            <Qualifier name="Behavior">Isotropic</Qualifier>
+            <Qualifier name="Localized Name">Isotropic Reference Temperature Secant</Qualifier>
+            <ParameterValue parameter="pa2" format="float">
+              <Data>22</Data>
+              <Qualifier name="Variable Type">Dependent</Qualifier>
+              <Qualifier name="Localized Name">Reference Temperature</Qualifier>
+            </ParameterValue>
+            <ParameterValue parameter="pa3" format="string">
+              <Data>Coefficient of Thermal Expansion</Data>
+            </ParameterValue>
+          </PropertyData>
+          <PropertyData property="pr7">
+            <Data format="float">780</Data>
+            <Qualifier name="Variable Type">Dependent</Qualifier>
+            <Qualifier name="Localized Name">Specific Heat</Qualifier>
+            <ParameterValue parameter="pa0" format="float">
+              <Data>7.88860905221012e-31</Data>
+              <Qualifier name="Variable Type">Independent</Qualifier>
+              <Qualifier name="Localized Name">Temperature</Qualifier>
+            </ParameterValue>
+          </PropertyData>
+          <PropertyData property="pr8">
+            <Data format="string">-</Data>
+            <Qualifier name="Behavior">Isotropic</Qualifier>
+            <Qualifier name="Localized Name">Isotropic Thermal Conductivity</Qualifier>
+            <ParameterValue parameter="pa4" format="float">
+              <Data>0.72</Data>
+              <Qualifier name="Variable Type">Dependent</Qualifier>
+              <Qualifier name="Localized Name">Thermal Conductivity</Qualifier>
+            </ParameterValue>
+            <ParameterValue parameter="pa0" format="float">
+              <Data>21</Data>
+              <Qualifier name="Variable Type">Independent</Qualifier>
+              <Qualifier name="Localized Name">Temperature</Qualifier>
+            </ParameterValue>
+          </PropertyData>
+          <PropertyData property="pr9">
+            <Data format="string">-</Data>
+            <Qualifier name="Behavior">Isotropic</Qualifier>
+            <Qualifier name="Derive from">Young's Modulus and Poisson's Ratio</Qualifier>
+            <Qualifier name="Field Variable Temperature">Yes</Qualifier>
+            <Qualifier name="Field Variable _FVShearAngle">No</Qualifier>
+            <Qualifier name="Field Variable _FVDegradationFactor">No</Qualifier>
+            <Qualifier name="Localized Name">Isotropic Elasticity</Qualifier>
+            <ParameterValue parameter="pa5" format="float">
+              <Data>21000000000</Data>
+              <Qualifier name="Variable Type">Dependent</Qualifier>
+              <Qualifier name="Localized Name">Young's Modulus</Qualifier>
+            </ParameterValue>
+            <ParameterValue parameter="pa6" format="float">
+              <Data>0.18</Data>
+              <Qualifier name="Variable Type">Dependent</Qualifier>
+              <Qualifier name="Localized Name">Poisson's Ratio</Qualifier>
+            </ParameterValue>
+            <ParameterValue parameter="pa7" format="float">
+              <Data>10937500000</Data>
+              <Qualifier name="Variable Type">Dependent</Qualifier>
+              <Qualifier name="Localized Name">Bulk Modulus</Qualifier>
+            </ParameterValue>
+            <ParameterValue parameter="pa8" format="float">
+              <Data>8898305084.74576</Data>
+              <Qualifier name="Variable Type">Dependent</Qualifier>
+              <Qualifier name="Localized Name">Shear Modulus</Qualifier>
+            </ParameterValue>
+            <ParameterValue parameter="pa0" format="float">
+              <Data>7.88860905221012e-31</Data>
+              <Qualifier name="Variable Type">Independent</Qualifier>
+              <Qualifier name="Localized Name">Temperature</Qualifier>
+              <Qualifier name="Field Variable">Temperature</Qualifier>
+            </ParameterValue>
+          </PropertyData>
+        </BulkDetails>
+      </Material>
+      <Metadata>
+        <ParameterDetails id="pa0">
+          <Name>Temperature</Name>
+          <Units>
+            <Unit>
+              <Name>C</Name>
+            </Unit>
+          </Units>
+        </ParameterDetails>
+        <ParameterDetails id="pa1">
+          <Name>Coefficient of Thermal Expansion</Name>
+          <Units>
+            <Unit power="-1">
+              <Name>C</Name>
+            </Unit>
+          </Units>
+        </ParameterDetails>
+        <ParameterDetails id="pa2">
+          <Name>Reference Temperature</Name>
+          <Units>
+            <Unit>
+              <Name>C</Name>
+            </Unit>
+          </Units>
+        </ParameterDetails>
+        <ParameterDetails id="pa3">
+          <Name>Material Property</Name>
+          <Unitless />
+        </ParameterDetails>
+        <ParameterDetails id="pa4">
+          <Name>Thermal Conductivity</Name>
+          <Units>
+            <Unit>
+              <Name>W</Name>
+            </Unit>
+            <Unit power="-1">
+              <Name>m</Name>
+            </Unit>
+            <Unit power="-1">
+              <Name>C</Name>
+            </Unit>
+          </Units>
+        </ParameterDetails>
+        <ParameterDetails id="pa5">
+          <Name>Young's Modulus</Name>
+          <Units>
+            <Unit>
+              <Name>Pa</Name>
+            </Unit>
+          </Units>
+        </ParameterDetails>
+        <ParameterDetails id="pa6">
+          <Name>Poisson's Ratio</Name>
+          <Unitless />
+        </ParameterDetails>
+        <ParameterDetails id="pa7">
+          <Name>Bulk Modulus</Name>
+          <Units>
+            <Unit>
+              <Name>Pa</Name>
+            </Unit>
+          </Units>
+        </ParameterDetails>
+        <ParameterDetails id="pa8">
+          <Name>Shear Modulus</Name>
+          <Units>
+            <Unit>
+              <Name>Pa</Name>
+            </Unit>
+          </Units>
+        </ParameterDetails>
+        <PropertyDetails id="pr0">
+          <Units>
+            <Unit>
+              <Name>Pa</Name>
+            </Unit>
+          </Units>
+          <Name>Compressive Ultimate Strength</Name>
+        </PropertyDetails>
+        <PropertyDetails id="pr1">
+          <Units>
+            <Unit>
+              <Name>Pa</Name>
+            </Unit>
+          </Units>
+          <Name>Compressive Yield Strength</Name>
+        </PropertyDetails>
+        <PropertyDetails id="pr2">
+          <Units>
+            <Unit>
+              <Name>kg</Name>
+            </Unit>
+            <Unit power="-3">
+              <Name>m</Name>
+            </Unit>
+          </Units>
+          <Name>Density</Name>
+        </PropertyDetails>
+        <PropertyDetails id="pr3">
+          <Units>
+            <Unit>
+              <Name>Pa</Name>
+            </Unit>
+          </Units>
+          <Name>Tensile Yield Strength</Name>
+        </PropertyDetails>
+        <PropertyDetails id="pr4">
+          <Units>
+            <Unit>
+              <Name>Pa</Name>
+            </Unit>
+          </Units>
+          <Name>Tensile Ultimate Strength</Name>
+        </PropertyDetails>
+        <PropertyDetails id="pr5">
+          <Unitless />
+          <Name>Coefficient of Thermal Expansion</Name>
+        </PropertyDetails>
+        <PropertyDetails id="pr6">
+          <Unitless />
+          <Name>Reference Temperature</Name>
+        </PropertyDetails>
+        <PropertyDetails id="pr7">
+          <Units>
+            <Unit>
+              <Name>J</Name>
+            </Unit>
+            <Unit power="-1">
+              <Name>kg</Name>
+            </Unit>
+            <Unit power="-1">
+              <Name>C</Name>
+            </Unit>
+          </Units>
+          <Name>Specific Heat</Name>
+        </PropertyDetails>
+        <PropertyDetails id="pr8">
+          <Unitless />
+          <Name>Thermal Conductivity</Name>
+        </PropertyDetails>
+        <PropertyDetails id="pr9">
+          <Unitless />
+          <Name>Elasticity</Name>
+        </PropertyDetails>
+      </Metadata>
+    </MatML_Doc>
+  </Materials>
+  <ANSYSWBTransferData>
+    <Materials>
+      <Material>
+        <Name>Concrete</Name>
+        <DataTransferID>d2353ed1-fa7b-4da0-b186-03d99d57db52</DataTransferID>
+        <PreviousTransferIDs>
+        </PreviousTransferIDs>
+      </Material>
+    </Materials>
+  </ANSYSWBTransferData>
+</EngineeringData>

@@ -1,0 +1,336 @@
+TY  - JOUR
+AU  - Pędzisz, I.
+AU  - Magryta, P.
+AU  - Pietrykowski, K.
+TI  - Computational Fluid Dynamics Studies of a Vertical Axis Wind Turbine with a Variable Swept Area
+PY  - 2024
+T2  - Advances in Science and Technology Research Journal
+VL  - 18
+IS  - 2
+SP  - 333
+EP  - 348
+DO  - 10.12913/22998624/185255
+UR  - https://www.scopus.com/inward/record.uri?eid=2-s2.0-85187911710&doi=10.12913%2F22998624%2F185255&partnerID=40&md5=fe230dca3ed055d6104ca20e5ffa3a39
+AB  - The article presents the results of the Computational Fluid Dynamics (CFD) research on a vertical axis wind turbine with a variable swept area. The tested turbine has four sets of blades, each of which consists of two moving parts. By changing the angle between these parts, it is possible to change the swept area of the turbine wheel to adjust the characteristics of the turbine to the current wind speed. In the case of strong wind, it is possible to fold blades to protect the rotor against damage. The 3D-CFD model was tested using the ANSYS Fluent software. The four rotors differing in the blade angle were analyzed. The tests were carried out for different wind speeds. The results are presented as pressure and velocity distributions as well as streamlines around the rotor. In addition, the waveforms of the torque acting on a single blade and on the entire rotor are shown. The average rotor torque was also calculated. These findings enabled us to create the characteristics of the power factor for different rotational speeds of the rotor. The results show that the adjustment of the swept area makes the z-turbine have a flexible operating range. © 2024 Elsevier B.V., All rights reserved.
+KW  - Ansys Fluent
+KW  - Cfd
+KW  - Variable Geometry
+KW  - Vertical Axis Wind Turbine
+M3  - Article
+DB  - Scopus
+N1  - Export Date: 29 August 2025; Cited By: 2
+ER  -
+
+TY  - JOUR
+AU  - Zhao, Z.
+AU  - Li, Y.
+AU  - Zhang, B.
+AU  - Wang, C.
+AU  - Yan, Z.
+AU  - Wang, Q.
+TI  - Design and Analysis of a Novel Adjustable SVAWT for Wind Energy Harvesting in New Energy Vehicle
+PY  - 2022
+T2  - World Electric Vehicle Journal
+VL  - 13
+IS  - 12
+C7  - 242
+DO  - 10.3390/wevj13120242
+UR  - https://www.scopus.com/inward/record.uri?eid=2-s2.0-85144627188&doi=10.3390%2Fwevj13120242&partnerID=40&md5=495d0b1f27b0b9940e2d5c81722f2942
+AB  - The new energy vehicle is a robust measure to solve the problem of global warming. However, the new energy vehicle generally has the disadvantages of short mileage and difficulty in finding public chargers. The combination of wind energy harvest and new energy vehicle can be conducive to the promotion of the new energy vehicle. This paper proposes a novel adjustable Savonius vertical axis wind turbine (SVAWT). It contains three parts: an energy absorption module, an energy recovery module, and an energy conversion module. The energy absorption module includes four blades with staggered distribution in two layers. The overlap ratio of the blades can be adjusted by the wind speed, which can ensure the SVAWT has a higher energy transfer efficiency. The energy recovery module adjusts the overlap ratio of the blades without interruption by utilizing the self-rotation and the orbital revolution of the gears. The energy conversion module converts mechanical energy into electric energy and supplies power for the vehicle after adjustment by the voltage regulator module. Based on actual operating data, it can be found that the variation trend of power of the blades absorbing is consistent with wind speed and increases with the wind speed. Under four actual operating conditions, the root mean square value of the blades absorbing power are 7.0 W, 7.1 W, 3.9 W, and 5.1 W, respectively. These results reveal that the proposed novel adjustable SVAWT has high recovery power potential and can provide a valuable solution to the practical applications of wind energy harvesting. © 2022 Elsevier B.V., All rights reserved.
+KW  - Adjustable Blades
+KW  - New Energy Vehicle
+KW  - Svawt
+KW  - Wind Energy Harvesting
+KW  - Energy Harvesting
+KW  - Energy Transfer
+KW  - Global Warming
+KW  - Recovery
+KW  - Vehicles
+KW  - Vertical Axis Wind Turbine
+KW  - Voltage Regulators
+KW  - Wind Power
+KW  - Adjustable Blades
+KW  - Energy Recovery
+KW  - New Energy Vehicles
+KW  - Overlap Ratios
+KW  - Power
+KW  - Recovery Modules
+KW  - Savonii Vertical Axis Wind Turbine
+KW  - Vertical Axes Wind Turbines
+KW  - Wind Energy Harvesting
+KW  - Wind Speed
+KW  - Wind
+KW  - Energy harvesting
+KW  - Energy transfer
+KW  - Global warming
+KW  - Recovery
+KW  - Vehicles
+KW  - Vertical axis wind turbine
+KW  - Voltage regulators
+KW  - Wind power
+KW  - Adjustable blades
+KW  - Energy recovery
+KW  - New energy vehicles
+KW  - Overlap ratios
+KW  - Power
+KW  - Recovery modules
+KW  - Savonii vertical axis wind turbine
+KW  - Vertical axes wind turbines
+KW  - Wind energy harvesting
+KW  - Wind speed
+KW  - Wind
+M3  - Article
+DB  - Scopus
+N1  - Export Date: 29 August 2025; Cited By: 12
+ER  -
+
+TY  - CONF
+AU  - Mancò, G.
+AU  - Guelpa, E.
+AU  - Verda, V.
+TI  - Optimization analysis of a renewable-based multi-energy system for a tertiary building
+PY  - 2022
+SP  - 767
+EP  - 778
+UR  - https://www.scopus.com/inward/record.uri?eid=2-s2.0-85195789694&partnerID=40&md5=843da9ab8b13ac1e38b81703d4ae913f
+AB  - Buildings are the largest end-use sector, followed by transport, industry, and agriculture. For this reason, decarbonising residential and non-residential buildings is crucial to reach Europe's carbon neutrality by 2050. The key elements in meeting the challenge of achieving carbon neutral buildings are: a) maximising local energy production from multiple renewable energy technologies, b) matching local demand and supply energy flows, c) reducing capital costs of technologies at building level. A two-stage stochastic model is performed to define the optimal synthesis, design and operation of an energy system under uncertainty. More in detail, decisions at synthesis and design level are taken in the first stage, while decisions at operating level are handled in the second one. The integrated system for the building environment is composed of both less mature renewable technologies (e.g., biogas-based micro combined heat and power unit, variable geometry vertical axis wind turbine, latent heat thermal storage, etc.) and more established technologies. Due to the low technology readiness level, the design optimization is performed considering the investment costs of the innovative technologies and the biogas price as uncertain parameters. The building taken as reference is the Energy Center, a tertiary building in an urban context located in Turin (Italy). Application of the proposed methodology defines whether the integration of the additional novel technologies results in cost and emission reductions. Defined the optimal design, a comparison between the actual energy system of the building and the optimal one selected by the stochastic optimization are compared. Results show that some innovative technologies are selected for the optimal design, showing cost reduction up to 35% and emission reduction up to 27%. © 2024 Elsevier B.V., All rights reserved.
+KW  - Distributed Generation
+KW  - Multi-energy System
+KW  - Stochastic Programming
+KW  - Sustainability
+KW  - Tertiary Sector
+KW  - Carbon
+KW  - Cost Reduction
+KW  - Emission Control
+KW  - Heat Storage
+KW  - Housing
+KW  - Investments
+KW  - Optimal Systems
+KW  - Renewable Energy
+KW  - Stochastic Models
+KW  - Stochastic Programming
+KW  - Stochastic Systems
+KW  - Uncertainty Analysis
+KW  - Costs Reduction
+KW  - Emission Reduction
+KW  - End-use Sectors
+KW  - Energy Systems
+KW  - Innovative Technology
+KW  - Multi-energy Systems
+KW  - Optimal Design
+KW  - Optimization Analysis
+KW  - Tertiary Building
+KW  - Transport Industry
+KW  - Sustainable Development
+KW  - Carbon
+KW  - Cost reduction
+KW  - Emission control
+KW  - Heat storage
+KW  - Housing
+KW  - Investments
+KW  - Optimal systems
+KW  - Renewable energy
+KW  - Stochastic models
+KW  - Stochastic programming
+KW  - Stochastic systems
+KW  - Uncertainty analysis
+KW  - Costs reduction
+KW  - Emission reduction
+KW  - End-use sectors
+KW  - Energy systems
+KW  - Innovative technology
+KW  - Multi-energy systems
+KW  - Optimal design
+KW  - Optimization analysis
+KW  - Tertiary building
+KW  - Transport industry
+KW  - Sustainable development
+M3  - Conference paper
+DB  - Scopus
+N1  - Export Date: 29 August 2025; Cited By: 0
+ER  -
+
+TY  - JOUR
+AU  - Camacho, R.G.
+AU  - Suárez, W.D.
+AU  - Tiago Filho, G.L.
+AU  - Netto, D.C.
+AU  - Miranda, L.F.
+AU  - Vasconcelos, G.
+TI  - Study of the Behavior of a Vertical Axis Eolic Turbine with Articulated Blades
+PY  - 2022
+T2  - Journal of Applied Fluid Mechanics
+VL  - 15
+IS  - 2
+SP  - 603
+EP  - 615
+DO  - 10.47176/jafm.15.02.32959
+UR  - https://www.scopus.com/inward/record.uri?eid=2-s2.0-85125057860&doi=10.47176%2Fjafm.15.02.32959&partnerID=40&md5=3aefe5c3abf1685171db53d2c64751b3
+AB  - This work presents the results of the development of a vertical axis wind turbine composed of variable geometry, plane blades, applied in operations with low wind speeds. The new concept of vertical axis wind turbine with variable opening blades is presented as an innovative prototype where mechanical details are important for the natural control of the openings of the blades. Theoretical, numerical and experimental analyzes are performed in the turbine called DEC® with the aim of determining the aerodynamic characteristics. An analysis of the behavior of the DEC® turbine consists of a numerical study carried out to calculate or drag coefficient, considering a range of opening positions of the opening at each moment to determine the power coefficient. A second numerical approach is to analyze the moment caused by the interaction between all the turbine blades, in which the effects of energy dissipation caused by the flow mats are considered. Then, the theoretical, numerical results are validated by tests performed using a model in the open wind tunnel, where the prototype is subjected to different wind speeds while maintaining rotation control. Suggestions are made to improve the mechanical and aerodynamic design of the innovative prototype. Finally, the DEC® turbine is expected to serve as an inspiration for creating other mechanical forms of passive or active control to improve variable aerodynamics applied in low-speed conditions. © 2022 Elsevier B.V., All rights reserved.
+KW  - Articulated Blade
+KW  - Cfd
+KW  - Experimental Test
+KW  - Power Coefficient
+KW  - Vawt
+M3  - Article
+DB  - Scopus
+N1  - Export Date: 29 August 2025; Cited By: 0
+ER  -
+
+TY  - JOUR
+AU  - Prince, S.A.
+AU  - Badalamenti, C.
+AU  - Georgiev, D.
+TI  - Experimental investigation of a variable geometry vertical axis wind turbine
+PY  - 2021
+T2  - Wind Engineering
+VL  - 45
+IS  - 4
+SP  - 904
+EP  - 920
+DO  - 10.1177/0309524X20935134
+UR  - https://www.scopus.com/inward/record.uri?eid=2-s2.0-85087981497&doi=10.1177%2F0309524X20935134&partnerID=40&md5=9d76f0df704a738eff81e5da0f38c480
+AB  - An experimental study is presented on the performance of a vertical axis wind turbine with variable blade geometry of the design developed by Austin Farrah. This is experimentally compared with the performance of a correspondingly sized Bach-type Savonius turbine using the same electrical generator and measurement instrumentation in a wind tunnel. Experiments were performed for Reynolds numbers, based on blade chord, in the range 5 × 103 to 1 × 105, and for blade settings between −40° and +40o. The study shows that for the tip speed ratios that have been investigated, the Farrah vertical axis wind turbine design can only marginally outperform a corresponding two-bladed Bach-type Savonius turbine and then only when its blades are set to 40° pitch angle. The presence of a small inner cylinder, which rotates with the turbine, does not enhance its performance due to the fact that it is immersed in an extensive column of relatively static air. © 2021 Elsevier B.V., All rights reserved.
+KW  - Aerodynamics
+KW  - Farrah Turbine
+KW  - Savonius Turbine
+KW  - Vertical Axis Wind Turbine
+KW  - Reynolds Number
+KW  - Wind Tunnels
+KW  - Wind Turbines
+KW  - Electrical Generators
+KW  - Experimental Investigations
+KW  - Measurement Instrumentation
+KW  - Savonius Turbine
+KW  - Tip Speed Ratio
+KW  - Variable Blades
+KW  - Variable Geometry
+KW  - Vertical Axis Wind Turbines
+KW  - Turbomachine Blades
+KW  - Aerodynamics
+KW  - Geometry
+KW  - Numerical Model
+KW  - Wind Farm
+KW  - Wind Turbine
+KW  - Reynolds number
+KW  - Wind tunnels
+KW  - Wind turbines
+KW  - Electrical generators
+KW  - Experimental investigations
+KW  - Measurement instrumentation
+KW  - Savonius turbine
+KW  - Tip speed ratio
+KW  - Variable blades
+KW  - Variable geometry
+KW  - Vertical axis wind turbines
+KW  - Turbomachine blades
+KW  - aerodynamics
+KW  - geometry
+KW  - numerical model
+KW  - wind farm
+KW  - wind turbine
+M3  - Article
+DB  - Scopus
+N1  - Export Date: 29 August 2025; Cited By: 3
+ER  -
+
+TY  - JOUR
+AU  - Sobczak, K.
+AU  - Obidowski, D.
+AU  - Reorowicz, P.
+AU  - Marchewka, E.
+TI  - Numerical investigations of the savonius turbine with deformable blades
+PY  - 2020
+T2  - Energies
+VL  - 13
+IS  - 14
+C7  - 3717
+DO  - 10.3390/en13143717
+UR  - https://www.scopus.com/inward/record.uri?eid=2-s2.0-85089817818&doi=10.3390%2Fen13143717&partnerID=40&md5=04cba5ec82358e774b143ac901bcb05c
+AB  - Savonius wind turbines are characterized by various advantages such as simple design, independence of wind direction, and low noise emission, but they suffer from low efficiency. Numerous investigations were carried out to face this problem. In the present paper, a new idea of the Savonius turbine with a variable geometry of blades is proposed. Its blades, made of elastic material, were continuously deformed during the rotor revolution to increase a positive torque of the advancing blade and to decrease a negative torque of the returning blade. In order to assess the turbine aerodynamic performance, a two-dimensional numerical model was developed. The fluid-structure interaction (FSI) method was applied where blade deformations were defined by computational solid mechanics (CSM) simulations, whereas computational fluid dynamics (CFD) simulations allowed for transient flow prediction. The influence of the deformation magnitude and the position of maximally deformed blades with respect to the incoming wind direction were studied. The aerodynamic performance increased with an increase in the deformation magnitude. The power coefficient exceeded Cp = 0.30 for the eccentricity magnitude of 10% and reached 0.39 for the highest magnitude under study. It corresponded to 90% improvement in comparison to Cp = 0.21 in the case of the fixed-shape Savonius turbine. © 2020 Elsevier B.V., All rights reserved.
+KW  - Blade Load
+KW  - Computational Fluid Dynamics (cfd)
+KW  - Deformable Blades
+KW  - Fluid-structure Interaction (fsi)
+KW  - Power Coefficient
+KW  - Savonius Turbine
+KW  - Vertical Axis Wind Turbine (vawt)
+KW  - Aerodynamics
+KW  - Computational Fluid Dynamics
+KW  - Deformation
+KW  - Fluid Structure Interaction
+KW  - Aero-dynamic Performance
+KW  - Computational Fluid Dynamics Simulations
+KW  - Computational Solid Mechanics
+KW  - Deformation Magnitude
+KW  - Numerical Investigations
+KW  - Savonius Wind Turbine
+KW  - Turbine Aerodynamics
+KW  - Two Dimensional Numerical Models
+KW  - Turbomachine Blades
+KW  - Aerodynamics
+KW  - Computational fluid dynamics
+KW  - Deformation
+KW  - Fluid structure interaction
+KW  - Aero-dynamic performance
+KW  - Computational fluid dynamics simulations
+KW  - Computational solid mechanics
+KW  - Deformation magnitude
+KW  - Numerical investigations
+KW  - Savonius wind turbine
+KW  - Turbine aerodynamics
+KW  - Two dimensional numerical models
+KW  - Turbomachine blades
+M3  - Article
+DB  - Scopus
+N1  - Export Date: 29 August 2025; Cited By: 37
+ER  -
+
+TY  - JOUR
+AU  - Abusannuga, H.
+AU  - Özkaymak, M.
+TI  - Investigation of power coefficient behaviors of the parabolic wind rotor due to its variable geometry parameters
+PY  - 2020
+T2  - International Journal of Renewable Energy Research
+VL  - 10
+IS  - 1
+SP  - 456
+EP  - 463
+UR  - https://www.scopus.com/inward/record.uri?eid=2-s2.0-85085163406&partnerID=40&md5=9fe740b485329aa6fb393aa084eadb37
+AB  - This paper provides explanations and analysis of how the power coefficient (Cp) of the Parabolic wind rotor has been affected by changing its geometrical design parameters. The results were presented in the form of (Cp) curves as a function of tip speed ratio (λ0). The aerodynamic mathematical mode called "multi-streamtube" was implemented. To determine the Cp(λ0) of the Parabolic rotor, regardless of its engineering shape, a computer program has been prepared by using Microsoft Visual Basic. The geometrical design parameters covered in this study are rotor blades number (N), rotor height (h) or (2H), rotor diameter (2R) and chord line (C). Whereas, through these parameters a total of 57 configurations were utilized and adopted. Thus, this number of different designs was sufficient to identify the performance behaviors of the Parabolic wind rotor. Accordingly, the results indicated that increasing rotor height to diameter ratio (H/R) leads to a decrease in Cp over low tip speed ratio range for all values of solidity, σ, (NC/R) investigated. However, higher values of (H/R) result in a raise in Cp over high tip speed ratio range for values of (NC/R) less than 0.2 approximately. Thus, it seems that higher (H/R) values constitute an advantage for fast rotating rotors (low (NC/R) and high tip speed ratio). © 2022 Elsevier B.V., All rights reserved.
+KW  - Aerodynamic Performance
+KW  - Parabolic Wind Rotor
+KW  - Vawt
+KW  - Geometry
+KW  - Vertical Axis Wind Turbine
+KW  - Visual Basic
+KW  - Aero-dynamic Performance
+KW  - Design Parameters
+KW  - Geometrical Designs
+KW  - Parabolic Wind Rotor
+KW  - Parabolics
+KW  - Power Coefficients
+KW  - Tip Speed Ratio
+KW  - Variable Geometry
+KW  - Vawt
+KW  - Wind Rotor
+KW  - Aerodynamics
+KW  - Geometry
+KW  - Vertical axis wind turbine
+KW  - Visual BASIC
+KW  - Aero-dynamic performance
+KW  - Design parameters
+KW  - Geometrical designs
+KW  - Parabolic wind rotor
+KW  - Parabolics
+KW  - Power coefficients
+KW  - Tip speed ratio
+KW  - Variable geometry
+KW  - VAWT
+KW  - Wind rotor
+KW  - Aerodynamics
+M3  - Article
+DB  - Scopus
+N1  - Export Date: 29 August 2025; Cited By: 0
+ER  -
+

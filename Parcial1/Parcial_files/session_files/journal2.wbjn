@@ -1,0 +1,17 @@
+﻿# encoding: utf-8
+# Release 16.0
+SetScriptVersion(Version="16.0.361")
+system1 = GetSystem(Name="SYS")
+setup1 = system1.GetContainer(ComponentName="Setup")
+setup1.Edit()
+model1 = system1.GetContainer(ComponentName="Model")
+model1.Exit()
+model1.Edit()
+model1.Exit()
+engineeringData1 = system1.GetContainer(ComponentName="Engineering Data")
+material1 = engineeringData1.GetMaterial(Name="Structural Steel")
+material1.SetSuppression(Suppressed=True)
+modelComponent1 = system1.GetComponent(Name="Model")
+modelComponent1.Refresh()
+model1.Edit()
+Save(Overwrite=True)

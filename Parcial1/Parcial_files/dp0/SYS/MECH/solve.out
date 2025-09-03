@@ -1,0 +1,400 @@
+
+ ANSYS Multiphysics                                
+
+
+ *------------------------------------------------------------------*
+ |                                                                  |
+ |   W E L C O M E   T O   T H E   A N S Y S (R)  P R O G R A M     |
+ |                                                                  |
+ *------------------------------------------------------------------*
+
+
+
+
+ ***************************************************************
+ *            ANSYS Release 16.0     LEGAL NOTICES             *
+ ***************************************************************
+ *                                                             *
+ * Copyright 2014 SAS IP, Inc.  All rights reserved.           *
+ * Unauthorized use, distribution or duplication is            *
+ * prohibited.                                                 *
+ *                                                             *
+ * Ansys is a registered trademark of ANSYS, Inc. or its       *
+ * subsidiaries in the United States or other countries.       *
+ * See the ANSYS, Inc. online documentation or the ANSYS, Inc. *
+ * documentation CD or online help for the complete Legal      *
+ * Notice.                                                     *
+ *                                                             *
+ ***************************************************************
+ *                                                             *
+ * THIS ANSYS SOFTWARE PRODUCT AND PROGRAM DOCUMENTATION       *
+ * INCLUDE TRADE SECRETS AND CONFIDENTIAL AND PROPRIETARY      *
+ * PRODUCTS OF ANSYS, INC., ITS SUBSIDIARIES, OR LICENSORS.    *
+ * The software products and documentation are furnished by    *
+ * ANSYS, Inc. or its subsidiaries under a software license    *
+ * agreement that contains provisions concerning               *
+ * non-disclosure, copying, length and nature of use,          *
+ * compliance with exporting laws, warranties, disclaimers,    *
+ * limitations of liability, and remedies, and other           *
+ * provisions.  The software products and documentation may be *
+ * used, disclosed, transferred, or copied only in accordance  *
+ * with the terms and conditions of that software license      *
+ * agreement.                                                  *
+ *                                                             *
+ * ANSYS, Inc. is a UL registered                              *
+ * ISO 9001:2008 company.                                      *
+ *                                                             *
+ ***************************************************************
+ *                                                             *
+ * This product is subject to U.S. laws governing export and   *
+ * re-export.                                                  *
+ *                                                             *
+ * For U.S. Government users, except as specifically granted   *
+ * by the ANSYS, Inc. software license agreement, the use,     *
+ * duplication, or disclosure by the United States Government  *
+ * is subject to restrictions stated in the ANSYS, Inc.        *
+ * software license agreement and FAR 12.212 (for non-DOD      *
+ * licenses).                                                  *
+ *                                                             *
+ ***************************************************************
+
+ Release 16.0
+     
+ Point Releases and Patches installed:   
+     
+ ANSYS, Inc. Products Release 16.0   
+ ANSYS Mechanical Products Release 16.0  
+ ANSYS Autodyn Release 16.0  
+ ANSYS LS-DYNA Release 16.0  
+ ANSYS AIM Release 16.0  
+ ANSYS CFX (includes ANSYS CFD-Post) Release 16.0
+ ANSYS Fluent (includes ANSYS CFD-Post) Release 16.0 
+ ANSYS TurboGrid Release 16.0
+ ANSYS Polyflow (includes ANSYS CFD-Post) Release 16.0   
+ ANSYS ICEM CFD Release 16.0 
+ ANSYS Aqwa Release 16.0 
+ ANSYS Composite PrepPost Release 16.0   
+ ANSYS Icepak (includes ANSYS CFD-Post) Release 16.0 
+ Catia, Version 6 Release 16.0   
+ ANSYS, Inc. License Manager Release 16.0
+
+
+          *****  ANSYS COMMAND LINE ARGUMENTS  *****
+  BATCH MODE REQUESTED (-b)    = NOLIST
+  INPUT FILE COPY MODE (-c)    = COPY
+  SHARED MEMORY PARALLEL REQUESTED
+    SINGLE PROCESS WITH   2 THREADS REQUESTED
+    TOTAL OF     2 CORES REQUESTED
+  START-UP FILE MODE           = NOREAD
+  STOP FILE MODE               = NOREAD
+
+ RELEASE= Release 16.0         BUILD= 16.0      UP20141203   VERSION=WINDOWS x64 
+ CURRENT JOBNAME=file  15:50:24  AUG 21, 2025 CP=      0.641
+
+
+ PARAMETER _DS_PROGRESS =     999.0000000    
+
+ /INPUT FILE= ds.dat  LINE=       0
+
+
+
+ DO NOT WRITE ELEMENT RESULTS INTO DATABASE
+
+ *GET  _WALLSTRT  FROM  ACTI  ITEM=TIME WALL  VALUE=  15.8400000    
+
+ TITLE= 
+ Parcial--Static Structural (A5)                                               
+
+
+ SET PARAMETER DIMENSIONS ON  _WB_PROJECTSCRATCH_DIR
+  TYPE=STRI  DIMENSIONS=      248        1        1
+
+ PARAMETER _WB_PROJECTSCRATCH_DIR(1) = C:\Semestre\Elementos_Finitos\Parcial1\_ProjectScratch\ScrF803\
+
+ SET PARAMETER DIMENSIONS ON  _WB_SOLVERFILES_DIR
+  TYPE=STRI  DIMENSIONS=      248        1        1
+
+ PARAMETER _WB_SOLVERFILES_DIR(1) = C:\Semestre\Elementos_Finitos\Parcial1\Parcial_files\dp0\SYS\MECH\
+
+ SET PARAMETER DIMENSIONS ON  _WB_USERFILES_DIR
+  TYPE=STRI  DIMENSIONS=      248        1        1
+
+ PARAMETER _WB_USERFILES_DIR(1) = C:\Semestre\Elementos_Finitos\Parcial1\Parcial_files\user_files\
+ --- Data in consistent MKS units. See Solving Units in the help system for more
+
+ MKS UNITS SPECIFIED FOR INTERNAL    
+  LENGTH        (l)  = METER (M)
+  MASS          (M)  = KILOGRAM (KG)
+  TIME          (t)  = SECOND (SEC)
+  TEMPERATURE   (T)  = CELSIUS (C)
+  TOFFSET            = 273.0
+  CHARGE        (Q)  = COULOMB
+  FORCE         (f)  = NEWTON (N) (KG-M/SEC2)
+  HEAT               = JOULE (N-M)
+
+  PRESSURE           = PASCAL (NEWTON/M**2)
+  ENERGY        (W)  = JOULE (N-M)
+  POWER         (P)  = WATT (N-M/SEC)
+  CURRENT       (i)  = AMPERE (COULOMBS/SEC)
+  CAPACITANCE   (C)  = FARAD
+  INDUCTANCE    (L)  = HENRY
+  MAGNETIC FLUX      = WEBER
+  RESISTANCE    (R)  = OHM
+  ELECTRIC POTENTIAL = VOLT
+
+ INPUT  UNITS ARE ALSO SET TO MKS 
+
+ *** ANSYS - ENGINEERING ANALYSIS SYSTEM  RELEASE Release 16.0     16.0     ***
+ ANSYS Multiphysics                                
+ 00000000  VERSION=WINDOWS x64   15:50:24  AUG 21, 2025 CP=      0.672
+
+ Parcial--Static Structural (A5)                                               
+
+
+
+          ***** ANSYS ANALYSIS DEFINITION (PREP7) *****
+ *********** Nodes for the whole assembly ***********
+ *********** Elements for Body 1 "Solid" ***********
+ *********** Send User Defined Coordinate System(s) ***********
+ *********** Set Reference Temperature ***********
+ *********** Send Materials ***********
+ *********** Fixed Supports ***********
+ *********** Define Force Using Surface Effect Elements ***********
+
+
+ ***** ROUTINE COMPLETED *****  CP =         0.703
+
+
+ --- Number of total nodes = 3870
+ --- Number of contact elements = 6
+ --- Number of spring elements = 0
+ --- Number of bearing elements = 0
+ --- Number of solid elements = 1941
+ --- Number of total elements = 1947
+
+ *GET  _WALLBSOL  FROM  ACTI  ITEM=TIME WALL  VALUE=  15.8400000    
+ ****************************************************************************
+ *************************    SOLUTION       ********************************
+ ****************************************************************************
+
+ *****  ANSYS SOLUTION ROUTINE  *****
+
+
+ PERFORM A STATIC ANALYSIS
+  THIS WILL BE A NEW ANALYSIS
+
+ USE SPARSE MATRIX DIRECT SOLVER
+
+ CONTACT INFORMATION PRINTOUT LEVEL       1
+
+ NLDIAG: Nonlinear diagnostics CONT option is set to ON. 
+         Writing frequency : each ITERATION.
+
+ DO NOT SAVE ANY RESTART FILES AT ALL
+ ****************************************************
+ ******************* SOLVE FOR LS 1 ****************
+
+ SELECT       FOR ITEM=TYPE COMPONENT=    
+  IN RANGE         2 TO          2 STEP          1
+
+          6  ELEMENTS (OF       1947  DEFINED) SELECTED BY  ESEL  COMMAND.
+
+ SELECT      ALL NODES HAVING ANY ELEMENT IN ELEMENT SET.
+
+       21 NODES (OF     3870  DEFINED) SELECTED FROM
+        6 SELECTED ELEMENTS BY NSLE COMMAND.
+
+ SPECIFIED SURFACE LOAD PRES FOR ALL SELECTED ELEMENTS  LKEY =  1   KVAL = 1
+      SET ACCORDING TO TABLE PARAMETER = _LOADVARI28X                    
+
+ SPECIFIED SURFACE LOAD PRES FOR ALL SELECTED ELEMENTS  LKEY =  2   KVAL = 1
+      SET ACCORDING TO TABLE PARAMETER = _LOADVARI28Y                    
+
+ SPECIFIED SURFACE LOAD PRES FOR ALL SELECTED ELEMENTS  LKEY =  3   KVAL = 1
+      SET ACCORDING TO TABLE PARAMETER = _LOADVARI28Z                    
+
+ ALL SELECT   FOR ITEM=NODE COMPONENT=    
+  IN RANGE         1 TO       3870 STEP          1
+
+       3870  NODES (OF       3870  DEFINED) SELECTED BY NSEL  COMMAND.
+
+ ALL SELECT   FOR ITEM=ELEM COMPONENT=    
+  IN RANGE         1 TO       1947 STEP          1
+
+       1947  ELEMENTS (OF       1947  DEFINED) SELECTED BY  ESEL  COMMAND.
+
+ PRINTOUT RESUMED BY /GOP
+
+ USE       1 SUBSTEPS INITIALLY THIS LOAD STEP FOR ALL  DEGREES OF FREEDOM
+ FOR AUTOMATIC TIME STEPPING:
+   USE      1 SUBSTEPS AS A MAXIMUM
+   USE      1 SUBSTEPS AS A MINIMUM
+
+ TIME=  1.0000    
+
+ ERASE THE CURRENT DATABASE OUTPUT CONTROL TABLE.
+
+
+ WRITE ALL  ITEMS TO THE DATABASE WITH A FREQUENCY OF NONE
+   FOR ALL APPLICABLE ENTITIES
+
+ WRITE NSOL ITEMS TO THE DATABASE WITH A FREQUENCY OF ALL 
+   FOR ALL APPLICABLE ENTITIES
+
+ WRITE RSOL ITEMS TO THE DATABASE WITH A FREQUENCY OF ALL 
+   FOR ALL APPLICABLE ENTITIES
+
+ WRITE STRS ITEMS TO THE DATABASE WITH A FREQUENCY OF ALL 
+   FOR ALL APPLICABLE ENTITIES
+
+ WRITE EPEL ITEMS TO THE DATABASE WITH A FREQUENCY OF ALL 
+   FOR ALL APPLICABLE ENTITIES
+
+ WRITE EPPL ITEMS TO THE DATABASE WITH A FREQUENCY OF ALL 
+   FOR ALL APPLICABLE ENTITIES
+
+ NONLINEAR STABILIZATION CONTROL:
+ KEY=OFF 
+
+
+ *** WARNING ***                         CP =       0.703   TIME= 15:50:24
+ "C:\PROG is not a recognized SOLUTION command, abbreviation, or macro.  
+                                                                         
+  This command will be ignored.                                          
+
+ *GET  ANSINTER_  FROM  ACTI  ITEM=INT        VALUE=  0.00000000    
+
+ *IF  ANSINTER_                         ( =   0.00000     )  NE  
+      0                                 ( =   0.00000     )  THEN    
+
+ *ENDIF
+
+ *****  ANSYS SOLVE    COMMAND  *****
+
+ *** WARNING ***                         CP =       0.703   TIME= 15:50:24
+ Element shape checking is currently inactive.  Issue SHPP,ON or         
+ SHPP,WARN to reactivate, if desired.                                    
+
+ *** NOTE ***                            CP =       0.703   TIME= 15:50:24
+ The model data was checked and warning messages were found.             
+  Please review output or errors file (                                  
+ C:\Semestre\Elementos_Finitos\Parcial1\_ProjectScratch\ScrF803\file.err 
+ r ) for these warning messages.                                         
+
+ *** SELECTION OF ELEMENT TECHNOLOGIES FOR APPLICABLE ELEMENTS ***
+      --- GIVE SUGGESTIONS AND RESET THE KEY OPTIONS ---
+
+ ELEMENT TYPE    1 IS SOLID187. IT IS NOT ASSOCIATED WITH FULLY INCOMPRESSIBLE
+ HYPERELASTIC MATERIALS. NO SUGGESTION IS AVAILABLE AND NO RESETTING IS NEEDED.
+
+
+
+ *** ANSYS - ENGINEERING ANALYSIS SYSTEM  RELEASE Release 16.0     16.0     ***
+ ANSYS Multiphysics                                
+ 00000000  VERSION=WINDOWS x64   15:50:24  AUG 21, 2025 CP=      0.703
+
+ Parcial--Static Structural (A5)                                               
+
+
+
+                       S O L U T I O N   O P T I O N S
+
+   PROBLEM DIMENSIONALITY. . . . . . . . . . . . .3-D                  
+   DEGREES OF FREEDOM. . . . . . UX   UY   UZ  
+   ANALYSIS TYPE . . . . . . . . . . . . . . . . .STATIC (STEADY-STATE)
+   OFFSET TEMPERATURE FROM ABSOLUTE ZERO . . . . .  273.15    
+   EQUATION SOLVER OPTION. . . . . . . . . . . . .SPARSE             
+   GLOBALLY ASSEMBLED MATRIX . . . . . . . . . . .SYMMETRIC  
+
+ *** WARNING ***                         CP =       0.703   TIME= 15:50:24
+ Material number 2 (used by element 1942 ) should normally have at least 
+ one MP or one TB type command associated with it.  Output of energy by  
+ material may not be available.                                          
+
+ *** NOTE ***                            CP =       0.703   TIME= 15:50:24
+ The step data was checked and warning messages were found.              
+  Please review output or errors file (                                  
+ C:\Semestre\Elementos_Finitos\Parcial1\_ProjectScratch\ScrF803\file.err 
+ r ) for these warning messages.                                         
+
+ *** NOTE ***                            CP =       0.703   TIME= 15:50:24
+ The conditions for direct assembly have been met.  No .emat or .erot    
+ files will be produced.                                                 
+
+                      L O A D   S T E P   O P T I O N S
+
+   LOAD STEP NUMBER. . . . . . . . . . . . . . . .     1
+   TIME AT END OF THE LOAD STEP. . . . . . . . . .  1.0000    
+   NUMBER OF SUBSTEPS. . . . . . . . . . . . . . .     1
+   STEP CHANGE BOUNDARY CONDITIONS . . . . . . . .    NO
+   PRINT OUTPUT CONTROLS . . . . . . . . . . . . .NO PRINTOUT
+   DATABASE OUTPUT CONTROLS
+      ITEM     FREQUENCY   COMPONENT
+       ALL       NONE               
+      NSOL        ALL               
+      RSOL        ALL               
+      STRS        ALL               
+      EPEL        ALL               
+      EPPL        ALL               
+
+
+ SOLUTION MONITORING INFO IS WRITTEN TO FILE= file.mntr                                                                                                                                                                                                                                                           
+
+
+
+                         ***********  PRECISE MASS SUMMARY  ***********
+
+   TOTAL RIGID BODY MASS MATRIX ABOUT ORIGIN
+               Translational mass               |   Coupled translational/rotational mass
+         3.9300        0.0000        0.0000     |     0.0000       0.39780E-12   0.37306E-11
+         0.0000        3.9300        0.0000     |   -0.39780E-12    0.0000        5.1372    
+         0.0000        0.0000        3.9300     |   -0.37306E-11   -5.1372        0.0000    
+     ------------------------------------------ | ------------------------------------------
+                                                |         Rotational mass (inertia)
+                                                |    0.77169E-02   0.80618E-12  -0.21097E-12
+                                                |    0.80618E-12    9.5457      -0.50323E-13
+                                                |   -0.21096E-12  -0.50323E-13    9.5521    
+
+   TOTAL MASS =  3.9300    
+     The mass principal axes coincide with the global Cartesian axes
+
+   CENTER OF MASS (X,Y,Z)=    1.3072      -0.94924E-12   0.10122E-12
+
+   TOTAL INERTIA ABOUT CENTER OF MASS
+        0.77169E-02  -0.40703E-11   0.30903E-12
+       -0.40703E-11    2.8305      -0.50323E-13
+        0.30903E-12  -0.50323E-13    2.8369    
+     The inertia principal axes coincide with the global Cartesian axes
+
+
+  *** MASS SUMMARY BY ELEMENT TYPE ***
+
+  TYPE      MASS
+     1   3.93003    
+
+ Range of element maximum matrix coefficients in global coordinates
+ Maximum = 6.573408507E+10 at element 875.                               
+ Minimum = 201117144 at element 1344.                                    
+
+   *** ELEMENT MATRIX FORMULATION TIMES
+  TYPE    NUMBER   ENAME      TOTAL CP  AVE CP
+
+     1      1941  SOLID187      0.156   0.000080
+     2         6  SURF154       0.000   0.000000
+ Time at end of element matrix formulation CP = 0.84375.                 
+
+ SPARSE MATRIX DIRECT SOLVER.
+  Number of equations =       11394,    Maximum wavefront =    210
+  Memory allocated for solver =          56.333 MB
+  Memory required for in-core =          21.631 MB
+  Memory required for out-of-core =       5.532 MB
+
+
+ *** NOTE ***                            CP =       0.969   TIME= 15:50:24
+ The Sparse Matrix solver is currently running in the in-core memory     
+ mode.  This memory mode uses the most amount of memory in order to      
+ avoid using the hard drive as much as possible, which most often        
+ results in the fastest solution time.  This mode is recommended if      
+ enough physical memory is present to accommodate all of the solver      
+ data.                                                                   
+

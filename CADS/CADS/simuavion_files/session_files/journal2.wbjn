@@ -1,0 +1,14 @@
+﻿# encoding: utf-8
+# Release 16.0
+SetScriptVersion(Version="16.0.361")
+Update()
+system1 = GetSystem(Name="SYS")
+solutionComponent1 = system1.GetComponent(Name="Solution")
+solutionComponent1.Update(AllDependencies=True)
+system1.Delete()
+Update()
+system1.Delete()
+geometryComponent1 = system1.GetComponent(Name="Geometry")
+geometryComponent1.Reset()
+Update()
+Save(Overwrite=True)
