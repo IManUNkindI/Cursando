@@ -1,0 +1,22 @@
+/COM,ANSYS RELEASE Release 16.0      BUILD 16.0      UP20141203       15:19:40
+
+ *** WARNING ***                         CP =       3.250   TIME= 15:19:43
+ Using 1 iteration per substep may result in unconverged solutions for   
+ nonlinear analysis and the program may not indicate divergence in this  
+ case.  Check your results.                                              
+
+ *** WARNING ***                         CP =       3.281   TIME= 15:19:43
+ Element shape checking is currently inactive.  Issue SHPP,ON or         
+ SHPP,WARN to reactivate, if desired.                                    
+
+ *** WARNING ***                         CP =       3.500   TIME= 15:19:43
+ Material number 5 (used by element 51220 ) should normally have at      
+ least one MP or one TB type command associated with it.  Output of      
+ energy by material may not be available.                                
+
+ *** ERROR ***                           CP =       8.953   TIME= 15:19:47
+ An unexpected error ( SIG$ILL ) has occurred...  ANSYS internal data    
+ has been corrupted.  ANSYS is unable to recover and will terminate.     
+ Previously saved files are unaffected.  Please send the data leading    
+ to this operation to your technical support provider, as this will      
+ allow ANSYS, Inc to improve the program.                                

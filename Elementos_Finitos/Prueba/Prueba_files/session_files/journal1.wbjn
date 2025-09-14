@@ -1,0 +1,45 @@
+﻿# encoding: utf-8
+# Release 16.0
+SetScriptVersion(Version="16.0.361")
+template1 = GetTemplate(
+    TemplateName="Static Structural",
+    Solver="ANSYS")
+system1 = template1.CreateSystem()
+system1.DisplayText = "Prueba"
+favorites1 = EngData.LoadFavoriteItems()
+library1 = EngData.OpenLibrary(
+    Name="General Materials",
+    Source="General_Materials.xml")
+engineeringData1 = system1.GetContainer(ComponentName="Engineering Data")
+matl1 = engineeringData1.ImportMaterial(
+    Name="Stainless Steel",
+    Source="General_Materials.xml")
+matl2 = engineeringData1.ImportMaterial(
+    Name="Stainless Steel",
+    Source="General_Materials.xml")
+EngData.EnableFilter(Enable=False)
+geometry1 = system1.GetContainer(ComponentName="Geometry")
+geometry1.Edit()
+Save(Overwrite=True)
+geometry1.Exit()
+modelComponent1 = system1.GetComponent(Name="Model")
+modelComponent1.Refresh()
+model1 = system1.GetContainer(ComponentName="Model")
+model1.Edit()
+modelComponent1.Update(AllDependencies=True)
+Save(Overwrite=True)
+model1.Exit()
+setup1 = system1.GetContainer(ComponentName="Setup")
+setup1.Edit()
+Save(Overwrite=True)
+setupComponent1 = system1.GetComponent(Name="Setup")
+setupComponent1.Update(AllDependencies=True)
+model1.Exit()
+solution1 = system1.GetContainer(ComponentName="Solution")
+solution1.Edit()
+model1.Exit()
+solutionComponent1 = system1.GetComponent(Name="Solution")
+solutionComponent1.Update(AllDependencies=True)
+solution1.Edit()
+model1.Exit()
+Save(Overwrite=True)

@@ -1,0 +1,29 @@
+﻿# encoding: utf-8
+# Release 16.0
+SetScriptVersion(Version="16.0.361")
+template1 = GetTemplate(
+    TemplateName="Steady-State Thermal",
+    Solver="ANSYS")
+system1 = template1.CreateSystem()
+system1.DisplayText = "Pollito"
+favorites1 = EngData.LoadFavoriteItems()
+library1 = EngData.OpenLibrary(
+    Name="General Materials",
+    Source="General_Materials.xml")
+library2 = EngData.OpenLibrary(
+    Name="Thermal Materials",
+    Source="Thermal_Materials.xml")
+engineeringData1 = system1.GetContainer(ComponentName="Engineering Data")
+matl1 = engineeringData1.ImportMaterial(
+    Name="Air",
+    Source="Thermal_Materials.xml")
+matl2 = engineeringData1.ImportMaterial(
+    Name="Iron",
+    Source="Thermal_Materials.xml")
+matl3 = engineeringData1.ImportMaterial(
+    Name="Water Fresh",
+    Source="Thermal_Materials.xml")
+geometry1 = system1.GetContainer(ComponentName="Geometry")
+geometry1.Edit()
+geometry1.Exit()
+Save(Overwrite=True)
