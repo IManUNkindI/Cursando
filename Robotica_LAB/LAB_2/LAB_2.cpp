@@ -25,11 +25,11 @@
 
 uint32_t BAUDRATE;
 
-int target1 = 0;
-int target2 = 0;
-int target3 = 0;
-int target4 = 0;
-int target5 = 0;
+float target1 = 0;
+float target2 = 0;
+float target3 = 0;
+float target4 = 0;
+float target5 = 0;
 
 int16_t cnt1 = 0;
 int16_t cnt2 = 0;
@@ -260,7 +260,7 @@ int main(void){
 	
 	Config_GPIO();
   SysTick_Init();
-  USART3_Init(9600);
+  USART3_Init(57600);
 	
   /* PWM: configurar solo CH1 en cada timer de servo */
   Config_TimerPWM(TIM9);
@@ -298,11 +298,11 @@ int main(void){
 			}
 			
 			// Asignar angulo objetivo:
-			target1 = 0;		//0 - 360
-			target2 = 30;		//0 - 180
-			target3 = 0;		//0 -180
-			target4 = 8;		//8 - 172
-			target5 = 180;	//140 - 180		
+			target1 = 45;		//0 - 90
+			target2 = 90;		//0 - 180
+			target3 = 90;		//0 - 180
+			target4 = 82;		//8 - 172
+			target5 = 90;		//0 - 180		
 			
 			Servo_SetAngle(TIM9, 1, target1); // Servo 1
 			Servo_SetAngle(TIM10, 1, target2);	// Servo 2
@@ -311,7 +311,7 @@ int main(void){
 			Servo_SetAngle(TIM14, 1, target5);	// Servo 5
 			sec_home = 1;
 
-			SysTick_Wait1ms(2000); // Peque retardo para estabilidad
+			SysTick_Wait1ms(1000); // Peque retardo para estabilidad
 		}	
 		
 		SetTxt();
@@ -340,11 +340,17 @@ int main(void){
 		cnt5 = (int16_t)TIM8->CNT;
 		
 		// Asignar angulo objetivo:
-		target1 = 45;		//0 - 360
-		target2 = 90;		//0 - 180
-		target3 = 120;		//0 -180
-		target4 = 180;		//8 - 172
-		target5 = 50;	//140 - 180		
+//		target1 = 90;			//0 - 90
+//		target2 = 90;			//0 - 180
+//		target3 = 90;			//0 - 180
+//		target4 = 90;			//8 - 172
+//		target5 = 90;			//0 - 180	
+
+		target1 += 0.01;		//0 - 90
+		target2 -= 0.1;			//0 - 180
+		target3 += 0.1;			//0 - 180
+		target4 += 0.01;		//8 - 172
+		target5 += 0.01;		//0 - 180		
 		
 		Servo_SetAngle(TIM9, 1, target1); // Servo 1
 		Servo_SetAngle(TIM10, 1, target2);	// Servo 2
@@ -370,6 +376,7 @@ int main(void){
 		ang4 = wrap360((cnt4 / KY040_CPR_X4) * 360.0f);
     ang5 = wrap360((cnt5 / KY040_CPR_X4)  * 360.0f);
 		
+		SysTick_Wait1ms(1000);
 	}
 }
 extern "C"{
