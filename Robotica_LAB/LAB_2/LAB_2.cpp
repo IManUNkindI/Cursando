@@ -346,11 +346,11 @@ int main(void){
 //		target4 = 90;			//8 - 172
 //		target5 = 90;			//0 - 180	
 
-		target1 += 0.01;		//0 - 90
-		target2 -= 0.1;			//0 - 180
-		target3 += 0.1;			//0 - 180
-		target4 += 0.01;		//8 - 172
-		target5 += 0.01;		//0 - 180		
+		target1 += 1;		//0 - 90
+		target2 -= 1;			//0 - 180
+		target3 += 1;			//0 - 180
+		target4 += 1;		//8 - 172
+		target5 += 1;		//0 - 180		
 		
 		Servo_SetAngle(TIM9, 1, target1); // Servo 1
 		Servo_SetAngle(TIM10, 1, target2);	// Servo 2

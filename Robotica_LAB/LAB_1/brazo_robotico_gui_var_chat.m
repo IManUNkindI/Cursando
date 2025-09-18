@@ -7,7 +7,7 @@ function brazo_robotico_gui_var
     % Configuración de offsets y rangos
     rango_min = [0 , 0  , 0  , 8  , 0  ];   
     rango_max = [90, 180, 180, 172, 180];   
-    valores_iniciales = [0, 0, 0, 8, 0];     
+    valores_iniciales = [45, 90, 90, 90, 90];     
 
     % Ventana principal
     fig = uifigure('Name','Brazo Robótico 6 GDL','Position',[100 100 950 640]);
@@ -37,8 +37,6 @@ function brazo_robotico_gui_var
     % Sliders (solo lectura)
     sliders = gobjects(1,5);
     for i = 1:5
-        uilabel(panel,'Position',[20 510-(i-1)*100 180 20],...
-            'Text',sprintf('Articulación %d',i));
     
         sliders(i) = uislider(panel,...
             'Position',[20 490-(i-1)*100 180 3],...
@@ -49,7 +47,7 @@ function brazo_robotico_gui_var
     
         sliders(i).Enable = 'off';
     
-        uilabel(panel,'Position',[20 465-(i-1)*100 180 20],...
+        uilabel(panel,'Position',[20 490-(i-1)*100 180 20],...
             'Tag',sprintf('lbl%d',i),...
             'Text',sprintf('%.2f°', valores_iniciales(i)));
     end
@@ -104,9 +102,9 @@ function brazo_robotico_gui_var
         % Cinemática directa acumulada X->Y, Y->Z, Z->X.
         T01 = Rz(q(1)) * Trans(-13.92e-3, -4e-3, 105.28e-3);
         T12 = Ry(q(2)) * Trans(-120e-3, 0, 0);
-        T23 = Ry(q(3)) * Trans(-9.61e-3, 12.68e-3, -93.48e-3);
-        T34 = Rx(q(4)) * Trans(8.2e-3, 20.01e-3, -71.96e-3);
-        T45 = Ry(q(5)) * Trans(49.59e-3, 25.96e-3, 16e-3);
+        T23 = Ry(q(3)) * Trans(-5.3e-3, 7.5e-3, -89.75e-3);
+        T34 = Rz(q(4)) * Trans(5e-3, 14e-3, -65.5e-3);
+        T45 = Ry(q(5)) * Trans(38e-3, 25.9e-3, 14e-3);
 
         A1 = T01; A2 = A1*T12; A3 = A2*T23; A4 = A3*T34; A5 = A4*T45;
         T_all = {A1,A2,A3,A4,A5};

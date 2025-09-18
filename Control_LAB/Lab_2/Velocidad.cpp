@@ -6,7 +6,7 @@ int TS_MS = 20;    // periodo de muestreo en ms
 float RPM = 0.0;     // variable global con la velocidad en RPM
 int cnt = 0;
 int reset = 0;
-int max_rpm = 300;
+int max_rpm = 1500;
 
 /// ======================= SysTick ======================= ///
 void SysTick_Init(void) {                // Inicializaci n
