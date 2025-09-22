@@ -15,12 +15,12 @@
      - Servo3: TIM11_CH1 -> PB9 (AF3)
      - Servo4: TIM13_CH1 -> PF8 (AF9)
      - Servo5: TIM14_CH1 -> PF9 (AF9)
-   Encoders (cuadratura x4):
-     - Enc1 (TIM1):  CH1->PA8 (AF1),  CH2->PA9 (AF1)
-     - Enc2 (TIM2):  CH1->PA15 (AF1),  CH2->PB3 (AF1)
-     - Enc3 (TIM3):  CH1->PB4 (AF2),  CH2->PB5 (AF2)
-     - Enc4 (TIM4):  CH1->PB6 (AF2),  CH2->PB7 (AF2)
-     - Enc5 (TIM8):  CH1->PC6 (AF3),  CH2->PC7 (AF3)
+   ADC (potenciometros):
+     - Adc1 (ADC1):  PA4
+     - Adc2 (ADC1):  PA5
+     - Adc3 (ADC1):  PC0
+     - Adc4 (ADC1):  PC1
+     - Adc5 (ADC1):  PC2
    ============================================================ */
 
 uint32_t BAUDRATE;
@@ -31,12 +31,13 @@ float target3 = 0;
 float target4 = 0;
 float target5 = 0;
 
-int16_t cnt1 = 0;
-int16_t cnt2 = 0;
-int16_t cnt3 = 0;
-int16_t cnt4 = 0;
-int16_t cnt5 = 0;
+int pot1 = 0;
+int pot2 = 0;
+int pot3 = 0;
+int pot4 = 0;
+int pot5 = 0;
 
+int bandera = 0;
 /* ======================= Comandos LCD ======================= */
 char clean = 0x01;                // 0b00000001 Limpieza LCD
 char home = 0x02;                 // 0b00000010 Modo home LCD
@@ -46,8 +47,8 @@ char LCD_Mode = 0x06;             // 0b00000110 Cursor increment, NO blink displ
 char LCD_pos = 0;                 // Count position cursor
 char LINE1 = (0x80 + LCD_pos);    // 0b10000000 Position 0:0 Display
 char LINE2 = (0xC0 + LCD_pos);    // 0b11000000 Position 1:0 Display
-char txt[32];
-int aux[3];
+char txt[64];
+int aux[10];
 
 
 /* ======================= Par metros de control ======================= */
@@ -69,15 +70,14 @@ volatile uint32_t ms_tick = 0;
 
 float ref1=0, ref2=0, ref3=0, ref4=0, ref5=0;
 float cmd1=0,  cmd2=0,  cmd3=0,  cmd4=0,  cmd5=0;
-int ang1=0,  ang2=0,  ang3=0,  ang4=0,  ang5=0;
+float ang1=0,  ang2=0,  ang3=0,  ang4=0,  ang5=0;
 int   sec_home = 0, sec_on = 0;
 int txi = 0;
 char tx[32];
 /* ======================= GPIO (PWM + Encoders + USART) ======================= */
 static void Config_GPIO(void) {
 	/* ---------- PWM ( PE5 (T9-1, AF3), PB8(T10-1, AF3), PB9(T11-1, AF3), PF8(T13-1, AF9), PF9(T14-1, AF9) ) ---------- */
-  /* ---------- Encoders (T1_1/2: PA8, PA9 (AF1), T2_1/2: PA15, PB3 (AF1), T3_1/2: PPB4, PB5 (AF2)) ---------- */
-	/* ---------- Encoders (T4_1/2: PB6, PB7 (AF2), T8_1/2: PC6, PC7 (AF3) ) ---------- */
+  /* ---------- Entradas analógicas, PA4 (IN4), PA5 (IN5), PC0 (IN10), PC1 (IN11), PC2 (IN12) ---------- */
 
 	/* Relojes de TIM */
   /* APB2: TIM1, TIM8; APB1: TIM2, TIM3, TIM4, PWM: TIM9/10/11 (APB2), TIM13/14 (APB1) y USART3 */
@@ -90,6 +90,8 @@ static void Config_GPIO(void) {
   RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN | RCC_AHB1ENR_GPIOBEN | RCC_AHB1ENR_GPIOCEN 
 							  | RCC_AHB1ENR_GPIODEN | RCC_AHB1ENR_GPIOEEN | RCC_AHB1ENR_GPIOFEN 
 								| RCC_AHB1ENR_GPIOGEN;
+	
+	RCC->APB2ENR |= (0x1 << 8);                                 // ADC1
 	
 	GPIOG->MODER |= 0x55555;
 	GPIOG->OTYPER |= 0x0000;
@@ -116,7 +118,17 @@ static void Config_GPIO(void) {
 
   GPIOF->MODER |= 0xA0000;
   GPIOF->AFR[1] |= 0x99;
+
+  // Configuración básica del ADC1
+	GPIOA->MODER |= (3 << (4*2)) | (3 << (5*2)); // PA4, PA5 en modo analógico
+  GPIOC->MODER |= (3 << (0*2)) | (3 << (1*2)) | (3 << (2*2)); // PC0, PC1, PC2 analógico
 	
+  ADC1->CR1 = 0;           // Sin SCAN, 12 bits
+  ADC1->CR2 = 0;           // Trigger por software, single conversion
+  ADC1->SMPR2 |= (0x7 << 12) | (0x7 << 15); // IN4, IN5  (480 ciclos)
+  ADC1->SMPR1 |= (0x7 << 0) | (0x7 << 3) | (0x7 << 6); // IN10, IN11, IN12
+
+  ADC1->CR2 |= ADC_CR2_ADON; // Habilitar ADC
 }
 
 /* ======================= PWM: CH1 (timers 1-canal) ======================= */
@@ -163,6 +175,14 @@ void Config_TimerEncoder(TIM_TypeDef *TIMx){
 
     TIMx->CR1  |= TIM_CR1_CEN;
 }
+/// ======================= Lectura ADC puntual ======================= ///
+uint16_t ADC_ReadChannel(uint8_t canal) {
+		ADC1->SQR1 = 0;           // 1 conversión
+		ADC1->SQR3 = canal;       // Selecciona canal
+		ADC1->CR2 |= ADC_CR2_SWSTART; // Inicia conversión
+		while (!(ADC1->SR & ADC_SR_EOC)); // Esperar fin
+		return (uint16_t)ADC1->DR; // Leer valor
+}
 static inline float wrap360(float a){
     while (a >= 360.0f) a -= 360.0f;
     while (a <    0.0f) a += 360.0f;
@@ -205,58 +225,86 @@ void SetTxt(){
 	txt[0] = '1';
 	txt[1] = ':';
 	
-	aux[3] = (ang1/10)%10;
-	txt[2] = '0' + aux[3];
-	aux[2] = ang1%10;
-	txt[3] = '0' + aux[2];
+	aux[5] = (int)(ang1/100)%10;
+	txt[2] = '0' + aux[5];
+	aux[4] = (int)(ang1/10)%10;
+	txt[3] = '0' + aux[4];
+	aux[3] = (int)(ang1/1)%10;
+	txt[4] = '0' + aux[3];
+	txt[5] = '.';
+	aux[2] =  (int)(ang1/0.1)%10;
+	txt[6] = '0' + aux[2];
+	aux[1] =  (int)(ang1/0.01)%10;
+	txt[7] = '0' + aux[1];
 
-	txt[4] = ' ';
-	txt[5] = '2';
-	txt[6] = ':';
+	txt[8] = ' ';
+	txt[9] = '2';
+	txt[10] = ':';
 	
-	aux[3] = (ang2/100)%10;
-	txt[7] = '0' + aux[3];
-	aux[2] = (ang2/10)%10;
-	txt[8] = '0' + aux[2];
-	aux[1] = ang2%10;
-	txt[9] = '0' + aux[1];
-	
-	txt[10] = ' ';
-	txt[11] = '3';
-	txt[12] = ':';
-	
-	aux[3] = (ang3/100)%10;
+	aux[5] = (int)(ang2/100)%10;
+	txt[11] = '0' + aux[5];
+	aux[4] = (int)(ang2/10)%10;
+	txt[12] = '0' + aux[4];
+	aux[3] = (int)(ang2/1)%10;
 	txt[13] = '0' + aux[3];
-	aux[2] = (ang3/10)%10;
-	txt[14] = '0' + aux[2];
-	aux[1] = ang3%10;
-	txt[15] = '0' + aux[1];
+	txt[14] = '.';
+	aux[2] =  (int)(ang2/0.1)%10;
+	txt[15] = '0' + aux[2];
+	aux[1] =  (int)(ang2/0.01)%10;
+	txt[16] = '0' + aux[1];
 	
-	txt[16] = ' ';
-	txt[17] = '4';
-	txt[18] = ':';
+	txt[17] = ' ';
+	txt[18] = '3';
+	txt[19] = ':';
 	
-	aux[3] = (ang4/100)%10;
-	txt[19] = '0' + aux[3];
-	aux[2] = (ang4/10)%10;
-	txt[20] = '0' + aux[2];
-	aux[1] = ang4%10;
-	txt[21] = '0' + aux[1];
+	aux[5] = (int)(ang3/100)%10;
+	txt[20] = '0' + aux[5];
+	aux[4] = (int)(ang3/10)%10;
+	txt[21] = '0' + aux[4];
+	aux[3] = (int)(ang3/1)%10;
+	txt[22] = '0' + aux[3];
+	txt[23] = '.';
+	aux[2] =  (int)(ang3/0.1)%10;
+	txt[24] = '0' + aux[2];
+	aux[1] =  (int)(ang3/0.01)%10;
+	txt[25] = '0' + aux[1];
 	
-	txt[22] = ' ';
-	txt[23] = '5';
-	txt[24] = ':';
+	txt[26] = ' ';
+	txt[27] = '4';
+	txt[28] = ':';
 	
-	aux[3] = (ang5/100)%10;
-	txt[25] = '0' + aux[3];
-	aux[2] = (ang5/10)%10;
-	txt[26] = '0' + aux[2];
-	aux[1] = ang5%10;
-	txt[27] = '0' + aux[1];
+	aux[5] = (int)(ang2/100)%10;
+	txt[29] = '0' + aux[5];
+	aux[4] = (int)(ang2/10)%10;
+	txt[30] = '0' + aux[4];
+	aux[3] = (int)(ang2/1)%10;
+	txt[31] = '0' + aux[3];
+	txt[32] = '.';
+	aux[2] =  (int)(ang2/0.1)%10;
+	txt[33] = '0' + aux[2];
+	aux[1] =  (int)(ang2/0.01)%10;
+	txt[34] = '0' + aux[1];
+	
+	txt[35] = ' ';
+	txt[36] = '5';
+	txt[37] = ':';
+	
+	aux[5] = (int)(ang5/100)%10;
+	txt[38] = '0' + aux[5];
+	aux[4] = (int)(ang5/10)%10;
+	txt[39] = '0' + aux[4];
+	aux[3] = (int)(ang5/1)%10;
+	txt[40] = '0' + aux[3];
+	txt[41] = '.';
+	aux[2] =  (int)(ang5/0.1)%10;
+	txt[42] = '0' + aux[2];
+	aux[1] =  (int)(ang5/0.01)%10;
+	txt[43] = '0' + aux[1];
+	
 }
 /* ======================= Main ======================= */
 int main(void){
-	sec_home = 0;
+	sec_home = 1;
 	
 	Config_GPIO();
   SysTick_Init();
@@ -268,13 +316,6 @@ int main(void){
   Config_TimerPWM(TIM11);
   Config_TimerPWM(TIM13);
   Config_TimerPWM(TIM14);
-
-  /* Encoders (x4) */
-  Config_TimerEncoder(TIM1);
-  Config_TimerEncoder(TIM2);
-  Config_TimerEncoder(TIM3);
-  Config_TimerEncoder(TIM4);
-  Config_TimerEncoder(TIM8);
 
   /* Inicializa comandos en 0  */
   cmd1=0; cmd2=0; cmd3=0; cmd4=0; cmd5=0;
@@ -333,24 +374,13 @@ int main(void){
 			}
 		}
 		
-		cnt1 = (int16_t)TIM2->CNT;
-		cnt2 = (int16_t)TIM1->CNT;
-		cnt3 = (int16_t)TIM3->CNT;
-		cnt4 = (int16_t)TIM4->CNT;
-		cnt5 = (int16_t)TIM8->CNT;
-		
 		// Asignar angulo objetivo:
-//		target1 = 90;			//0 - 90
-//		target2 = 90;			//0 - 180
-//		target3 = 90;			//0 - 180
-//		target4 = 90;			//8 - 172
-//		target5 = 90;			//0 - 180	
-
-		target1 += 1;		//0 - 90
-		target2 -= 1;			//0 - 180
-		target3 += 1;			//0 - 180
-		target4 += 1;		//8 - 172
-		target5 += 1;		//0 - 180		
+		target1 = 90;			//0 - 90
+		target2 = 60;			//0 - 180
+		target3 = 30;			//0 - 180
+		target4 = 90;			//8 - 172
+		target5 = 180;			//0 - 180	
+	
 		
 		Servo_SetAngle(TIM9, 1, target1); // Servo 1
 		Servo_SetAngle(TIM10, 1, target2);	// Servo 2
@@ -369,12 +399,21 @@ int main(void){
 		USART3_SendFloat(target5);
 		USART3_SendChar('\n');
 		
-				/* Conversi n a  ngulos */
-		ang1 = wrap360((cnt1 / ENC50_CPR) * 360.0f);
-		ang2 = wrap360((cnt2 / KY040_CPR_X4) * 360.0f);
-		ang3 = wrap360((cnt3 / KY040_CPR_X4) * 360.0f);
-		ang4 = wrap360((cnt4 / KY040_CPR_X4) * 360.0f);
-    ang5 = wrap360((cnt5 / KY040_CPR_X4)  * 360.0f);
+				/* Conversion angulos */
+		pot1 = ADC_ReadChannel(4);   // PA4
+		ang1 = ((float)pot1 / 4096) * 180.0;
+		
+		pot2 = ADC_ReadChannel(5);   // PA5
+		ang2 = ((float)pot2 / 4096) * 180.0;
+		
+		pot3 = ADC_ReadChannel(10);  // PC0
+		ang3 = ((float)pot3 / 4096) * 180.0;
+		
+		pot4 = ADC_ReadChannel(11);  // PC1
+		ang4 = ((float)pot4 / 4096) * 180.0;
+		
+		pot5 = ADC_ReadChannel(12);  // PC2
+    ang5 = ((float)pot5 / 4096) * 180.0;
 		
 		SysTick_Wait1ms(1000);
 	}

@@ -153,27 +153,27 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>target1,0x0A</ItemText>
+          <ItemText>pot1,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>target2,0x0A</ItemText>
+          <ItemText>pot2,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>target3,0x0A</ItemText>
+          <ItemText>pot3,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
           <WinNumber>1</WinNumber>
-          <ItemText>target4,0x0A</ItemText>
+          <ItemText>pot4,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>4</count>
           <WinNumber>1</WinNumber>
-          <ItemText>target5,0x0A</ItemText>
+          <ItemText>pot5,0x0A</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>

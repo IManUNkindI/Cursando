@@ -5,6 +5,7 @@ function brazo_robotico_gui_var
     s = []; % objeto serial (se abre desde el botón)
     
     % Configuración de offsets y rangos
+    offset = [0, 180, 0, 180, 0];
     rango_min = [0 , 0  , 0  , 8  , 0  ];   
     rango_max = [90, 180, 180, 172, 180];   
     valores_iniciales = [45, 90, 90, 90, 90];     
@@ -130,8 +131,8 @@ function brazo_robotico_gui_var
                 datos = str2double(split(strtrim(linea),'x'));
                 datos = datos(~isnan(datos));   % quitar vacíos
                 if numel(datos) == 5
-                    q_corr = datos(:)'; % aplicar offset
-                    actualizar(q_corr);
+                    q_corr = offset - datos(:)'; % aplicar offset
+                    actualizar(abs(q_corr));
                 end
             catch
                 % ignorar errores de parseo
