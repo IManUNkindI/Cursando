@@ -8,11 +8,11 @@ int cnt = 0;
 int reset = 0;
 int max_rpm = 1500;
 int pot;
-int arr = 5000;
+int arr = 1000;
 
 int16_t pulse = 0;
 /* KY-040 a x4: ~80 cuentas/vuelta */
-#define KY040_CPR_X4         80.0f
+#define KY040_CPR_X4         60.0f
 float ang = 0;
 
 /// ======================= SysTick ======================= ///
@@ -40,7 +40,6 @@ void Config_TimerPWM(TIM_TypeDef *TIMx) {
   TIMx->CCER = 0x1111;         // Habilita CH1-CH4 salida activa alta
   TIMx->CR1 = 0x1;             // Habilita el contador
 }
-// Enc3 (TIM3):  CH1->PB4 (AF2),  CH2->PB5 (AF2)
 static void Config_GPIO(void) {
 	/* ---------- Encoder (T8_1/2: PC6, PC7 (AF3) ) ---------- */
 	/* Relojes de TIM */
@@ -48,7 +47,7 @@ static void Config_GPIO(void) {
 		 APB1: TIM3*/
 	/* ---------- ADC (PA4) ---------- */
 	RCC->APB2ENR |= (0x1 << 8);
-	RCC->APB1ENR |= RCC_APB1ENR_TIM3EN;
+	RCC->APB1ENR |= RCC_APB1ENR_TIM3EN | RCC_APB1ENR_TIM4EN;
   RCC->APB2ENR |= RCC_APB2ENR_TIM8EN | RCC_APB2ENR_TIM9EN;
 	
 	/* Habilitar relojes GPIO usados (C, A, E, B) */
@@ -146,15 +145,16 @@ int main(void) {
 	SysTick_Init();
 	DAC_Init();
 	Config_TimerEncoder(TIM8);
-	Config_TimerEncoder(TIM3);
+	Config_TimerEncoder(TIM4);
 	Timer3_Init();
 	Config_TimerPWM(TIM9);
 	
     while (1) {
-			ang = wrap360((pulse / KY040_CPR_X4) * 360.0f);
 			cnt = TIM8->CNT;
+			pulse = (int16_t)TIM4->CNT;
 			pot = ADC_ReadChannel(5);   // PA5
-			int ccr = (pot * arr) / 4095;
+			ang = wrap360(((pulse / KY040_CPR_X4) * 360.0f) + 180.0f);
+			int ccr = (ang * arr) / 360.0f;
 			TIM9->CCR1 = ccr;
     }
 }

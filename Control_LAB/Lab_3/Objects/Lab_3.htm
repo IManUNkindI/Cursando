@@ -3,9 +3,9 @@
 <title>Static Call Graph - [.\Objects\Lab_3.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Lab_3.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6230001: Last Updated: Wed Oct  1 10:32:53 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6230001: Last Updated: Wed Oct  1 13:32:56 2025
 <BR><P>
-<H3>Maximum Stack Usage =         28 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =         36 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
 __rt_entry_main &rArr; main &rArr; Timer3_Init() &rArr; __NVIC_EnableIRQ(IRQn_Type)
 <P>
@@ -275,7 +275,7 @@ Global Symbols
 <P><STRONG><a name="[b7]"></a>__rt_entry_postsh_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$00000009))
 
 <P><STRONG><a name="[83]"></a>__rt_entry_main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000D))
-<BR><BR>[Stack]<UL><LI>Max Depth = 28 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 36 + Unknown Stack Size
 <LI>Call Chain = __rt_entry_main &rArr; main &rArr; Timer3_Init() &rArr; __NVIC_EnableIRQ(IRQn_Type)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
@@ -764,7 +764,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[27]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM3_IRQHandler
 </UL>
 
-<P><STRONG><a name="[95]"></a>ADC_ReadChannel(unsigned char)</STRONG> (Thumb, 86 bytes, Stack size 4 bytes, lab_3.o(.text._Z15ADC_ReadChannelh))
+<P><STRONG><a name="[94]"></a>ADC_ReadChannel(unsigned char)</STRONG> (Thumb, 86 bytes, Stack size 4 bytes, lab_3.o(.text._Z15ADC_ReadChannelh))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = ADC_ReadChannel(unsigned char)
 </UL>
 <BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -786,16 +786,16 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[84]"></a>main</STRONG> (Thumb, 200 bytes, Stack size 16 bytes, lab_3.o(.text.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = main &rArr; Timer3_Init() &rArr; __NVIC_EnableIRQ(IRQn_Type)
+<P><STRONG><a name="[84]"></a>main</STRONG> (Thumb, 232 bytes, Stack size 24 bytes, lab_3.o(.text.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = main &rArr; Timer3_Init() &rArr; __NVIC_EnableIRQ(IRQn_Type)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[91]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DAC_Init()
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Timer3_Init()
 <LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Config_TimerEncoder(TIM_TypeDef*)
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_ReadChannel(unsigned char)
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ADC_ReadChannel(unsigned char)
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Config_TimerPWM(TIM_TypeDef*)
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Init()
-<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wrap360(float)
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;wrap360(float)
 <LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Config_GPIO()
 </UL>
 <BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
@@ -822,7 +822,7 @@ Local Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[94]"></a>wrap360(float)</STRONG> (Thumb, 92 bytes, Stack size 4 bytes, lab_3.o(.text._ZL7wrap360f))
+<P><STRONG><a name="[95]"></a>wrap360(float)</STRONG> (Thumb, 92 bytes, Stack size 4 bytes, lab_3.o(.text._ZL7wrap360f))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = wrap360(float)
 </UL>
 <BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
