@@ -7,7 +7,7 @@ function brazo_robotico_gui_var
     % Configuración de offsets y rangos
     offset = [0, 180, 0, 180, 0];
     rango_min = [0 , 0  , 0  , 8  , 0  ];   
-    rango_max = [90, 180, 180, 172, 180];   
+    rango_max = [180, 180, 180, 172, 180];   
     valores_iniciales = [45, 90, 90, 90, 90];     
 
     % Ventana principal
@@ -40,7 +40,7 @@ function brazo_robotico_gui_var
     for i = 1:5
     
         sliders(i) = uislider(panel,...
-            'Position',[20 490-(i-1)*100 180 3],...
+            'Position',[20 470-(i-1)*106 180 3],...
             'Limits',[rango_min(i) rango_max(i)], ...
             'Value', valores_iniciales(i), ...
             'MajorTicks', linspace(rango_min(i), rango_max(i), 7), ...
@@ -48,7 +48,7 @@ function brazo_robotico_gui_var
     
         sliders(i).Enable = 'off';
     
-        uilabel(panel,'Position',[20 490-(i-1)*100 180 20],...
+        uilabel(panel,'Position',[20 480-(i-1)*106 180 20],...
             'Tag',sprintf('lbl%d',i),...
             'Text',sprintf('%.2f°', valores_iniciales(i)));
     end
@@ -93,7 +93,7 @@ function brazo_robotico_gui_var
             sliders(j).Value = q_deg(j);
             lbl = findobj(panel,'Tag',sprintf('lbl%d',j));
             if ~isempty(lbl)
-                lbl.Text = sprintf('%.2f°', q_deg(j));
+                lbl.Text = sprintf('%.2f° | Real: --', q_deg(j)); 
             end
         end
 
@@ -128,17 +128,29 @@ function brazo_robotico_gui_var
         if ~isempty(s) && isvalid(s) && s.NumBytesAvailable > 0
             linea = readline(s); 
             try
-                datos = str2double(split(strtrim(linea),'x'));
-                datos = datos(~isnan(datos));   % quitar vacíos
-                if numel(datos) == 5
-                    q_corr = offset - datos(:)'; % aplicar offset
-                    actualizar(abs(q_corr));
+            datos = str2double(split(strtrim(linea),'x'));
+            datos = datos(~isnan(datos));   % quitar vacíos
+            if numel(datos) == 5
+                % Aplicar offset
+                q_corr = offset - datos(:)';
+
+                % Actualizar simulación con corregidos
+                actualizar(abs(q_corr));
+
+                % Actualizar etiquetas para mostrar ambos valores
+                for j=1:5
+                    lbl = findobj(panel,'Tag',sprintf('lbl%d',j));
+                    if ~isempty(lbl)
+                        lbl.Text = sprintf('%.2f° | Raw: %.2f°', abs(q_corr(j)), datos(j));
+                    end
                 end
-            catch
+            end
+        catch
                 % ignorar errores de parseo
             end
         end
     end
+
 
     % --- Abrir puerto ---
     function abrirPuerto(~,~)

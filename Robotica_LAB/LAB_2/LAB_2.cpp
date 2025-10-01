@@ -37,7 +37,10 @@ int pot3 = 0;
 int pot4 = 0;
 int pot5 = 0;
 
+int dealyl = 3;
+int reco = 0;
 int bandera = 0;
+int mult = 0;
 /* ======================= Comandos LCD ======================= */
 char clean = 0x01;                // 0b00000001 Limpieza LCD
 char home = 0x02;                 // 0b00000010 Modo home LCD
@@ -47,7 +50,7 @@ char LCD_Mode = 0x06;             // 0b00000110 Cursor increment, NO blink displ
 char LCD_pos = 0;                 // Count position cursor
 char LINE1 = (0x80 + LCD_pos);    // 0b10000000 Position 0:0 Display
 char LINE2 = (0xC0 + LCD_pos);    // 0b11000000 Position 1:0 Display
-char txt[64];
+char txt1[32], txt2[32];
 int aux[10];
 
 
@@ -71,6 +74,8 @@ volatile uint32_t ms_tick = 0;
 float ref1=0, ref2=0, ref3=0, ref4=0, ref5=0;
 float cmd1=0,  cmd2=0,  cmd3=0,  cmd4=0,  cmd5=0;
 float ang1=0,  ang2=0,  ang3=0,  ang4=0,  ang5=0;
+float vec1[11], vec2[11], vec3[11], vec4[11], vec5[11];
+float prom1, prom2, prom3, prom4, prom5;
 int   sec_home = 0, sec_on = 0;
 int txi = 0;
 char tx[32];
@@ -221,90 +226,186 @@ void USART3_SendFloat(float f) {
 }
 /* ======================= Int to LCD ======================= */
 void SetTxt(){
+	for(int q=0; q<=32; q++){
+		txt1[q] = 0;
+		txt2[q] = 0;
+	}
+	txt1[0-(reco/dealyl)] = '1';
+	txt1[1-(reco/dealyl)] = ':';
 	
-	txt[0] = '1';
-	txt[1] = ':';
-	
-	aux[5] = (int)(ang1/100)%10;
-	txt[2] = '0' + aux[5];
-	aux[4] = (int)(ang1/10)%10;
-	txt[3] = '0' + aux[4];
-	aux[3] = (int)(ang1/1)%10;
-	txt[4] = '0' + aux[3];
-	txt[5] = '.';
-	aux[2] =  (int)(ang1/0.1)%10;
-	txt[6] = '0' + aux[2];
-	aux[1] =  (int)(ang1/0.01)%10;
-	txt[7] = '0' + aux[1];
+	aux[5] = (int)(prom1/100)%10;
+	txt1[2-(reco/dealyl)] = '0' + aux[5];
+	aux[4] = (int)(prom1/10)%10;
+	txt1[3-(reco/dealyl)] = '0' + aux[4];
+	aux[3] = (int)(prom1/1)%10;
+	txt1[4-(reco/dealyl)] = '0' + aux[3];
+	txt1[5-(reco/dealyl)] = '.';
+	aux[2] =  (int)(prom1/0.1)%10;
+	txt1[6-(reco/dealyl)] = '0' + aux[2];
+	aux[1] =  (int)(prom1/0.01)%10;
+	txt1[7-(reco/dealyl)] = '0' + aux[1];
 
-	txt[8] = ' ';
-	txt[9] = '2';
-	txt[10] = ':';
+	txt1[9-(reco/dealyl)] = '2';
+	txt1[10-(reco/dealyl)] = ':';
 	
-	aux[5] = (int)(ang2/100)%10;
-	txt[11] = '0' + aux[5];
-	aux[4] = (int)(ang2/10)%10;
-	txt[12] = '0' + aux[4];
-	aux[3] = (int)(ang2/1)%10;
-	txt[13] = '0' + aux[3];
-	txt[14] = '.';
-	aux[2] =  (int)(ang2/0.1)%10;
-	txt[15] = '0' + aux[2];
-	aux[1] =  (int)(ang2/0.01)%10;
-	txt[16] = '0' + aux[1];
+	aux[5] = (int)(prom2/100)%10;
+	txt1[11-(reco/dealyl)] = '0' + aux[5];
+	aux[4] = (int)(prom2/10)%10;
+	txt1[12-(reco/dealyl)] = '0' + aux[4];
+	aux[3] = (int)(prom2/1)%10;
+	txt1[13-(reco/dealyl)] = '0' + aux[3];
+	txt1[14-(reco/dealyl)] = '.';
+	aux[2] =  (int)(prom2/0.1)%10;
+	txt1[15-(reco/dealyl)] = '0' + aux[2];
+	aux[1] =  (int)(prom2/0.01)%10;
+	txt1[16-(reco/dealyl)] = '0' + aux[1];
 	
-	txt[17] = ' ';
-	txt[18] = '3';
-	txt[19] = ':';
+	txt1[18-(reco/dealyl)] = '3';
+	txt1[19-(reco/dealyl)] = ':';
 	
-	aux[5] = (int)(ang3/100)%10;
-	txt[20] = '0' + aux[5];
-	aux[4] = (int)(ang3/10)%10;
-	txt[21] = '0' + aux[4];
-	aux[3] = (int)(ang3/1)%10;
-	txt[22] = '0' + aux[3];
-	txt[23] = '.';
-	aux[2] =  (int)(ang3/0.1)%10;
-	txt[24] = '0' + aux[2];
-	aux[1] =  (int)(ang3/0.01)%10;
-	txt[25] = '0' + aux[1];
+	aux[5] = (int)(prom3/100)%10;
+	txt1[20-(reco/dealyl)] = '0' + aux[5];
+	aux[4] = (int)(prom3/10)%10;
+	txt1[21-(reco/dealyl)] = '0' + aux[4];
+	aux[3] = (int)(prom3/1)%10;
+	txt1[22-(reco/dealyl)] = '0' + aux[3];
+	txt1[23-(reco/dealyl)] = '.';
+	aux[2] =  (int)(prom3/0.1)%10;
+	txt1[24-(reco/dealyl)] = '0' + aux[2];
+	aux[1] =  (int)(prom3/0.01)%10;
+	txt1[25-(reco/dealyl)] = '0' + aux[1];
 	
-	txt[26] = ' ';
-	txt[27] = '4';
-	txt[28] = ':';
+	txt2[0-(reco/dealyl)] = '4';
+	txt2[1-(reco/dealyl)] = ':';
 	
-	aux[5] = (int)(ang2/100)%10;
-	txt[29] = '0' + aux[5];
-	aux[4] = (int)(ang2/10)%10;
-	txt[30] = '0' + aux[4];
-	aux[3] = (int)(ang2/1)%10;
-	txt[31] = '0' + aux[3];
-	txt[32] = '.';
-	aux[2] =  (int)(ang2/0.1)%10;
-	txt[33] = '0' + aux[2];
-	aux[1] =  (int)(ang2/0.01)%10;
-	txt[34] = '0' + aux[1];
+	aux[5] = (int)(prom4/100)%10;
+	txt2[2-(reco/dealyl)] = '0' + aux[5];
+	aux[4] = (int)(prom4/10)%10;
+	txt2[3-(reco/dealyl)] = '0' + aux[4];
+	aux[3] = (int)(prom4/1)%10;
+	txt2[4-(reco/dealyl)] = '0' + aux[3];
+	txt2[5-(reco/dealyl)] = '.';
+	aux[2] =  (int)(prom4/0.1)%10;
+	txt2[6-(reco/dealyl)] = '0' + aux[2];
+	aux[1] =  (int)(prom4/0.01)%10;
+	txt2[7-(reco/dealyl)] = '0' + aux[1];
 	
-	txt[35] = ' ';
-	txt[36] = '5';
-	txt[37] = ':';
+	txt2[9-(reco/dealyl)] = '5';
+	txt2[10-(reco/dealyl)] = ':';
 	
-	aux[5] = (int)(ang5/100)%10;
-	txt[38] = '0' + aux[5];
-	aux[4] = (int)(ang5/10)%10;
-	txt[39] = '0' + aux[4];
-	aux[3] = (int)(ang5/1)%10;
-	txt[40] = '0' + aux[3];
-	txt[41] = '.';
-	aux[2] =  (int)(ang5/0.1)%10;
-	txt[42] = '0' + aux[2];
-	aux[1] =  (int)(ang5/0.01)%10;
-	txt[43] = '0' + aux[1];
+	aux[5] = (int)(prom5/100)%10;
+	txt2[11-(reco/dealyl)] = '0' + aux[5];
+	aux[4] = (int)(prom5/10)%10;
+	txt2[12-(reco/dealyl)] = '0' + aux[4];
+	aux[3] = (int)(prom5/1)%10;
+	txt2[13-(reco/dealyl)] = '0' + aux[3];
+	txt2[14-(reco/dealyl)] = '.';
+	aux[2] =  (int)(prom5/0.1)%10;
+	txt2[15-(reco/dealyl)] = '0' + aux[2];
+	aux[1] =  (int)(prom5/0.01)%10;
+	txt2[16-(reco/dealyl)] = '0' + aux[1];
 	
+	if(prom1 != 0){
+		reco += 1;
+	}
+	if(reco == 12*dealyl){
+		reco = 0;
+	}
+}
+/* ======================= Almacenar vector para promedio ======================= */
+void vector1(){
+	for(int h=0; h<= 9; h++){
+		if(vec1[h] != 0){
+		}else{
+			vec1[h] = ang1;
+			h = 9;
+		}
+	}
+	if(vec1[9] != 0){
+		for(int p=0; p<=9; p++){
+			prom1 += vec1[p];
+		}
+		prom1 = prom1/10;
+		for(int o=0; o<=9; o++){
+			vec1[o] = vec1[o+1];
+		}
+	}
+}
+void vector2(){
+	for(int h=0; h<= 9; h++){
+		if(vec2[h] != 0){
+		}else{
+			vec2[h] = ang2;
+			h = 9;
+		}
+	}
+	if(vec2[9] != 0){
+		for(int p=0; p<=9; p++){
+			prom2 += vec2[p];
+		}
+		prom2 = prom2/10;
+		for(int o=0; o<=9; o++){
+			vec2[o] = vec2[o+1];
+		}
+	}
+}
+void vector3(){
+	for(int h=0; h<= 9; h++){
+		if(vec3[h] != 0){
+		}else{
+			vec3[h] = ang3;
+			h = 9;
+		}
+	}
+	if(vec3[9] != 0){
+		for(int p=0; p<=9; p++){
+			prom3 += vec3[p];
+		}
+		prom3 = prom3/10;
+		for(int o=0; o<=9; o++){
+			vec3[o] = vec3[o+1];
+		}
+	}
+}
+void vector4(){
+	for(int h=0; h<= 9; h++){
+		if(vec4[h] != 0){
+		}else{
+			vec4[h] = ang4;
+			h = 9;
+		}
+	}
+	if(vec4[9] != 0){
+		for(int p=0; p<=9; p++){
+			prom4 += vec4[p];
+		}
+		prom4 = prom4/10;
+		for(int o=0; o<=9; o++){
+			vec4[o] = vec4[o+1];
+		}
+	}
+}
+void vector5(){
+	for(int h=0; h<= 9; h++){
+		if(vec5[h] != 0){
+		}else{
+			vec5[h] = ang5;
+			h = 9;
+		}
+	}
+	if(vec5[9] != 0){
+		for(int p=0; p<=10; p++){
+			prom5 += vec5[p];
+		}
+		prom5 = prom5/10;
+		for(int o=0; o<=9; o++){
+			vec5[o] = vec5[o+1];
+		}
+	}
 }
 /* ======================= Main ======================= */
 int main(void){
-	sec_home = 1;
+	sec_home = 0;
 	
 	Config_GPIO();
   SysTick_Init();
@@ -351,34 +452,45 @@ int main(void){
 			Servo_SetAngle(TIM13, 1, target4);	// Servo 4
 			Servo_SetAngle(TIM14, 1, target5);	// Servo 5
 			sec_home = 1;
+			
+			USART3_SendFloat(target1);
+			USART3_SendChar('x');
+			USART3_SendFloat(target2);
+			USART3_SendChar('x');
+			USART3_SendFloat(target3);
+			USART3_SendChar('x');
+			USART3_SendFloat(target4);
+			USART3_SendChar('x');
+			USART3_SendFloat(target5);
+			USART3_SendChar('\n');
 
-			SysTick_Wait1ms(1000); // Peque retardo para estabilidad
+			SysTick_Wait1ms(2000); // Peque retardo para estabilidad
 		}	
 		
 		SetTxt();
 		
 		LCD_COM(LINE1);
 		for(int j = 0; j <= 15; j++){
-			if(txt[j] == 0){
+			if(txt1[j] == 0){
 				LCD_W(' ');
 			}else{
-				LCD_W(txt[j]);
+				LCD_W(txt1[j]);
 			}
 		}
 		LCD_COM(LINE2);
-		for(int j = 16; j <= 32; j++){
-			if(txt[j] == 0){
+		for(int j = 0; j <= 15; j++){
+			if(txt2[j] == 0){
 				LCD_W(' ');
 			}else{
-				LCD_W(txt[j]);
+				LCD_W(txt2[j]);
 			}
 		}
 		
 		// Asignar angulo objetivo:
-		target1 = 90;			//0 - 90
-		target2 = 60;			//0 - 180
-		target3 = 30;			//0 - 180
-		target4 = 90;			//8 - 172
+		target1 = 120;			//0 - 180
+		target2 = 45;			//0 - 180
+		target3 = 15;			//0 - 180
+		target4 = 45;			//8 - 172
 		target5 = 180;			//0 - 180	
 	
 		
@@ -388,34 +500,44 @@ int main(void){
 		Servo_SetAngle(TIM13, 1, target4);	// Servo 4
 		Servo_SetAngle(TIM14, 1, target5);	// Servo 5
 		
-		USART3_SendFloat(target1);
-		USART3_SendChar('x');
-		USART3_SendFloat(target2);
-		USART3_SendChar('x');
-		USART3_SendFloat(target3);
-		USART3_SendChar('x');
-		USART3_SendFloat(target4);
-		USART3_SendChar('x');
-		USART3_SendFloat(target5);
-		USART3_SendChar('\n');
+		int N = 2; // número arbitrario, por ejemplo cada 5
+		mult = bandera % N;
+		if(mult == 0){
+			USART3_SendFloat(target1);
+			USART3_SendChar('x');
+			USART3_SendFloat(target2);
+			USART3_SendChar('x');
+			USART3_SendFloat(target3);
+			USART3_SendChar('x');
+			USART3_SendFloat(target4);
+			USART3_SendChar('x');
+			USART3_SendFloat(target5);
+			USART3_SendChar('\n');
+		}
+		bandera++;
 		
 				/* Conversion angulos */
 		pot1 = ADC_ReadChannel(4);   // PA4
-		ang1 = ((float)pot1 / 4096) * 180.0;
+		ang1 = -30.00f + ((float)pot1 / 4096.0f) * 210.0f;
+		vector1();
 		
 		pot2 = ADC_ReadChannel(5);   // PA5
-		ang2 = ((float)pot2 / 4096) * 180.0;
+		ang2 = -30.00f + ((float)pot2 / 4096.0f) * 210.0f;
+		vector2();
 		
 		pot3 = ADC_ReadChannel(10);  // PC0
-		ang3 = ((float)pot3 / 4096) * 180.0;
+		ang3 = -30.00f + ((float)pot3 / 4096.0f) * 210.0f;
+		vector3();
 		
 		pot4 = ADC_ReadChannel(11);  // PC1
-		ang4 = ((float)pot4 / 4096) * 180.0;
+		ang4 = -30.00f + ((float)pot4 / 4096.0f) * 210.0f;
+		vector4();
 		
 		pot5 = ADC_ReadChannel(12);  // PC2
-    ang5 = ((float)pot5 / 4096) * 180.0;
+    ang5 = -25.00f + ((float)pot5 / 4096.0f) * 205.0f;
+		vector5();
 		
-		SysTick_Wait1ms(1000);
+		SysTick_Wait1ms(500);
 	}
 }
 extern "C"{
