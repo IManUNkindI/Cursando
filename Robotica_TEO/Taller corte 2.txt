@@ -1,4 +1,3 @@
-%run('C:\Semestre\Cursando\Robotica_TEO\RVC2-copy\RVC2-copy\rvctools\startup_rvc.m');
 clear;clc;
 L = [10 12 11];
 
@@ -68,4 +67,42 @@ hold on
 plot3(p(1),p(2),p(3),'g*')
 drawnow;
 pause(0.1);
+end
+
+function [P] = ForwKin3R(Q,L)
+
+T0_1=DHFK( Q(1), L(1), 0   , 0    );
+T1_2=DHFK( pi/2, Q(2) + L(2), pi/2 ,  0);
+T2_3=DHFK( 0   , Q(3) + L(3), 0    ,  0 );
+
+T0_3=T0_1*T1_2*T2_3;
+
+P=T0_3(1:3,4);
+
+end
+
+function [Q] = InvKin3R(P,L)
+
+Px=P(1);
+Py=P(2);
+Pz=P(3);
+
+q1 = atan2(Py,Px);
+
+m  = sqrt(Px^2+Py^2);
+q3 = m - 11;
+
+q2 = Pz - 10 - 12;
+
+
+Q=[q1 q2 q3]
+end
+
+function [ DH ] = DHFK( theta, d, alpha, a )
+%DenavitH Summary of this function goes here
+%   Calcula la matriz de Denavit-Hartenberg de una articulacion.
+DH=[cos(theta) -sin(theta)*cos(alpha) sin(theta)*sin(alpha) a*cos(theta);
+    sin(theta) cos(theta)*cos(alpha) -cos(theta)*sin(alpha) a*sin(theta);
+    0 sin(alpha) cos(alpha) d
+    0 0 0 1];
 end

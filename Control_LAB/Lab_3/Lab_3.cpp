@@ -153,7 +153,8 @@ int main(void) {
 			cnt = TIM8->CNT;
 			pulse = (int16_t)TIM4->CNT;
 			pot = ADC_ReadChannel(5);   // PA5
-			ang = wrap360(((pulse / KY040_CPR_X4) * 360.0f) + 180.0f);
+			//ang = wrap360(((pulse / KY040_CPR_X4) * 360.0f) + 180.0f);
+			ang = wrap360((pulse / KY040_CPR_X4) * 360.0f);
 			int ccr = (ang * arr) / 360.0f;
 			TIM9->CCR1 = ccr;
     }
