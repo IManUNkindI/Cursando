@@ -1,0 +1,16 @@
+function [Q] = InvKin3R(P,L)
+
+Px=P(1);
+Py=P(2);
+Pz=P(3);
+
+q2 = atan2(Py,Px);
+
+m  = sqrt(Px^2+Py^2);
+q3 = m - 500;
+
+q1 = Pz - 200;
+
+
+Q=[q1 q2 q3]
+end
