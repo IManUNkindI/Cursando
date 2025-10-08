@@ -2,20 +2,25 @@
 clear;clc;
 L = [200 300 200];
 
-R(1) = Link('prismatic', 'theta', 0, 'a', 0, 'alpha', 0, 'offset', L(1), 'qlim', [0 100]);  
-R(2) = Link('revolute' , 'offset', 0, 'd', 0, 'alpha', 0, 'a', L(2));
-R(3) = Link('prismatic', 'theta', 0, 'a', 0, 'alpha', 0, 'offset', L(3), 'qlim', [0 100]);
+R(1) = Link('prismatic', 'theta', 0, 'offset', L(1), 'alpha', 0, 'a', 0, 'qlim', [0 1200]);
+
+R(2) = Link('revolute',  'd', 0, 'a', 0, 'alpha', -pi/2, 'offset', -pi/2);
+
+R(3) = Link('prismatic', 'theta', 0, 'offset', L(2) + L(3), 'alpha', 0, 'a', 0, 'qlim', [0 1200]); 
+
 Rob = SerialLink(R,'name','PARIN');
 
-P1 = [640.79 808.68 212.59];
+home = [0 0 0];
+
+P1 = [600 800 600];
 Q1 = InvKin3R(P1,L);
 p1 = ForwKin3R(Q1,L);
 
-P2 = [0 0 0];
+P2 = [-452 -500 574];
 Q2 = InvKin3R(P2,L);
 p2 = ForwKin3R(Q2,L);
 
-P3 = [-16 -12 41];
+P3 = [640.79 808.68 1292.54];
 Q3 = InvKin3R(P3,L);
 p3 = ForwKin3R(Q3,L);
 
@@ -25,9 +30,9 @@ rad2deg(Q3(2));
 
 
 figure(1)
-Rob.plot(P2)
-zlim([0 500])
-Rob.teach(P2)
+Rob.plot(Q2)
+zlim([-10 1750])
+Rob.teach(Q2)
 hold on
 plot3(p1(1),p1(2),p1(3),'r*')
 plot3(p2(1),p2(2),p2(3),'b*')

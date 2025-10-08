@@ -4,7 +4,7 @@ Px=P(1);
 Py=P(2);
 Pz=P(3);
 
-q2 = atan2(Py,Px);
+q2 = pi/2 - atan2(Px,Py);
 
 m  = sqrt(Px^2+Py^2);
 q3 = m - 500;
