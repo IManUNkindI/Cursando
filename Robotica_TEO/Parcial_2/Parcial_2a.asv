@@ -168,58 +168,6 @@ drawnow;
 pause(0.01);
 end
 pause(5);
-cla;
-plot3(PHD(1),PHD(2),PHD(3),'k*')
-plot3(P1D(1),P1D(2),P1D(3),'r*')
-plot3(P2D(1),P2D(2),P2D(3),'b*')
-plot3(P3D(1),P3D(2),P3D(3),'g*')
-plot3(P4D(1),P4D(2),P4D(3),'y*')
-
-% Linear Interpolation in the space of joint variables
-q1t=linspace(QHT(1),Q2T(1),25);
-q2t=linspace(QHT(2),Q2T(2),25);
-q3t=linspace(QHT(3),Q2T(3),25);
-q4t=linspace(QHT(4),Q2T(4),25);
-q5t=linspace(QHT(5),Q2T(5),25);
-q6t=linspace(QHT(6),Q2T(6),25);
-for n=1:1:25
-Q=[q1t(n) q2t(n) q3t(n) q4t(n) q5t(n) q6t(n)];
-p=ForwKin3R(Q,L);
-Rob6r.plot(Q)
-Rob6r.teach(Q)
-zlim([-50 1750])
-view(35,45)    
-hold on
-plot3(p(1),p(2),p(3),'b*')
-drawnow;
-pause(0.01);
-end
-pause(5);
-% Linear Interpolation in the space of joint variables
-q1t=linspace(Q2T(1),QHT(1),25);
-q2t=linspace(Q2T(2),QHT(2),25);
-q3t=linspace(Q2T(3),QHT(3),25);
-q4t=linspace(Q2T(4),QHT(4),25);
-q5t=linspace(Q2T(5),QHT(5),25);
-q6t=linspace(Q2T(6),QHT(6),25);
-for n=1:1:25
-Q=[q1t(n) q2t(n) q3t(n) q4t(n) q5t(n) q6t(n)];
-p=ForwKin3R(Q,L);
-Rob6r.plot(Q)
-Rob6r.teach(Q)
-zlim([-50 1750])
-view(35,45)    
-hold on
-drawnow;
-pause(0.01);
-end
-pause(5);
-cla;
-plot3(PHD(1),PHD(2),PHD(3),'k*')
-plot3(P1D(1),P1D(2),P1D(3),'r*')
-plot3(P2D(1),P2D(2),P2D(3),'b*')
-plot3(P3D(1),P3D(2),P3D(3),'g*')
-plot3(P4D(1),P4D(2),P4D(3),'y*')
 
 % Linear Interpolation in the space of joint variables
 q1t=linspace(QHT(1),Q3T(1),25);
@@ -240,53 +188,7 @@ plot3(p(1),p(2),p(3),'g*')
 drawnow;
 pause(0.01);
 end
-pause(5);
-% Linear Interpolation in the space of joint variables
-q1t=linspace(Q3T(1),QHT(1),25);
-q2t=linspace(Q3T(2),QHT(2),25);
-q3t=linspace(Q3T(3),QHT(3),25);
-q4t=linspace(Q3T(4),QHT(4),25);
-q5t=linspace(Q3T(5),QHT(5),25);
-q6t=linspace(Q3T(6),QHT(6),25);
-for n=1:1:25
-Q=[q1t(n) q2t(n) q3t(n) q4t(n) q5t(n) q6t(n)];
-p=ForwKin3R(Q,L);
-Rob6r.plot(Q)
-Rob6r.teach(Q)
-zlim([-50 1750])
-view(35,45)    
-hold on
-drawnow;
-pause(0.01);
-end
-pause(5);
-cla;
-plot3(PHD(1),PHD(2),PHD(3),'k*')
-plot3(P1D(1),P1D(2),P1D(3),'r*')
-plot3(P2D(1),P2D(2),P2D(3),'b*')
-plot3(P3D(1),P3D(2),P3D(3),'g*')
-plot3(P4D(1),P4D(2),P4D(3),'y*')
 
-% Linear Interpolation in the space of joint variables
-q1t=linspace(QHT(1),Q4T(1),25);
-q2t=linspace(QHT(2),Q4T(2),25);
-q3t=linspace(QHT(3),Q4T(3),25);
-q4t=linspace(QHT(4),Q4T(4),25);
-q5t=linspace(QHT(5),Q4T(5),25);
-q6t=linspace(QHT(6),Q4T(6),25);
-for n=1:1:25
-Q=[q1t(n) q2t(n) q3t(n) q4t(n) q5t(n) q6t(n)];
-p=ForwKin3R(Q,L);
-Rob6r.plot(Q)
-Rob6r.teach(Q)
-zlim([-50 1750])
-view(35,45)    
-hold on
-plot3(p(1),p(2),p(3),'y*')
-drawnow;
-pause(0.01);
-end
-pause(5);
 % Linear Interpolation in the space of joint variables
 q1t=linspace(Q4T(1),QHT(1),25);
 q2t=linspace(Q4T(2),QHT(2),25);
@@ -302,16 +204,10 @@ Rob6r.teach(Q)
 zlim([-50 1750])
 view(35,45)    
 hold on
+plot3(p(1),p(2),p(3),'y*')
 drawnow;
 pause(0.01);
 end
-pause(5);
-cla;
-plot3(PHD(1),PHD(2),PHD(3),'k*')
-plot3(P1D(1),P1D(2),P1D(3),'r*')
-plot3(P2D(1),P2D(2),P2D(3),'b*')
-plot3(P3D(1),P3D(2),P3D(3),'g*')
-plot3(P4D(1),P4D(2),P4D(3),'y*')
 
 function T = rot(QD)
 

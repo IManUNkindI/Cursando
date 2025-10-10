@@ -48,6 +48,5 @@ end
 % mostrarla con el robot se muestran [z, y, x], sin embargo esto no afecta
 % los calculos de la inversa ni el rango de trabajo. Por otro lado las
 % distancias tomadas fueron a1=3 y a2=8, y los limites de rotacion de la
-% segunda junta son 0 a 150 grados, considerando que bajo el robot es suelo
-% limitando los angulos negativos y los topes mecanicos permiten maximo 150
-% grados
+% segunda junta son 0 a 150 grados, considerando 
+%  
