@@ -18,15 +18,18 @@ Rob5r = SerialLink(R5, 'name', 'PARIN');
 LPW = [ 0; 0; L5(5)];
 home = [0 0 0 0 0];
 
-QEF = [0 0 0];        % Angulo deseado de la herramienta
-RT = rot(QEF);
+Q1F = [0 0 0];        % Angulo deseado de la herramienta
+RT1 = rot(Q1F);
 
-P1D = [100 0 250];       % Punto deseado 1
-PW1 = P1D' + RT*LPW;
+P1D = [250 0 50];       % Punto deseado 1
+PW1 = P1D' + RT1*LPW;
 Q1 = InvKin3R(PW1,L);
 
-P2D = [250 0 10];       % Punto deseado 2
-PW2 = P2D' + RT*LPW;
+Q2F = [0 0 90];        % Angulo deseado de la herramienta
+RT2 = rot(Q2F);
+
+P2D = [0 100 150];       % Punto deseado 2
+PW2 = P2D' + RT2*LPW;
 Q2 = InvKin3R(PW2,L);
 
 disp("Punto muñeca 1:")
@@ -36,12 +39,12 @@ vpa(PW2,5)
 
 T0_3Q1 = Rob3r.fkine(Q1);
 R0_3Q1 = [T0_3Q1.n T0_3Q1.o T0_3Q1.a];
-R3_6Q1 = R0_3Q1 \ RT;
+R3_6Q1 = R0_3Q1 \ RT1;
 eulQ1 = rotm2eul(R3_6Q1, "YXY");
 
 T0_3Q2 = Rob3r.fkine(Q2);
 R0_3Q2 = [T0_3Q2.n T0_3Q2.o T0_3Q2.a];
-R3_6Q2 = R0_3Q2 \ RT;
+R3_6Q2 = R0_3Q2 \ RT2;
 eulQ2 = rotm2eul(R3_6Q2, "YXY");
 
 Q1T = [Q1 eulQ1(1) eulQ1(3)];
@@ -100,25 +103,24 @@ function T = rot(QD)
 end
 function [Q] = InvKin3R(P, L)
 
-Px=P(1);
+Px=P(1);    
 Py=P(2);
 Pz=P(3);
 
-q1 = pi + atan2(Py,Px);
+if(P(2)==0)
+    q1 = pi + atan2(Py,Px);
 
-m1 = sqrt((Pz-L(1))^2 + Px^2);
+    m1 = sqrt((Pz-L(1))^2 + Px^2);
+    q2 = atan2((Pz-L(1)),Px) + acos(((m1^2) + (L(2)^2) - (L(3)^2))/(2*L(2)*m1));
 
-q2 = atan((Pz-L(1))/Px) + acos(((m1^2) + (L(2)^2) - (L(3)^2))/(2*L(2)*m1));
+    q3 = acos(((L(2)^2) + (L(3)^2) - (m1^2))/(2*L(2)*L(3))) - pi/2;
+else
+    q1 = pi + atan2(Py,Px);
 
-q3 = acos(((L(2)^2) + (L(3)^2) - (m1^2))/(2*L(2)*L(3))) - pi/2;
+    m1 = sqrt((Pz-L(1))^2 + Py^2);
+    q2 = atan((Pz-L(1))/Py) + acos(((m1^2) + (L(2)^2) - (L(3)^2))/(2*L(2)*m1));
+    q3 = acos(((L(2)^2) + (L(3)^2) - (m1^2))/(2*L(2)*L(3))) - pi/2;
+end
 
 Q = [q1 q2 q3];
 end
-function [ DH ] = DHFK( theta, d, alpha, a )
-%   Calcula la matriz de Denavit-Hartenberg de una articulacion.
-DH=[cos(theta) -sin(theta)*cos(alpha) sin(theta)*sin(alpha) a*cos(theta);
-    sin(theta) cos(theta)*cos(alpha) -cos(theta)*sin(alpha) a*sin(theta);
-    0 sin(alpha) cos(alpha) d
-    0 0 0 1];
-end
-
