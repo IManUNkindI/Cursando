@@ -18,17 +18,19 @@ Rob5r = SerialLink(R5, 'name', 'PARIN');
 LPW = [ 0; 0; L5(5)];
 home = [0 0 0 0 0];
 
-Q1F = [0 0 0];        % Angulo deseado de la herramienta
-RT1 = rot(Q1F);
 
-P1D = [250 0 50];       % Punto deseado 1
+
+P1D = [0 -250 10];       % Punto deseado 1
+Q1F = [0 0 rad2deg(atan(P1D(2)/P1D(1)))];        % Angulo deseado de la herramienta
+RT1 = rot(Q1F);
 PW1 = P1D' + RT1*LPW;
 Q1 = InvKin3R(PW1,L);
 
-Q2F = [0 0 90];        % Angulo deseado de la herramienta
-RT2 = rot(Q2F);
 
-P2D = [0 100 150];       % Punto deseado 2
+
+P2D = [200 -120 150];       % Punto deseado 2
+Q2F = [0 0 rad2deg(atan(P2D(2)/P2D(1)))];        % Angulo deseado de la herramienta
+RT2 = rot(Q2F);
 PW2 = P2D' + RT2*LPW;
 Q2 = InvKin3R(PW2,L);
 
@@ -47,8 +49,8 @@ R0_3Q2 = [T0_3Q2.n T0_3Q2.o T0_3Q2.a];
 R3_6Q2 = R0_3Q2 \ RT2;
 eulQ2 = rotm2eul(R3_6Q2, "YXY");
 
-Q1T = [Q1 eulQ1(1) eulQ1(3)];
-Q2T = [Q2 eulQ2(1) eulQ2(3)];
+Q1T = [Q1 eulQ1(1) eulQ1(3)]
+Q2T = [Q2 eulQ2(1) eulQ2(3)]
 
 disp("Angulos de Euler 1:")
 vpa(rad2deg(eulQ1),5)
@@ -109,16 +111,19 @@ Pz=P(3);
 
 if(P(2)==0)
     q1 = pi + atan2(Py,Px);
-
-    m1 = sqrt((Pz-L(1))^2 + Px^2);
-    q2 = atan2((Pz-L(1)),Px) + acos(((m1^2) + (L(2)^2) - (L(3)^2))/(2*L(2)*m1));
+    
+    m2 = sqrt(Py^2 + Px^2);
+    m1 = sqrt((Pz-L(1))^2 + m2^2);
+    q2 = atan2((Pz-L(1)),m2) + acos(((m1^2) + (L(2)^2) - (L(3)^2))/(2*L(2)*m1));
 
     q3 = acos(((L(2)^2) + (L(3)^2) - (m1^2))/(2*L(2)*L(3))) - pi/2;
 else
     q1 = pi + atan2(Py,Px);
 
-    m1 = sqrt((Pz-L(1))^2 + Py^2);
-    q2 = atan((Pz-L(1))/Py) + acos(((m1^2) + (L(2)^2) - (L(3)^2))/(2*L(2)*m1));
+    m2 = sqrt(Py^2 + Px^2);
+    m1 = sqrt((Pz-L(1))^2 + m2^2);
+    q2 = atan((Pz-L(1))/m2) + acos(((m1^2) + (L(2)^2) - (L(3)^2))/(2*L(2)*m1));
+
     q3 = acos(((L(2)^2) + (L(3)^2) - (m1^2))/(2*L(2)*L(3))) - pi/2;
 end
 
