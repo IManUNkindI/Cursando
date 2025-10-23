@@ -1,9 +1,57 @@
 #include <stm32f767xx.h>
-#include "SisTick.h"
-#include "LCD_Comm_Write.h"
 #include <math.h>
 #include <stdio.h>
 #include <string.h>
+
+volatile char rx_buffer[64];
+volatile uint8_t rx_index = 0;
+volatile uint8_t rx_ready = 0;
+
+
+void SysTick_Init(void)	{					// Inicializacion
+	SysTick->LOAD =0xFFFFFF;
+	SysTick->CTRL =0x0000005;
+}
+void SysTick_Wait(uint32_t n)	{			// Ciclo
+	SysTick->LOAD = n-1;
+	SysTick->VAL =0;
+	while((SysTick->CTRL&0x00010000)==0);
+}
+void SysTick_Wait1s(uint32_t delay){ // S
+	for(uint32_t i=0; i<delay ; i++){
+	SysTick_Wait(16000000);
+	}
+}
+void SysTick_Wait1ms(uint32_t delay){ // mS
+	for(uint32_t i=0; i<delay ; i++){
+	SysTick_Wait(16000);
+	}
+}
+void SysTick_Wait1us(uint32_t delay){ // uS
+	for(uint32_t i=0; i<delay ; i++){
+		SysTick_Wait(16);
+	}
+}
+void LCD_COM(char com){
+//RS-PG8, Enable-PG9, DATA PG0 (LSB)- PG7 (MSB)
+	SysTick_Init();
+	
+	GPIOG->ODR = com;
+	GPIOG->ODR &= ~(1UL <<8); //RS=0
+	GPIOG->ODR |= (1UL << 9); //Enable 1
+	SysTick_Wait1us(2000);
+	GPIOG->ODR &= ~(1UL <<9); //Enable 0
+}
+void LCD_W(char write){
+//RS-PG8, Enable-PG9, DATA PG0 (LSB)- PG7 (MSB)
+	SysTick_Init();
+
+	GPIOG->ODR = write;
+	GPIOG->ODR |= (1UL <<8); //RS=1 PARA ENVIAR DATOS (CARACTER)
+	GPIOG->ODR |= (1UL << 9); //Enable 1
+	SysTick_Wait1us(10);
+	GPIOG->ODR &= ~(1UL <<9); //Enable 0
+}
 
 /*------------------------------------------------------------
    USART2:
@@ -82,7 +130,7 @@ char tx[32];
 /* ======================= GPIO (PWM + Encoders + USART) ======================= */
 static void Config_GPIO(void) {
 	/* ---------- PWM ( PE5 (T9-1, AF3), PB8(T10-1, AF3), PB9(T11-1, AF3), PF8(T13-1, AF9), PF9(T14-1, AF9) ) ---------- */
-  /* ---------- Entradas analógicas, PA4 (IN4), PA5 (IN5), PC0 (IN10), PC1 (IN11), PC2 (IN12) ---------- */
+  /* ---------- Entradas anal gicas, PA4 (IN4), PA5 (IN5), PC0 (IN10), PC1 (IN11), PC2 (IN12) ---------- */
 
 	/* Relojes de TIM */
   /* APB2: TIM1, TIM8; APB1: TIM2, TIM3, TIM4, PWM: TIM9/10/11 (APB2), TIM13/14 (APB1) y USART3 */
@@ -124,9 +172,9 @@ static void Config_GPIO(void) {
   GPIOF->MODER |= 0xA0000;
   GPIOF->AFR[1] |= 0x99;
 
-  // Configuración básica del ADC1
-	GPIOA->MODER |= (3 << (4*2)) | (3 << (5*2)); // PA4, PA5 en modo analógico
-  GPIOC->MODER |= (3 << (0*2)) | (3 << (1*2)) | (3 << (2*2)); // PC0, PC1, PC2 analógico
+  // Configuraci n b sica del ADC1
+	GPIOA->MODER |= (3 << (4*2)) | (3 << (5*2)); // PA4, PA5 en modo anal gico
+  GPIOC->MODER |= (3 << (0*2)) | (3 << (1*2)) | (3 << (2*2)); // PC0, PC1, PC2 anal gico
 	
   ADC1->CR1 = 0;           // Sin SCAN, 12 bits
   ADC1->CR2 = 0;           // Trigger por software, single conversion
@@ -182,9 +230,9 @@ void Config_TimerEncoder(TIM_TypeDef *TIMx){
 }
 /// ======================= Lectura ADC puntual ======================= ///
 uint16_t ADC_ReadChannel(uint8_t canal) {
-		ADC1->SQR1 = 0;           // 1 conversión
+		ADC1->SQR1 = 0;           // 1 conversi n
 		ADC1->SQR3 = canal;       // Selecciona canal
-		ADC1->CR2 |= ADC_CR2_SWSTART; // Inicia conversión
+		ADC1->CR2 |= ADC_CR2_SWSTART; // Inicia conversi n
 		while (!(ADC1->SR & ADC_SR_EOC)); // Esperar fin
 		return (uint16_t)ADC1->DR; // Leer valor
 }
@@ -422,6 +470,7 @@ int main(void){
   cmd1=0; cmd2=0; cmd3=0; cmd4=0; cmd5=0;
 	
 	while(1){
+		
 	//==================== Secuencia ===================//
 		while(sec_home == 0){
 			char txt[50] = "Set Home...            Marranito";
@@ -438,35 +487,19 @@ int main(void){
 			for(int j = 16; j <= 32; j++){
 				LCD_W(txt[j]);
 			}
-			
-			// Asignar angulo objetivo:
-			target1 = 90;		//0 - 90
-			target2 = 90;		//0 - 180
-			target3 = 90;		//0 - 180
-			target4 = 82;		//8 - 172
-			target5 = 90;		//0 - 180		
-			
+			target1 = 90;
+			target2 = 90;
+			target3 = 90;
+			target4 = 90;
+			target5 = 90;
+			sec_home = 1;
 			Servo_SetAngle(TIM9, 1, target1); // Servo 1
 			Servo_SetAngle(TIM10, 1, target2);	// Servo 2
 			Servo_SetAngle(TIM11, 1, target3);	// Servo 3
 			Servo_SetAngle(TIM13, 1, target4);	// Servo 4
 			Servo_SetAngle(TIM14, 1, target5);	// Servo 5
-			sec_home = 1;
-			
-			USART3_SendFloat(target1);
-			USART3_SendChar('x');
-			USART3_SendFloat(target2);
-			USART3_SendChar('x');
-			USART3_SendFloat(target3);
-			USART3_SendChar('x');
-			USART3_SendFloat(target4);
-			USART3_SendChar('x');
-			USART3_SendFloat(target5);
-			USART3_SendChar('\n');
-
-			SysTick_Wait1ms(2000); // Peque retardo para estabilidad
-		}	
-		
+			SysTick_Wait1ms(5000);
+		}
 		SetTxt();
 		
 		LCD_COM(LINE1);
@@ -486,35 +519,14 @@ int main(void){
 			}
 		}
 		
-		// Asignar angulo objetivo:
-		target1 = 180;			//0 - 180
-		target2 = 135;			//0 - 180
-		target3 = 90;			//0 - 180
-		target4 = 8;			//8 - 172
-		target5 = 90;			//0 - 180	
-	
-		
 		Servo_SetAngle(TIM9, 1, target1); // Servo 1
 		Servo_SetAngle(TIM10, 1, target2);	// Servo 2
 		Servo_SetAngle(TIM11, 1, target3);	// Servo 3
 		Servo_SetAngle(TIM13, 1, target4);	// Servo 4
 		Servo_SetAngle(TIM14, 1, target5);	// Servo 5
 		
-		int N = 2; // número arbitrario, por ejemplo cada 5
+		int N = 2; // n mero arbitrario, por ejemplo cada 5
 		mult = bandera % N;
-		if(mult == 0){
-			USART3_SendFloat(target1);
-			USART3_SendChar('x');
-			USART3_SendFloat(target2);
-			USART3_SendChar('x');
-			USART3_SendFloat(target3);
-			USART3_SendChar('x');
-			USART3_SendFloat(target4);
-			USART3_SendChar('x');
-			USART3_SendFloat(target5);
-			USART3_SendChar('\n');
-		}
-		bandera++;
 		
 				/* Conversion angulos */
 		pot1 = ADC_ReadChannel(4);   // PA4
@@ -541,11 +553,54 @@ int main(void){
 	}
 }
 extern "C"{
-	void USART3_IRQHandler(void){
-			if(USART3->CR1 == 0x2D){
-				while (USART3->ISR & USART_ISR_RXNE){
-					USART3->RDR & 0xFF;
-				}
-			}
-	}
+	extern "C" {
+void USART3_IRQHandler(void) {
+    if (USART3->ISR & USART_ISR_RXNE) {     // Si hay dato recibido
+        char c = USART3->RDR & 0xFF;        // Leer carácter
+        static char num_buf[10];            // buffer temporal del número
+        static uint8_t num_index = 0;       // índice de escritura
+        static float temp_values[5];        // valores intermedios
+        static uint8_t current_value = 0;   // índice actual (0–4)
+
+        if ((c >= '0' && c <= '9') || c == '.' || c == '-') {
+            // Acumular carácter numérico
+            if (num_index < sizeof(num_buf) - 1)
+                num_buf[num_index++] = c;
+        }
+        else if (c == 'x' || c == '\n' || c == '\r') {
+            // Cerrar número actual
+            num_buf[num_index] = '\0';
+            if (num_index > 0 && current_value < 5) {
+                temp_values[current_value++] = atof(num_buf);
+            }
+            num_index = 0;
+
+            if (c == '\n' || c == '\r') {
+                // Trama completa: asignar directamente a targets
+                if (current_value == 5) {
+										// Asignar y limitar
+										target1 = fminf(fmaxf(temp_values[0], 0.0f), 180.0f);
+										target2 = fminf(fmaxf(temp_values[1], 0.0f), 180.0f);
+										target3 = fminf(fmaxf(temp_values[2], 0.0f), 180.0f);
+										target4 = fminf(fmaxf(temp_values[3], 0.0f), 180.0f);
+										target5 = fminf(fmaxf(temp_values[4], 0.0f), 180.0f);
+
+										// Redondear a 3 cifras decimales
+										target1 = roundf(target1 * 1000.0f) / 1000.0f;
+										target2 = roundf(target2 * 1000.0f) / 1000.0f;
+										target3 = roundf(target3 * 1000.0f) / 1000.0f;
+										target4 = 180 - roundf(target4 * 1000.0f) / 1000.0f;
+										target5 = 180 - roundf(target5 * 1000.0f) / 1000.0f;
+								}
+
+                current_value = 0;  // reiniciar para siguiente trama
+            }
+        }
+        else {
+            // Ignorar otros caracteres
+        }
+    }
+}
+}
+
 }

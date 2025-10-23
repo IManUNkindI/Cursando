@@ -1,7 +1,7 @@
 function brazo_robotico_gui_xyz
     % === Configuración inicial ===
     %run('C:\Semestre\Cursando\Robotica_TEO\RVC2-copy\RVC2-copy\rvctools\startup_rvc.m');
-    puerto = "COM3";
+    puerto = "COM4";
     baud   = 57600;
     s = []; % objeto serial
     valores_iniciales = [45, 90, 90, 90, 90];     
@@ -58,16 +58,6 @@ function brazo_robotico_gui_xyz
     ax.DataAspectRatio = [1 1 1];
     light(ax); lighting(ax,'gouraud');
 
-
-    % === Ejes de dibujo ===
-    ax = uiaxes(fig,'Position',[250 10 720 620]);
-    grid(ax,"on");
-    axis(ax,[-0.35 0.35 -0.35 0.35 0 0.45]);
-    xlabel(ax,'X'); ylabel(ax,'Y'); zlabel(ax,'Z');
-    view(ax,3);
-    ax.DataAspectRatio = [1 1 1];
-    light(ax); lighting(ax,'gouraud');
-
     % --- Cargar STL ---
     baseSTL = stlread('Base.stl');
     v_base = baseSTL.Points * 1e-3;
@@ -90,7 +80,7 @@ function brazo_robotico_gui_xyz
     Rz = @(q)[cos(q) -sin(q) 0 0; sin(q) cos(q) 0 0; 0 0 1 0; 0 0 0 1];
     Trans = @(x,y,z)[1 0 0 x; 0 1 0 y; 0 0 1 z; 0 0 0 1];
 
-    % === Actualizar visualización ===
+       % === Actualizar visualización ===
     function actualizar(q_deg)
         q = q_deg * pi/180;
         T01 = Rz(q(1)) * Trans(-13.92e-3, -4e-3, 105.28e-3);
@@ -100,18 +90,43 @@ function brazo_robotico_gui_xyz
         T45 = Ry(q(5)) * Trans(38e-3, 25.9e-3, 14e-3);
         A1 = T01; A2 = A1*T12; A3 = A2*T23; A4 = A3*T34; A5 = A4*T45;
         T_all = {A1,A2,A3,A4,A5};
+
+        % --- Actualizar geometría STL ---
         for j=1:5
             v = linkSTL{j}.Points * 1e-3;
             v_h = [v, ones(size(v,1),1)] * T_all{j}';
             patches(j).Vertices = v_h(:,1:3);
         end
-        % Mostrar valores de ángulos en el panel
+
+        % --- Eliminar ejes anteriores (si existen) ---
+        delete(findall(ax, 'Tag', 'eje_local'));
+
+        % --- Dibujar ejes locales para cada eslabón ---
+        L_eje = 0.05; % longitud de cada eje (m)
+        for j=1:5
+            T = T_all{j};
+            O = T(1:3,4);      % origen del sistema local
+            R = T(1:3,1:3);    % matriz de rotación
+
+            % Ejes locales (X, Y, Z)
+            X = O + R(:,1)*L_eje;
+            Y = O + R(:,2)*L_eje;
+            Z = O + R(:,3)*L_eje;
+
+            % Dibujar líneas con colores distintivos
+            line(ax, [O(1) X(1)], [O(2) X(2)], [O(3) X(3)], 'Color', 'r', 'LineWidth', 1.5, 'Tag', 'eje_local');
+            line(ax, [O(1) Y(1)], [O(2) Y(2)], [O(3) Y(3)], 'Color', 'g', 'LineWidth', 1.5, 'Tag', 'eje_local');
+            line(ax, [O(1) Z(1)], [O(2) Z(2)], [O(3) Z(3)], 'Color', 'b', 'LineWidth', 1.5, 'Tag', 'eje_local');
+        end
+
+        % --- Mostrar valores de ángulos ---
         for j = 1:5
             txtQ(j).Value = q_deg(j);
         end
 
         drawnow limitrate
     end
+
 
     % === Puerto serie ===
     function abrirPuerto(~,~)
@@ -161,7 +176,7 @@ function brazo_robotico_gui_xyz
 
             % Enviar por puerto serial si está activo
             if ~isempty(s) && isvalid(s)
-                msg = sprintf('%.2f,%.2f,%.2f,%.2f,%.2f\n', q);
+                msg = sprintf('%.3fx%.3fx%.3fx%.3fx%.3f\n', q);
                 writeline(s, msg);
             end
 
