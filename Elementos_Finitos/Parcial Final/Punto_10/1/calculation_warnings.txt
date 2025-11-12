@@ -1,0 +1,9 @@
+2025-Nov-12 16:37:24
+Computer name:	LAPTOP-74QJ3B52
+Number of cores used in calculation:	12
+Configuration name:	Default
+Project name:	Cyclone
+
+Warnings on last iteration: 
+1. A vortex crosses the pressure opening :
+	Boundary Condition : Environment Pressure 2 ; Inlet flow/outlet flow=0.0146873

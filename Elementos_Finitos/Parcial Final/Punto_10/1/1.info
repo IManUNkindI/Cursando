@@ -1,0 +1,54 @@
+Model: Nourcyclone actualSoliman.SLDASM
+Project name: Cyclone
+Config name: Default
+Project path: C:\Semestre\Cursando\Elementos_Finitos\Parcial Final\Punto_10\1\1.xmlconfig
+Status: Finished
+
+Number of cells:
+    Total cells: 13372
+    Fluid cells: 13372
+    Solid cells: 2848
+    Fluid cells containing solids: 5446
+
+
+Geometry preparation finished: 16:37:03
+Geometry preparation time: 00:00:01
+Solver CPU time: 00:00:23
+Iterations: 54
+Travels: 1.13754
+Physical time: 0.000000e+00 s
+Current time step: 0.000000e+00 s
+Last iteration finished: 16:37:24
+CPU time per last iteration: 00:00:00
+CPU time left: 00:00:04
+Iterations per 1 travel: 48
+
+Goals
+    Name            | Unit (SI)          | Value           | Progress  | Critetia        | Delta           | Use in convergence
+    BOTTOM velocity | speed and velocity |           62.50 |     100.0 |            5.45 |            5.28 | On
+    TOP velocity    | speed and velocity |            0.07 |     100.0 |            0.00 |            0.00 | On
+
+Project details
+    Default fluids: Air
+    Analysis type: External
+    Heat conduction in solids: Off
+    Radiation: Off
+    Time dependent: Off
+    Gravitational effects: On
+    Flow type: Laminar and turbulent
+    Cavitation: Off
+    Hign Mach number flow: On
+    Free surface: Off
+    Structural: Off
+    Electromagnetism: Off
+
+System info
+    Product: Flow Simulation 2023  x64 / 5965 / SOLVER ver. efd_dev.5608_04.02.2022+HMN_Inlet_Rework_V1+HMN_Inlet_Rework_V2
+    CAD version: SOLIDWORKS 2023 SP2.1
+    Computer name: LAPTOP-74QJ3B52
+    User name: Andres Felipe
+    Operating system: Windows 11 (or higher) (Version 10.0.26200)
+    Processors: AMD Ryzen 5 5500U with Radeon Graphics         
+    Number of cores: 12
+    Memory: 7376 MB / 15694 MB
+

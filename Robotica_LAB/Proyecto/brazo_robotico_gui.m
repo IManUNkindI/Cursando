@@ -1,0 +1,1109 @@
+function brazo_robotico_gui_doble_shapes
+% Doble GUI 5GDL adaptado: elimina casillas de puntos y permite dibujar
+% figuras (cuadro, triángulo, círculo) con el efector final del BRAZO 2
+% Conserva botones Abrir/Cerrar puerto y añade Guardar/Enviar ángulos por
+% separado: Brazo1 -> COM3, Brazo2 -> COM4 (baud 57600).
+
+% --- Configuración inicial ---
+puerto1 = "COM3";
+puerto2 = "COM4";
+baud    = 57600;
+s1 = []; s2 = []; % objetos serial
+
+% --- Variables para envío automático ---
+envio_automatico_activo1 = false;
+envio_automatico_activo2 = false;
+timer_envio1 = [];
+timer_envio2 = [];
+
+% --- Handles compartidos brazo 1 ---
+txtQ1  = gobjects(1,5);
+txtQ1_init = gobjects(1,5); % Campos para ángulos iniciales
+txtQ1_pre = gobjects(1,5); % Campos para ángulos pre-secuencia
+patches1 = gobjects(1,5);
+linkSTL1 = cell(1,5);
+
+% --- Handles compartidos brazo 2 ---
+txtQ2  = gobjects(1,5);
+txtQ2_init = gobjects(1,5); % Campos para ángulos iniciales
+txtQ2_pre = gobjects(1,5); % Campos para ángulos pre-secuencia
+patches2 = gobjects(1,5);
+linkSTL2 = cell(1,5);
+
+ax = [];
+valores_iniciales = [0, 90, 90, 90, 90];
+
+% === SISTEMA DE GRÁFICAS OPTIMIZADO ===
+graficas_system = inicializarSistemaGraficas();
+
+% === Ventana principal ===
+fig = uifigure('Name','Doble Brazo Robótico 5 GDL - Figuras (Jacobiano)','WindowState', 'maximized');
+
+% === Ejes 3D ===
+ax = uiaxes(fig,'Position',[500 10 820 620]);
+grid(ax,"on"); axis(ax,[-0.2 0.8 -0.3 0.3 0 0.45]);
+xlabel(ax,'X'); ylabel(ax,'Y'); zlabel(ax,'Z'); view(ax,3);
+ax.DataAspectRatio = [1 1 1];
+light(ax); lighting(ax,'gouraud');
+
+% === Base común ===
+baseSTL = stlread('Base.stl');
+v_base = baseSTL.Points * 1e-3;
+patch(ax, 'Faces', baseSTL.ConnectivityList, 'Vertices', v_base,...
+      'FaceColor', [0.4 0.4 0.4], 'EdgeColor', 'none', 'FaceAlpha', 1.0);
+
+% === Segunda base (desplazada en X) ===
+offset_base = 0.6; % mismo desplazamiento usado para el segundo brazo
+v_base2 = v_base + [offset_base 0 0];
+patch(ax, 'Faces', baseSTL.ConnectivityList, 'Vertices', v_base2,...
+      'FaceColor', [0.4 0.4 0.4], 'EdgeColor', 'none', 'FaceAlpha', 1.0);
+
+% === Colores para los brazos ===
+colors1 = {[0.8 0.1 0.1],[0.1 0.8 0.1],[0.1 0.1 0.8],[0.8 0.8 0.1],[0.5 0.5 0.5]};
+colors2 = {[0.9 0.5 0.2],[0.2 0.7 0.9],[0.7 0.2 0.7],[0.3 0.8 0.3],[0.2 0.2 0.2]};
+
+% === Cargar STL brazo 1 ===
+for j = 1:5
+    linkSTL1{j} = stlread(sprintf('link%d.stl', j));
+    v = linkSTL1{j}.Points * 1e-3;
+    patches1(j) = patch(ax,'Faces',linkSTL1{j}.ConnectivityList,...
+        'Vertices',v,'FaceColor',colors1{j},'EdgeColor','none','FaceAlpha',0.9);
+end
+
+% === Cargar STL brazo 2 (último eslabón diferente) ===
+for j = 1:4
+    linkSTL2{j} = stlread(sprintf('link%d.stl', j));
+end
+linkSTL2{5} = stlread('link5_alt.stl'); % versión distinta
+for j = 1:5
+    v = linkSTL2{j}.Points * 1e-3;
+    patches2(j) = patch(ax,'Faces',linkSTL2{j}.ConnectivityList,...
+        'Vertices',v,'FaceColor',colors2{j},'EdgeColor','none','FaceAlpha',0.9);
+end
+
+% === Funciones de transformación homogénea ===
+Rx = @(q)[1 0 0 0; 0 cos(q) -sin(q) 0; 0 sin(q) cos(q) 0; 0 0 0 1];
+Ry = @(q)[cos(q) 0 sin(q) 0; 0 1 0 0; -sin(q) 0 cos(q) 0; 0 0 0 1];
+Rz = @(q)[cos(q) -sin(q) 0 0; sin(q) cos(q) 0 0; 0 0 1 0; 0 0 0 1];
+Trans = @(x,y,z)[1 0 0 x; 0 1 0 y; 0 0 1 z; 0 0 0 1];
+
+% === Área de mensajes ===
+panelMensajes = uipanel(fig,'Position',[5 10 500 175],'Title','Mensajes de Estado');
+txtMensajes = uitextarea(panelMensajes,'Position',[10 10 480 150],...
+    'Editable','off','WordWrap','on','Value',{'Sistema iniciado. Listo para operar.'});
+
+% Función para agregar mensajes
+function agregarMensaje(mensaje)
+    timestamp = datestr(now, 'HH:MM:SS');
+    mensajeCompleto = sprintf('[%s] %s', timestamp, mensaje);
+    mensajesActuales = txtMensajes.Value;
+    if isempty(mensajesActuales)
+        mensajesActuales = {mensajeCompleto};
+    else
+        mensajesActuales{end+1} = mensajeCompleto;
+    end
+    % Mantener solo los últimos 20 mensajes
+    if length(mensajesActuales) > 20
+        mensajesActuales = mensajesActuales(end-19:end);
+    end
+    txtMensajes.Value = mensajesActuales;
+    % Auto-scroll al final
+    txtMensajes.scroll('bottom');
+    drawnow;
+end
+
+% === Función genérica de actualización MODIFICADA para link1 fijo ===
+function [EEpos] = actualizar(q_deg, patches, linkSTL, offsetX, txtQ, brazo_id)
+    q = q_deg * pi/180;
+    
+    if brazo_id == 1
+        % Brazo 1 - transformación normal
+        T01 = Trans(offsetX, 0, 0) * Rz(q(1)) * Trans(0, -20e-3, 105.28e-3);
+        T12 = Ry(q(2)) * Trans(-120e-3, 0, 0);
+        T23 = Ry(q(3)) * Trans(-5.3e-3, 7.5e-3, -89.75e-3);
+        T34 = Rz(q(4)) * Trans(5e-3, 14e-3, -65.5e-3);
+        T45 = Ry(q(5)) * Trans(38e-3, 25.9e-3, 14e-3);
+    else
+        % Brazo 2 - link1 FIJO en la base, solo rotación
+        % AJUSTE DE OFFSET EN Z para posicionar correctamente sobre la base
+        ajuste_z = 105.28e-3; % Mismo ajuste que el brazo 1
+        T01 = Trans(offsetX, 0, 0) * Rz(q(1)) * Trans(0, 0, ajuste_z);
+        T12 = Ry(q(2)) * Trans(-120e-3, 0, 0);
+        T23 = Ry(q(3)) * Trans(-5.3e-3, 7.5e-3, -89.75e-3);
+        T34 = Rz(q(4)) * Trans(5e-3, 14e-3, -65.5e-3);
+        T45 = Ry(q(5)) * Trans(38e-3, 25.9e-3, 14e-3);
+    end
+
+    A1 = T01; 
+    A2 = A1*T12; 
+    A3 = A2*T23; 
+    A4 = A3*T34; 
+    A5 = A4*T45;
+    T_all = {A1,A2,A3,A4,A5};
+
+    for j=1:5
+        v = linkSTL{j}.Points * 1e-3;
+        v_h = [v, ones(size(v,1),1)] * T_all{j}';
+        patches(j).Vertices = v_h(:,1:3);
+    end
+
+    % Posición del efector final (origen del último eslabón)
+    EE = T_all{5};
+    EEpos = EE(1:3,4)';
+
+    % Actualizar campos
+    for j=1:5
+        if isvalid(txtQ(j)), txtQ(j).Value = q_deg(j); end
+    end
+    
+    % Actualizar gráficas en tiempo real
+    actualizarGraficasEnTiempoReal();
+    drawnow limitrate
+end
+
+% === Funciones de envío automático ===
+function iniciarEnvioAutomatico(brazo_id)
+    if brazo_id == 1
+        if ~isempty(s1) && isvalid(s1) && ~envio_automatico_activo1
+            envio_automatico_activo1 = true;
+            timer_envio1 = timer('ExecutionMode', 'fixedRate', ...
+                               'Period', 0.2, ...
+                               'TimerFcn', @(~,~)enviarAngulosAutomatico(1));
+            start(timer_envio1);
+            agregarMensaje('Envío automático activado para Brazo 1 (cada 0.2s)');
+        end
+    else
+        if ~isempty(s2) && isvalid(s2) && ~envio_automatico_activo2
+            envio_automatico_activo2 = true;
+            timer_envio2 = timer('ExecutionMode', 'fixedRate', ...
+                               'Period', 0.2, ...
+                               'TimerFcn', @(~,~)enviarAngulosAutomatico(2));
+            start(timer_envio2);
+            agregarMensaje('Envío automático activado para Brazo 2 (cada 0.2s)');
+        end
+    end
+end
+
+function detenerEnvioAutomatico(brazo_id)
+    if brazo_id == 1
+        if envio_automatico_activo1 && ~isempty(timer_envio1)
+            stop(timer_envio1);
+            delete(timer_envio1);
+            timer_envio1 = [];
+            envio_automatico_activo1 = false;
+            agregarMensaje('Envío automático desactivado para Brazo 1');
+        end
+    else
+        if envio_automatico_activo2 && ~isempty(timer_envio2)
+            stop(timer_envio2);
+            delete(timer_envio2);
+            timer_envio2 = [];
+            envio_automatico_activo2 = false;
+            agregarMensaje('Envío automático desactivado para Brazo 2');
+        end
+    end
+end
+
+function enviarAngulosAutomatico(brazo_id)
+    if brazo_id == 1
+        if ~isempty(s1) && isvalid(s1) && envio_automatico_activo1
+            Q = zeros(1,5); 
+            for k=1:5, Q(k)=txtQ1(k).Value; end
+            msg = sprintf('%.3fx%.3fx%.3fx%.3fx%.3f\n', Q);
+            try
+                writeline(s1, msg);
+            catch ME
+                % Si hay error, detener el envío automático
+                detenerEnvioAutomatico(1);
+                agregarMensaje(['ERROR en envío automático Brazo 1: ' ME.message]);
+            end
+        end
+    else
+        if ~isempty(s2) && isvalid(s2) && envio_automatico_activo2
+            Q = zeros(1,5); 
+            for k=1:5, Q(k)=txtQ2(k).Value; end
+            msg = sprintf('%.3fx%.3fx%.3fx%.3fx%.3f\n', Q);
+            try
+                writeline(s2, msg);
+            catch ME
+                % Si hay error, detener el envío automático
+                detenerEnvioAutomatico(2);
+                agregarMensaje(['ERROR en envío automático Brazo 2: ' ME.message]);
+            end
+        end
+    end
+end
+
+% === Funciones de puerto MODIFICADAS ===
+function abrirPuerto1(~,~)
+    s1 = abrirPuerto(fig, s1, puerto1, baud);
+    % Iniciar envío automático al abrir puerto
+    if ~isempty(s1) && isvalid(s1)
+        iniciarEnvioAutomatico(1);
+    end
+end
+
+function cerrarPuerto1(~,~)
+    % Detener envío automático antes de cerrar
+    detenerEnvioAutomatico(1);
+    s1 = cerrarPuerto(fig, s1);
+end
+
+function abrirPuerto2(~,~)
+    s2 = abrirPuerto(fig, s2, puerto2, baud);
+    % Iniciar envío automático al abrir puerto
+    if ~isempty(s2) && isvalid(s2)
+        iniciarEnvioAutomatico(2);
+    end
+end
+
+function cerrarPuerto2(~,~)
+    % Detener envío automático antes de cerrar
+    detenerEnvioAutomatico(2);
+    s2 = cerrarPuerto(fig, s2);
+end
+
+% === Crear paneles GUI con nuevos controles ===
+crearPaneles(fig);
+
+    function crearPaneles(fig)
+        % Brazo 1 - controles expandidos
+        panel1 = uipanel(fig,'Position',[5 470 500 270],'Title','Brazo 1 (COM3)');
+        
+        % Panel de configuración de ángulos
+        panelConfig1 = uipanel(panel1,'Position',[5 125 490 120],'Title','Configuración de Ángulos');
+        uilabel(panelConfig1,'Text','Inicial:','Position',[5 50 40 20]);
+        uilabel(panelConfig1,'Text','Pre-Sec:','Position',[5 20 50 20]);
+        
+        for i=1:5
+            uilabel(panelConfig1,'Text',sprintf('q%d',i),'Position',[75+(i-1)*55 75 40 22]);
+            txtQ1_init(i) = uieditfield(panelConfig1,'numeric','Position',[65+(i-1)*55 50 40 22],...
+                                      'Value',valores_iniciales(i));
+            txtQ1_pre(i) = uieditfield(panelConfig1,'numeric','Position',[65+(i-1)*55 20 40 22],...
+                                     'Value',valores_iniciales(i));
+        end
+        
+        uibutton(panelConfig1,'Text','Aplicar Init','Position',[350 50 100 25],...
+                'ButtonPushedFcn',@(~,~)aplicarAngulosIniciales(1));
+        uibutton(panelConfig1,'Text','Aplicar Pre','Position',[350 20 100 25],...
+                'ButtonPushedFcn',@(~,~)aplicarAngulosPreSecuencia(1));
+
+        panelCtrl1 = uipanel(panel1,'Position',[5 65 490 60],'Title','Puerto y Acciones');
+        uibutton(panelCtrl1,'Text','Abrir','Position',[5 5 80 30],'ButtonPushedFcn',@abrirPuerto1);
+        uibutton(panelCtrl1,'Text','Cerrar','Position',[90 5 80 30],'ButtonPushedFcn',@cerrarPuerto1);
+        uibutton(panelCtrl1,'Text','Guardar Ángulos','Position',[175 5 120 30],'ButtonPushedFcn',@(~,~)guardarAngulos(1));
+        uibutton(panelCtrl1,'Text','Enviar Ángulos','Position',[300 5 120 30],'ButtonPushedFcn',@(~,~)enviarAngulos(1));
+
+        panelAng1 = uipanel(panel1,'Position',[5 5 490 60],'Title','Ángulos actuales (°)');
+        for i=1:5
+            txtQ1(i) = uieditfield(panelAng1,'numeric','Position',[20+(i-1)*55 10 40 22],...
+                                  'Editable','off','Value',valores_iniciales(i));
+        end
+
+        % Brazo 2 - controles expandidos
+        panel2 = uipanel(fig,'Position',[5 285 500 270],'Title','Brazo 2 (COM4)');
+        
+        % Panel de configuración de ángulos
+        panelConfig2 = uipanel(panel2,'Position',[5 125 490 120],'Title','Configuración de Ángulos');
+        uilabel(panelConfig2,'Text','Inicial:','Position',[5 50 40 20]);
+        uilabel(panelConfig2,'Text','Pre-Sec:','Position',[5 20 50 20]);
+        
+        for i=1:5
+            uilabel(panelConfig2,'Text',sprintf('q%d',i),'Position',[75+(i-1)*55 75 40 22]);
+            txtQ2_init(i) = uieditfield(panelConfig2,'numeric','Position',[65+(i-1)*55 50 40 22],...
+                                      'Value',valores_iniciales(i));
+            txtQ2_pre(i) = uieditfield(panelConfig2,'numeric','Position',[65+(i-1)*55 20 40 22],...
+                                     'Value',valores_iniciales(i));
+        end
+        
+        uibutton(panelConfig2,'Text','Aplicar Init','Position',[350 50 100 25],...
+                'ButtonPushedFcn',@(~,~)aplicarAngulosIniciales(2));
+        uibutton(panelConfig2,'Text','Aplicar Pre','Position',[350 20 100 25],...
+                'ButtonPushedFcn',@(~,~)aplicarAngulosPreSecuencia(2));
+
+        panelCtrl2 = uipanel(panel2,'Position',[5 65 490 60],'Title','Puerto y Figuras');
+        uibutton(panelCtrl2,'Text','Abrir','Position',[5 5 80 30],'ButtonPushedFcn',@abrirPuerto2);
+        uibutton(panelCtrl2,'Text','Cerrar','Position',[90 5 80 30],'ButtonPushedFcn',@cerrarPuerto2);
+
+        % Botones de figuras
+        uibutton(panelCtrl2,'Text','■','Position',[175 5 30 30], 'ButtonPushedFcn',@(~,~)dibujarFigura('cuadro'));
+        uibutton(panelCtrl2,'Text','►','Position',[210 5 30 30], 'ButtonPushedFcn',@(~,~)dibujarFigura('triangulo'));
+        uibutton(panelCtrl2,'Text','○','Position',[245 5 30 30], 'ButtonPushedFcn',@(~,~)dibujarFigura('circulo'));
+        uibutton(panelCtrl2,'Text','Graficas','Position',[280 5 50 30], 'ButtonPushedFcn',@(~,~)botonGraficasCallback());
+        
+        % Botones para control manual del envío automático
+        uibutton(panelCtrl2,'Text','Auto ON','Position',[335 5 70 30],...
+                 'ButtonPushedFcn',@(~,~)iniciarEnvioAutomatico(2),...
+                 'BackgroundColor',[0.8 0.8 0.8]);
+        uibutton(panelCtrl2,'Text','Auto OFF','Position',[410 5 70 30],...
+                 'ButtonPushedFcn',@(~,~)detenerEnvioAutomatico(2),...
+                 'BackgroundColor',[0.9 0.9 0.9]);
+        
+        % Botón para trayectoria trapezoidal
+        uibutton(panelCtrl2,'Text','Trapezoidal','Position',[175 35 100 25],...
+                 'ButtonPushedFcn',@(~,~)ejecutarTrayectoriaTrapezoidal(),...
+                 'BackgroundColor',[0.7 0.9 0.7]);
+        
+        panelAng2 = uipanel(panel2,'Position',[5 5 490 60],'Title','Ángulos actuales (°)');
+        for i=1:5
+            txtQ2(i) = uieditfield(panelAng2,'numeric','Position',[20+(i-1)*55 10 40 22],...
+                                  'Editable','off','Value',valores_iniciales(i));
+        end
+    end
+
+% === Función para aplicar ángulos iniciales ===
+function aplicarAngulosIniciales(brazo_id)
+    if brazo_id == 1
+        q_init = zeros(1,5);
+        for k=1:5
+            q_init(k) = txtQ1_init(k).Value;
+        end
+        actualizar(q_init, patches1, linkSTL1, 0, txtQ1, 1);
+        agregarMensaje('Ángulos iniciales aplicados al Brazo 1');
+    else
+        q_init = zeros(1,5);
+        for k=1:5
+            q_init(k) = txtQ2_init(k).Value;
+        end
+        actualizar(q_init, patches2, linkSTL2, offset_base, txtQ2, 2);
+        agregarMensaje('Ángulos iniciales aplicados al Brazo 2');
+    end
+end
+
+% === Función para aplicar ángulos pre-secuencia ===
+function aplicarAngulosPreSecuencia(brazo_id)
+    if brazo_id == 1
+        q_pre = zeros(1,5);
+        for k=1:5
+            q_pre(k) = txtQ1_pre(k).Value;
+        end
+        actualizar(q_pre, patches1, linkSTL1, 0, txtQ1, 1);
+        agregarMensaje('Ángulos pre-secuencia aplicados al Brazo 1');
+    else
+        q_pre = zeros(1,5);
+        for k=1:5
+            q_pre(k) = txtQ2_pre(k).Value;
+        end
+        actualizar(q_pre, patches2, linkSTL2, offset_base, txtQ2, 2);
+        agregarMensaje('Ángulos pre-secuencia aplicados al Brazo 2');
+    end
+end
+
+% === Función para movimiento suave entre configuraciones ===
+function movimientoSuave(brazo_id, q_inicial, q_final, duracion)
+    N = 50; % número de pasos
+    for i=1:N
+        t = i/N;
+        % Interpolación cúbica para movimiento suave
+        q_interp = q_inicial + (q_final - q_inicial) * (3*t^2 - 2*t^3);
+        
+        if brazo_id == 1
+            actualizar(q_interp, patches1, linkSTL1, 0, txtQ1, 1);
+            % Enviar ángulos inmediatamente durante el movimiento
+            if ~isempty(s1) && isvalid(s1)
+                msg = sprintf('%.3fx%.3fx%.3fx%.3fx%.3f\n', q_interp);
+                writeline(s1, msg);
+            end
+        else
+            actualizar(q_interp, patches2, linkSTL2, offset_base, txtQ2, 2);
+            % Enviar ángulos inmediatamente durante el movimiento
+            if ~isempty(s2) && isvalid(s2)
+                msg = sprintf('%.3fx%.3fx%.3fx%.3fx%.3f\n', q_interp);
+                writeline(s2, msg);
+            end
+        end
+        pause(duracion/N);
+    end
+end
+
+% === FK y Jacobiano MODIFICADO para el brazo 2 (link1 fijo) ===
+function [pos, J] = FK_and_Jacobian(Qdeg, offsetX, brazo_id)
+    Q = Qdeg*pi/180;
+    
+    if brazo_id == 1
+        % Brazo 1 - transformación normal
+        T01 = Trans(offsetX, 0, 0) * Rz(Q(1)) * Trans(0, -20e-3, 105.28e-3);
+        T12 = Ry(Q(2)) * Trans(-120e-3, 0, 0);
+        T23 = Ry(Q(3)) * Trans(-5.3e-3, 7.5e-3, -89.75e-3);
+        T34 = Rz(Q(4)) * Trans(5e-3, 14e-3, -65.5e-3);
+        T45 = Ry(Q(5)) * Trans(38e-3, 25.9e-3, 14e-3);
+    else
+        % Brazo 2 - link1 FIJO en la base, solo rotación
+        % AJUSTE DE OFFSET EN Z - MISMO valor que en actualizar
+        ajuste_z = 105.28e-3;
+        T01 = Trans(offsetX, 0, 0) * Rz(Q(1)) * Trans(0, 0, ajuste_z);
+        T12 = Ry(Q(2)) * Trans(-120e-3, 0, 0);
+        T23 = Ry(Q(3)) * Trans(-5.3e-3, 7.5e-3, -89.75e-3);
+        T34 = Rz(Q(4)) * Trans(5e-3, 14e-3, -65.5e-3);
+        T45 = Ry(Q(5)) * Trans(38e-3, 25.9e-3, 14e-3);
+    end
+    
+    A5 = T01 * T12 * T23 * T34 * T45;
+    pos = A5(1:3,4)';
+    
+    eps_q = 1e-6;
+    J = zeros(3,5);
+    for k=1:5
+        Qp = Q; Qp(k) = Qp(k) + eps_q;
+        
+        if brazo_id == 1
+            T01p = Trans(offsetX, 0, 0) * Rz(Qp(1)) * Trans(0, -20e-3, 105.28e-3);
+            T12p = Ry(Qp(2)) * Trans(-120e-3, 0, 0);
+            T23p = Ry(Qp(3)) * Trans(-5.3e-3, 7.5e-3, -89.75e-3);
+            T34p = Rz(Qp(4)) * Trans(5e-3, 14e-3, -65.5e-3);
+            T45p = Ry(Qp(5)) * Trans(38e-3, 25.9e-3, 14e-3);
+        else
+            % AJUSTE DE OFFSET EN Z para el brazo 2 también en el Jacobiano
+            ajuste_z = 105.28e-3;
+            T01p = Trans(offsetX, 0, 0) * Rz(Qp(1)) * Trans(0, 0, ajuste_z);
+            T12p = Ry(Qp(2)) * Trans(-120e-3, 0, 0);
+            T23p = Ry(Qp(3)) * Trans(-5.3e-3, 7.5e-3, -89.75e-3);
+            T34p = Rz(Qp(4)) * Trans(5e-3, 14e-3, -65.5e-3);
+            T45p = Ry(Qp(5)) * Trans(38e-3, 25.9e-3, 14e-3);
+        end
+        
+        A5p = T01p * T12p * T23p * T34p * T45p;
+        pos_p = A5p(1:3,4);
+        J(:,k) = (pos_p - A5(1:3,4)) / eps_q;
+    end
+end
+
+% === FUNCIÓN DE TRAYECTORIA TRAPEZOIDAL IMPLEMENTADA ===
+function ejecutarTrayectoriaTrapezoidal()
+    agregarMensaje('INICIANDO TRAYECTORIA TRAPEZOIDAL...');
+    
+    % Obtener configuraciones actuales
+    q1_actual = zeros(1,5);
+    q2_actual = zeros(1,5);
+    for k=1:5
+        q1_actual(k) = txtQ1(k).Value;
+        q2_actual(k) = txtQ2(k).Value;
+    end
+    
+    % Parámetros de la trayectoria trapezoidal
+    t0 = 0;
+    tf = 10; % 10 segundos de duración total
+    t = linspace(t0, tf, 50);
+    
+    % Definir puntos objetivo para ambos brazos
+    % Punto 1 - posición actual
+    q1_P1 = q1_actual;
+    q2_P1 = q2_actual;
+    
+    % Punto 2 - posición objetivo (puedes ajustar estos valores)
+    q1_P2 = [30, 60, 45, 75, 30]; % Ejemplo de configuración objetivo brazo 1
+    q2_P2 = [-30, 75, 60, 45, 15]; % Ejemplo de configuración objetivo brazo 2
+    
+    % Generar trayectorias trapezoidales para cada articulación
+    Q_traj1 = zeros(length(t), 5);
+    Q_traj2 = zeros(length(t), 5);
+    dQ_traj1 = zeros(length(t), 5);
+    dQ_traj2 = zeros(length(t), 5);
+    ddQ_traj1 = zeros(length(t), 5);
+    ddQ_traj2 = zeros(length(t), 5);
+    
+    for j = 1:5
+        % Brazo 1
+        [Q_traj1(:,j), dQ_traj1(:,j), ddQ_traj1(:,j)] = lspb(q1_P1(j), q1_P2(j), t);
+        % Brazo 2  
+        [Q_traj2(:,j), dQ_traj2(:,j), ddQ_traj2(:,j)] = lspb(q2_P1(j), q2_P2(j), t);
+    end
+    
+    % Mostrar gráficas de trayectoria
+    mostrarGraficasTrayectoria(t, Q_traj1, dQ_traj1, ddQ_traj1, Q_traj2, dQ_traj2, ddQ_traj2);
+    
+    % Ejecutar trayectoria
+    agregarMensaje('Ejecutando trayectoria trapezoidal...');
+    
+    for i = 1:length(t)
+        % Actualizar brazo 1
+        actualizar(Q_traj1(i,:), patches1, linkSTL1, 0, txtQ1, 1);
+        % Actualizar brazo 2
+        actualizar(Q_traj2(i,:), patches2, linkSTL2, offset_base, txtQ2, 2);
+        
+        % Enviar comandos a los puertos seriales si están abiertos
+        if ~isempty(s1) && isvalid(s1)
+            msg1 = sprintf('%.3fx%.3fx%.3fx%.3fx%.3f\n', Q_traj1(i,:));
+            writeline(s1, msg1);
+        end
+        if ~isempty(s2) && isvalid(s2)
+            msg2 = sprintf('%.3fx%.3fx%.3fx%.3fx%.3f\n', Q_traj2(i,:));
+            writeline(s2, msg2);
+        end
+        
+        pause((tf - t0) / length(t));
+    end
+    
+    agregarMensaje('Trayectoria trapezoidal completada');
+    
+    % Guardar trayectorias
+    assignin('base', 'trayectoria_trapezoidal_brazo1', Q_traj1);
+    assignin('base', 'trayectoria_trapezoidal_brazo2', Q_traj2);
+    assignin('base', 'tiempo_trayectoria', t);
+end
+
+% === Función LSPB (Linearly Segmented Parabolic Blend) ===
+function [q, dq, ddq] = lspb(q0, qf, t)
+    % Genera trayectoria trapezoidal (Linearly Segmented Parabolic Blend)
+    % q0: posición inicial
+    % qf: posición final  
+    % t: vector de tiempo
+    
+    tf = t(end);
+    tb = tf * 0.3; % Tiempo de blend (30% del tiempo total)
+    
+    % Calcular velocidad constante
+    dq_c = (qf - q0) / (tf - tb);
+    
+    q = zeros(size(t));
+    dq = zeros(size(t));
+    ddq = zeros(size(t));
+    
+    for i = 1:length(t)
+        if t(i) <= tb
+            % Fase de aceleración
+            ddq(i) = dq_c / tb;
+            dq(i) = ddq(i) * t(i);
+            q(i) = q0 + 0.5 * ddq(i) * t(i)^2;
+        elseif t(i) <= (tf - tb)
+            % Fase de velocidad constante
+            ddq(i) = 0;
+            dq(i) = dq_c;
+            q(i) = q0 + dq_c * (t(i) - tb/2);
+        else
+            % Fase de desaceleración
+            ddq(i) = -dq_c / tb;
+            dq(i) = dq_c + ddq(i) * (t(i) - (tf - tb));
+            q(i) = qf - 0.5 * (dq_c / tb) * (tf - t(i))^2;
+        end
+    end
+end
+
+% === Función para mostrar gráficas de trayectoria ===
+function mostrarGraficasTrayectoria(t, Q1, dQ1, ddQ1, Q2, dQ2, ddQ2)
+    fig_tray = figure('Name', 'Análisis de Trayectoria Trapezoidal', ...
+                     'Position', [200, 100, 1200, 800]);
+    
+    labels = {'Articulación 1', 'Articulación 2', 'Articulación 3', 'Articulación 4', 'Articulación 5'};
+    colors = {'r', 'g', 'b', 'c', 'm'};
+    
+    % Brazo 1
+    subplot(3, 2, 1);
+    hold on; grid on;
+    for j = 1:5
+        plot(t, Q1(:,j), colors{j}, 'LineWidth', 2, 'DisplayName', labels{j});
+    end
+    title('Brazo 1 - Posición Angular');
+    xlabel('Tiempo (s)'); ylabel('Ángulo (°)');
+    legend;
+    
+    subplot(3, 2, 3);
+    hold on; grid on;
+    for j = 1:5
+        plot(t, dQ1(:,j), colors{j}, 'LineWidth', 2, 'DisplayName', labels{j});
+    end
+    title('Brazo 1 - Velocidad Angular');
+    xlabel('Tiempo (s)'); ylabel('Velocidad (°/s)');
+    legend;
+    
+    subplot(3, 2, 5);
+    hold on; grid on;
+    for j = 1:5
+        plot(t, ddQ1(:,j), colors{j}, 'LineWidth', 2, 'DisplayName', labels{j});
+    end
+    title('Brazo 1 - Aceleración Angular');
+    xlabel('Tiempo (s)'); ylabel('Aceleración (°/s²)');
+    legend;
+    
+    % Brazo 2
+    subplot(3, 2, 2);
+    hold on; grid on;
+    for j = 1:5
+        plot(t, Q2(:,j), colors{j}, 'LineWidth', 2, 'DisplayName', labels{j});
+    end
+    title('Brazo 2 - Posición Angular');
+    xlabel('Tiempo (s)'); ylabel('Ángulo (°)');
+    legend;
+    
+    subplot(3, 2, 4);
+    hold on; grid on;
+    for j = 1:5
+        plot(t, dQ2(:,j), colors{j}, 'LineWidth', 2, 'DisplayName', labels{j});
+    end
+    title('Brazo 2 - Velocidad Angular');
+    xlabel('Tiempo (s)'); ylabel('Velocidad (°/s)');
+    legend;
+    
+    subplot(3, 2, 6);
+    hold on; grid on;
+    for j = 1:5
+        plot(t, ddQ2(:,j), colors{j}, 'LineWidth', 2, 'DisplayName', labels{j});
+    end
+    title('Brazo 2 - Aceleración Angular');
+    xlabel('Tiempo (s)'); ylabel('Aceleración (°/s²)');
+    legend;
+end
+
+% -------------------------------------------------------------------------
+% -------------------------------------------------------------------------
+function dibujarFigura(tipo)
+    % === Obtener configuraciones pre-secuencia e iniciales ===
+    q1_pre = zeros(1,5);
+    q1_init = zeros(1,5);
+    q1_actual = zeros(1,5);
+    q2_pre = zeros(1,5);
+    q2_init = zeros(1,5);
+    q2_actual = zeros(1,5);
+    
+    for k=1:5
+        q1_pre(k) = txtQ1_pre(k).Value;
+        q1_init(k) = txtQ1_init(k).Value;
+        q1_actual(k) = txtQ1(k).Value;  % Posición actual del brazo 1
+        q2_pre(k) = txtQ2_pre(k).Value;
+        q2_init(k) = txtQ2_init(k).Value;
+        q2_actual(k) = txtQ2(k).Value;  % Posición actual del brazo 2
+    end
+
+    %% === FASE 0: Movimiento del Brazo 2 a posición pre-secuencia ===
+    agregarMensaje('INICIANDO SECUENCIA DE CORTE...');
+    agregarMensaje('FASE 1: Moviendo brazo 2 a posición pre-secuencia...');
+    
+    % Brazo 2: movimiento a pre-secuencia  
+    movimientoSuave(2, q2_actual, q2_pre, 2.0);
+    agregarMensaje('Brazo 2 en posición pre-secuencia');
+    
+    % Pequeña pausa para asegurar la posición
+    pause(0.5);
+
+    %% === FASE 1: Movimiento del Brazo 2 para dibujar figura ===
+    agregarMensaje('FASE 2: Brazo 2 iniciando corte de figura...');
+    
+    % Obtener posición actual del efector del brazo 2 (después de moverse a pre-secuencia)
+    EE2 = actualizar(q2_pre, patches2, linkSTL2, offset_base, txtQ2, 2);
+
+    % Definir figura
+    scale = 0.07; % 60 mm
+    switch tipo
+        case 'cuadro'
+            pts = [ -scale -scale;  scale -scale;  scale scale;  -scale scale; -scale -scale];
+            nombre_figura = 'CUADRADO';
+        case 'triangulo'
+            pts = [ -scale -scale;  scale -scale;  0 scale; -scale -scale];
+            nombre_figura = 'TRIÁNGULO';
+        case 'circulo'
+            theta = linspace(0,2*pi,200)';
+            pts = [cos(theta)*scale, sin(theta)*scale];
+            nombre_figura = 'CÍRCULO';
+        otherwise
+            return
+    end
+    
+    agregarMensaje(sprintf('Cortando figura: %s', nombre_figura));
+
+    Z2 = EE2(3);
+    path2 = [EE2(1) + pts(:,1), EE2(2) + pts(:,2), repmat(Z2, size(pts,1),1)];
+
+    % Calcular longitud total y tiempo
+    d = sqrt(sum(diff(path2).^2,2));
+    total_length = sum(d);
+    vel_lineal = 0.02; % 20 mm/s
+    t_total2 = total_length / vel_lineal;
+    N2 = 200;
+
+    % Interpolación paramétrica
+    s = [0; cumsum(d)] / total_length;
+    s_uniforme = linspace(0,1,N2);
+    x_interp = interp1(s, path2(:,1), s_uniforme);
+    y_interp = interp1(s, path2(:,2), s_uniforme);
+    z_interp = interp1(s, path2(:,3), s_uniforme);
+
+    q2_current = q2_pre; % Empezar desde pre-secuencia
+    Q_traj2 = zeros(N2,5);
+    
+    agregarMensaje('Progreso del corte: 0%');
+    for i=1:N2
+        target2 = [x_interp(i), y_interp(i), z_interp(i)];
+        q2_current = IK_numeric(q2_current, target2, offset_base, 40, 1e-4, 0.01, 2);
+        actualizar(q2_current, patches2, linkSTL2, offset_base, txtQ2, 2);
+        Q_traj2(i,:) = q2_current;
+
+        if ~isempty(s2) && isvalid(s2)
+            msg2 = sprintf('%.3f,%.3f,%.3f,%.3f,%.3f\n', q2_current);
+            writeline(s2, msg2);
+        end
+        
+        % Mostrar progreso cada 10%
+        if mod(i, floor(N2/10)) == 0
+            progreso = round(i/N2 * 100);
+            agregarMensaje(sprintf('Progreso del corte: %d%%', progreso));
+        end
+        
+        pause(t_total2/N2);
+    end
+    agregarMensaje('Corte completado al 100%');
+
+    % Guardar trayectorias
+    assignin('base','lastTrajectory_Brazo2',Q_traj2);
+
+    %% === FASE 2: Retorno suave del Brazo 2 a posición home ===
+    agregarMensaje('FASE 3: Retornando brazo 2 a posición home...');
+    
+    % Brazo 2 retorna a posición home desde la última posición de dibujo
+    movimientoSuave(2, q2_current, q2_init, 3.0);
+    agregarMensaje('Brazo 2 en posición HOME');
+
+    %% === FASE 3: Movimiento del Brazo 1 a posición HOME después de completar la pieza ===
+    agregarMensaje('FASE 4: Moviendo brazo 1 a posición HOME...');
+    
+    % Obtener la posición ACTUAL del brazo 1 (puede haber cambiado durante la ejecución)
+    q1_current = zeros(1,5);
+    for k=1:5
+        q1_current(k) = txtQ1(k).Value;
+    end
+    
+    % Brazo 1 se mueve a posición HOME desde su posición actual
+    movimientoSuave(1, q1_current, q1_init, 3.0);
+    
+    % ENVÍO FINAL para asegurar que llega exactamente a HOME
+    if ~isempty(s1) && isvalid(s1)
+        msg1 = sprintf('%.3fx%.3fx%.3fx%.3fx%.3f\n', q1_init);
+        writeline(s1, msg1);
+    end
+    
+    agregarMensaje('Brazo 1 en posición HOME');
+
+    %% === SECUENCIA COMPLETADA ===
+    mensaje_final = sprintf('SECUENCIA COMPLETADA: Figura "%s" cortada exitosamente. Ambos brazos en HOME.', nombre_figura);
+    agregarMensaje(mensaje_final);
+    uialert(fig, mensaje_final, 'Secuencia Completada', 'Icon', 'success');
+end
+
+% -------------------------------------------------------------------------
+function q_sol = IK_numeric(q_init, target, offsetX, max_iter, tol_cart, lambda, brazo_id)
+    q = q_init;
+    for iter = 1:max_iter
+        [x, J] = FK_and_Jacobian(q, offsetX, brazo_id);
+        e = (target - x)';
+        if norm(e) < tol_cart
+            break;
+        end
+        Jp = J' * ((J*J' + lambda*eye(3)) \ eye(3));
+        dq = (Jp * e)';
+        dq_deg = dq * (180/pi);
+        dq_deg = max(min(dq_deg, 2), -2); % Limitar paso a 2 grados
+        q = q + dq_deg;
+    end
+    q_sol = q;
+end
+
+% === SISTEMA DE GRÁFICAS - FUNCIONES PRINCIPALES ===
+function sistema = inicializarSistemaGraficas()
+    % Inicializa todo el sistema de gráficas
+    sistema = struct();
+    sistema.fig_pos_vel = [];
+    sistema.ax_pos1 = []; sistema.ax_vel1 = [];
+    sistema.ax_pos2 = []; sistema.ax_vel2 = [];
+    sistema.line_pos1 = gobjects(1,5); sistema.line_vel1 = gobjects(1,5);
+    sistema.line_pos2 = gobjects(1,5); sistema.line_vel2 = gobjects(1,5);
+    
+    sistema.time_data = [];
+    sistema.pos_data1 = []; sistema.vel_data1 = [];
+    sistema.pos_data2 = []; sistema.vel_data2 = [];
+    sistema.max_points = 500;
+    sistema.start_time = tic;
+    
+    sistema.prev_angles1 = zeros(1,5);
+    sistema.prev_angles2 = zeros(1,5);
+    sistema.prev_time = 0;
+    sistema.initialized = false;
+end
+
+function botonGraficasCallback()
+    % Callback para el botón de gráficas
+    crearVentanaGraficas();
+    agregarMensaje('Sistema de gráficas activado');
+end
+
+function crearVentanaGraficas()
+    % Crea la ventana de gráficas si no existe
+    if isempty(graficas_system.fig_pos_vel) || ~isvalid(graficas_system.fig_pos_vel)
+        graficas_system.fig_pos_vel = uifigure('Name','Gráficas de Posición y Velocidad - Tiempo Real',...
+            'Position',[100 100 1200 600]);
+        
+        % Crear ejes para brazo 1
+        graficas_system.ax_pos1 = uiaxes(graficas_system.fig_pos_vel,'Position',[50 320 500 250]);
+        configurarEjePosicion(graficas_system.ax_pos1, 'Brazo 1 - Ángulos de Articulación');
+        
+        graficas_system.ax_vel1 = uiaxes(graficas_system.fig_pos_vel,'Position',[50 50 500 250]);
+        configurarEjeVelocidad(graficas_system.ax_vel1, 'Brazo 1 - Velocidades Articulares');
+        
+        % Crear ejes para brazo 2
+        graficas_system.ax_pos2 = uiaxes(graficas_system.fig_pos_vel,'Position',[600 320 500 250]);
+        configurarEjePosicion(graficas_system.ax_pos2, 'Brazo 2 - Ángulos de Articulación');
+        
+        graficas_system.ax_vel2 = uiaxes(graficas_system.fig_pos_vel,'Position',[600 50 500 250]);
+        configurarEjeVelocidad(graficas_system.ax_vel2, 'Brazo 2 - Velocidades Articulares');
+        
+        % Crear líneas para cada articulación
+        crearLineasGraficas();
+        
+        % Inicializar arrays de datos
+        graficas_system.time_data = [];
+        graficas_system.pos_data1 = zeros(0,5);
+        graficas_system.vel_data1 = zeros(0,5);
+        graficas_system.pos_data2 = zeros(0,5);
+        graficas_system.vel_data2 = zeros(0,5);
+        
+        graficas_system.prev_time = toc(graficas_system.start_time);
+        graficas_system.initialized = true;
+    end
+end
+
+function configurarEjePosicion(ax, titulo)
+    title(ax, titulo);
+    xlabel(ax, 'Tiempo (s)'); ylabel(ax, 'Ángulo (°)');
+    grid(ax, 'on'); hold(ax, 'on');
+end
+
+function configurarEjeVelocidad(ax, titulo)
+    title(ax, titulo);
+    xlabel(ax, 'Tiempo (s)'); ylabel(ax, 'Velocidad (°/s)');
+    grid(ax, 'on'); hold(ax, 'on');
+end
+
+function crearLineasGraficas()
+    labels = {'q1','q2','q3','q4','q5'};
+    colors = {'r','g','b','c','m'};
+    line_styles = {'-','--',':','-.','-'};
+    
+    for j = 1:5
+        % Brazo 1
+        graficas_system.line_pos1(j) = plot(graficas_system.ax_pos1, NaN, NaN, colors{j}, ...
+            'DisplayName', labels{j}, 'LineWidth', 2, 'LineStyle', line_styles{j});
+        graficas_system.line_vel1(j) = plot(graficas_system.ax_vel1, NaN, NaN, colors{j}, ...
+            'DisplayName', labels{j}, 'LineWidth', 2, 'LineStyle', line_styles{j});
+        
+        % Brazo 2
+        graficas_system.line_pos2(j) = plot(graficas_system.ax_pos2, NaN, NaN, colors{j}, ...
+            'DisplayName', labels{j}, 'LineWidth', 2, 'LineStyle', line_styles{j});
+        graficas_system.line_vel2(j) = plot(graficas_system.ax_vel2, NaN, NaN, colors{j}, ...
+            'DisplayName', labels{j}, 'LineWidth', 2, 'LineStyle', line_styles{j});
+    end
+    
+    configurarLeyendas();
+end
+
+function configurarLeyendas()
+    legend(graficas_system.ax_pos1, 'show', 'Location', 'northeastoutside');
+    legend(graficas_system.ax_vel1, 'show', 'Location', 'northeastoutside');
+    legend(graficas_system.ax_pos2, 'show', 'Location', 'northeastoutside');
+    legend(graficas_system.ax_vel2, 'show', 'Location', 'northeastoutside');
+end
+
+function [vel1, vel2] = calcularVelocidades(q1, q2)
+    current_time = toc(graficas_system.start_time);
+    dt = current_time - graficas_system.prev_time;
+    
+    if dt > 0.001
+        vel1 = (q1 - graficas_system.prev_angles1) / dt;
+        vel2 = (q2 - graficas_system.prev_angles2) / dt;
+    else
+        vel1 = zeros(1,5);
+        vel2 = zeros(1,5);
+    end
+    
+    graficas_system.prev_angles1 = q1;
+    graficas_system.prev_angles2 = q2;
+    graficas_system.prev_time = current_time;
+end
+
+function actualizarGraficasEnTiempoReal()
+    if ~graficas_system.initialized || ~isvalid(graficas_system.fig_pos_vel)
+        return;
+    end
+    
+    % Obtener ángulos actuales de ambos brazos
+    q1_actual = zeros(1,5);
+    q2_actual = zeros(1,5);
+    for k=1:5
+        q1_actual(k) = txtQ1(k).Value;
+        q2_actual(k) = txtQ2(k).Value;
+    end
+    
+    [vel1, vel2] = calcularVelocidades(q1_actual, q2_actual);
+    actualizarDatosGraficas(q1_actual, q2_actual, vel1, vel2);
+    actualizarVisualizacionGraficas();
+end
+
+function actualizarDatosGraficas(q1, q2, vel1, vel2)
+    current_time = toc(graficas_system.start_time);
+    
+    graficas_system.time_data(end+1) = current_time;
+    graficas_system.pos_data1(end+1,:) = q1;
+    graficas_system.pos_data2(end+1,:) = q2;
+    graficas_system.vel_data1(end+1,:) = vel1;
+    graficas_system.vel_data2(end+1,:) = vel2;
+    
+    if length(graficas_system.time_data) > graficas_system.max_points
+        idx = length(graficas_system.time_data) - graficas_system.max_points + 1;
+        graficas_system.time_data = graficas_system.time_data(idx:end);
+        graficas_system.pos_data1 = graficas_system.pos_data1(idx:end,:);
+        graficas_system.pos_data2 = graficas_system.pos_data2(idx:end,:);
+        graficas_system.vel_data1 = graficas_system.vel_data1(idx:end,:);
+        graficas_system.vel_data2 = graficas_system.vel_data2(idx:end,:);
+    end
+end
+
+function actualizarVisualizacionGraficas()
+    if isempty(graficas_system.time_data)
+        return;
+    end
+    
+    for j = 1:5
+        set(graficas_system.line_pos1(j), 'XData', graficas_system.time_data, ...
+            'YData', graficas_system.pos_data1(:,j));
+        set(graficas_system.line_vel1(j), 'XData', graficas_system.time_data, ...
+            'YData', graficas_system.vel_data1(:,j));
+        set(graficas_system.line_pos2(j), 'XData', graficas_system.time_data, ...
+            'YData', graficas_system.pos_data2(:,j));
+        set(graficas_system.line_vel2(j), 'XData', graficas_system.time_data, ...
+            'YData', graficas_system.vel_data2(:,j));
+    end
+    
+    if length(graficas_system.time_data) >= 2
+        ajustarLimitesEjesGraficas();
+    end
+end
+
+function ajustarLimitesEjesGraficas()
+    x_limits = [max(0, graficas_system.time_data(1)), graficas_system.time_data(end)];
+    xlim(graficas_system.ax_pos1, x_limits);
+    xlim(graficas_system.ax_vel1, x_limits);
+    xlim(graficas_system.ax_pos2, x_limits);
+    xlim(graficas_system.ax_vel2, x_limits);
+    
+    if ~isempty(graficas_system.pos_data1)
+        ylim(graficas_system.ax_pos1, [min(graficas_system.pos_data1(:))-5, max(graficas_system.pos_data1(:))+5]);
+    end
+    if ~isempty(graficas_system.pos_data2)
+        ylim(graficas_system.ax_pos2, [min(graficas_system.pos_data2(:))-5, max(graficas_system.pos_data2(:))+5]);
+    end
+    if ~isempty(graficas_system.vel_data1)
+        ylim(graficas_system.ax_vel1, [min(graficas_system.vel_data1(:))-10, max(graficas_system.vel_data1(:))+10]);
+    end
+    if ~isempty(graficas_system.vel_data2)
+        ylim(graficas_system.ax_vel2, [min(graficas_system.vel_data2(:))-10, max(graficas_system.vel_data2(:))+10]);
+    end
+end
+
+function guardarAngulos(brazo_id)
+    if brazo_id == 1
+        Q = zeros(1,5); for k=1:5, Q(k)=txtQ1(k).Value; end
+        filename = fullfile(pwd, sprintf('angulos_brazo1_%s.mat',datestr(now,'yyyymmdd_HHMMSS')));
+        save(filename,'Q');
+        agregarMensaje(sprintf('Ángulos guardados en %s',filename));
+    else
+        if evalin('base','exist(''lastTrajectory_Brazo2'',''var'')')
+            Qtr = evalin('base','lastTrajectory_Brazo2');
+            filename = fullfile(pwd, sprintf('trayectoria_brazo2_%s.mat',datestr(now,'yyyymmdd_HHMMSS')));
+            save(filename,'Qtr');
+            agregarMensaje(sprintf('Trayectoria guardada en %s',filename));
+        else
+            Q = zeros(1,5); for k=1:5, Q(k)=txtQ2(k).Value; end
+            filename = fullfile(pwd, sprintf('angulos_brazo2_%s.mat',datestr(now,'yyyymmdd_HHMMSS')));
+            save(filename,'Q');
+            agregarMensaje(sprintf('Ángulos guardados en %s',filename));
+        end
+    end
+end
+
+function enviarAngulos(brazo_id)
+    if brazo_id == 1
+        if isempty(s1) || ~isvalid(s1)
+            agregarMensaje('ERROR: Puerto COM3 no está abierto');
+            return
+        end
+        Q = zeros(1,5); for k=1:5, Q(k)=txtQ1(k).Value; end
+        msg = sprintf('%.3fx%.3fx%.3fx%.3fx%.3f\n', Q);
+        writeline(s1, msg);
+        agregarMensaje('Ángulos enviados a Brazo 1 (COM3)');
+    else
+        if isempty(s2) || ~isvalid(s2)
+            agregarMensaje('ERROR: Puerto COM4 no está abierto');
+            return
+        end
+        if evalin('base','exist(''lastTrajectory_Brazo2'',''var'')')
+            Qtr = evalin('base','lastTrajectory_Brazo2');
+            for i=1:size(Qtr,1)
+                msg = sprintf('%.3fx%.3fx%.3fx%.3fx%.3f\n', Qtr(i,:));
+                writeline(s2,msg);
+                pause(0.02);
+            end
+            agregarMensaje('Trayectoria enviada a Brazo 2 (COM4)');
+        else
+            Q = zeros(1,5); for k=1:5, Q(k)=txtQ2(k).Value; end
+            msg = sprintf('%.3fx%.3fx%.3fx%.3fx%.3f\n', Q);
+            writeline(s2, msg);
+            agregarMensaje('Ángulos enviados a Brazo 2 (COM4)');
+        end
+    end
+end
+
+function s = abrirPuerto(fig, s, puerto, baud)
+    if isempty(s) || ~isvalid(s)
+        try
+            s = serialport(puerto, baud);
+            configureCallback(s,"off");
+            agregarMensaje(sprintf('Puerto %s abierto', puerto));
+        catch ME
+            agregarMensaje(sprintf('ERROR al abrir %s: %s', puerto, ME.message));
+        end
+    else
+        agregarMensaje('Puerto ya está abierto');
+    end
+end
+
+function s = cerrarPuerto(fig, s)
+    if ~isempty(s) && isvalid(s)
+        delete(s); s = [];
+        agregarMensaje('Puerto cerrado');
+    else
+        agregarMensaje('El puerto ya estaba cerrado');
+    end
+end
+
+% === Función de cierre limpio ===
+function limpiarRecursos()
+    % Detener todos los timers de envío automático
+    if ~isempty(timer_envio1) && isvalid(timer_envio1)
+        stop(timer_envio1);
+        delete(timer_envio1);
+    end
+    if ~isempty(timer_envio2) && isvalid(timer_envio2)
+        stop(timer_envio2);
+        delete(timer_envio2);
+    end
+    
+    % Cerrar puertos seriales
+    if ~isempty(s1) && isvalid(s1)
+        delete(s1);
+    end
+    if ~isempty(s2) && isvalid(s2)
+        delete(s2);
+    end
+end
+
+% Configurar función de cierre
+fig.CloseRequestFcn = @(~,~)cerrarAplicacion();
+
+function cerrarAplicacion()
+    limpiarRecursos();
+    agregarMensaje('Aplicación cerrada');
+    delete(fig);
+end
+
+% === Inicialización visual MODIFICADA ===
+actualizar(valores_iniciales,patches1,linkSTL1,0,txtQ1,1);
+actualizar(valores_iniciales,patches2,linkSTL2,offset_base,txtQ2,2);
+
+end

@@ -87,6 +87,7 @@ Mcoorde = p';
 % GRAFICACIÓN DE NODOS
 plot(Mcoorde(:,1), Mcoorde(:,2), '.k')
 title('Malla con nodos')
+axis([-10 90 -10 170]); % Límites ajustados
 
 % MATRIZ DE CONECTIVIDAD
 tt = t';
@@ -268,6 +269,7 @@ for c = 1:elementos
     text(centro(c,1), centro(c,2), num2str(c), 'FontSize', 8, 'HorizontalAlignment', 'center');
 end
 title('Números de Elementos');
+axis([-10 90 -10 170]); % Límites ajustados
 
 
 % Función auxiliar para visualización
@@ -303,4 +305,5 @@ function visualizar_resultados(fig_num, datos, centro, titulo)
     colormap(jet);
     caxis([0 0.1]);
     title(titulo);
+    % axis([-10 90 -10 170]);
 end

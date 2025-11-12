@@ -457,7 +457,7 @@ int main(void){
 	
 	Config_GPIO();
   SysTick_Init();
-  USART3_Init(57600);
+  USART3_Init(9600);
 	
   /* PWM: configurar solo CH1 en cada timer de servo */
   Config_TimerPWM(TIM9);
@@ -555,50 +555,71 @@ int main(void){
 extern "C"{
 	extern "C" {
 void USART3_IRQHandler(void) {
-    if (USART3->ISR & USART_ISR_RXNE) {     // Si hay dato recibido
-        char c = USART3->RDR & 0xFF;        // Leer carácter
-        static char num_buf[10];            // buffer temporal del número
-        static uint8_t num_index = 0;       // índice de escritura
-        static float temp_values[5];        // valores intermedios
-        static uint8_t current_value = 0;   // índice actual (0–4)
+    if (USART3->ISR & USART_ISR_RXNE) {
+        char c = USART3->RDR & 0xFF;
+        static char num_buf[15];
+        static uint8_t num_index = 0;
+        static float temp_values[5];
+        static uint8_t current_value = 0;
+        static uint8_t frame_started = 0;  // Bandera de inicio de trama
 
-        if ((c >= '0' && c <= '9') || c == '.' || c == '-') {
-            // Acumular carácter numérico
-            if (num_index < sizeof(num_buf) - 1)
-                num_buf[num_index++] = c;
-        }
-        else if (c == 'x' || c == '\n' || c == '\r') {
-            // Cerrar número actual
-            num_buf[num_index] = '\0';
-            if (num_index > 0 && current_value < 5) {
-                temp_values[current_value++] = atof(num_buf);
-            }
+        if (c == '$') {
+            // Inicio de trama - resetear todo
+            frame_started = 1;
+            current_value = 0;
             num_index = 0;
+            return;
+        }
 
-            if (c == '\n' || c == '\r') {
-                // Trama completa: asignar directamente a targets
-                if (current_value == 5) {
-										// Asignar y limitar
-										target1 = fminf(fmaxf(temp_values[0], 0.0f), 180.0f);
-										target2 = fminf(fmaxf(temp_values[1], 0.0f), 180.0f);
-										target3 = fminf(fmaxf(temp_values[2], 0.0f), 180.0f);
-										target4 = fminf(fmaxf(temp_values[3], 0.0f), 180.0f);
-										target5 = fminf(fmaxf(temp_values[4], 0.0f), 180.0f);
+        if (!frame_started) {
+            return;  // Ignorar hasta recibir '$'
+        }
 
-										// Redondear a 3 cifras decimales
-										target1 = roundf(target1 * 1000.0f) / 1000.0f;
-										target2 = roundf(target2 * 1000.0f) / 1000.0f;
-										target3 = roundf(target3 * 1000.0f) / 1000.0f;
-										target4 = 180 - roundf(target4 * 1000.0f) / 1000.0f;
-										target5 = 180 - roundf(target5 * 1000.0f) / 1000.0f;
-								}
+        if (c == '*') {
+            // Fin de trama - procesar
+            if (num_index > 0 && current_value < 5) {
+                num_buf[num_index] = '\0';
+                temp_values[current_value++] = atof(num_buf);
+                num_index = 0;
+            }
+            
+            // Verificar que tenemos exactamente 5 valores
+            if (current_value == 5) {
+                target1 = fminf(fmaxf(temp_values[0], 0.0f), 180.0f);
+                target2 = fminf(fmaxf(temp_values[1], 0.0f), 180.0f);
+                target3 = fminf(fmaxf(temp_values[2], 0.0f), 180.0f);
+                target4 = fminf(fmaxf(temp_values[3], 0.0f), 180.0f);
+                target5 = fminf(fmaxf(temp_values[4], 0.0f), 180.0f);
+                
+                // Aplicar transformaciones si son necesarias
+                target4 = 180.0f - target4;
+                target5 = 180.0f - target5;
+            }
+            
+            // Resetear para siguiente trama
+            frame_started = 0;
+            current_value = 0;
+            num_index = 0;
+            return;
+        }
 
-                current_value = 0;  // reiniciar para siguiente trama
+        if (c == ',') {
+            // Separador entre valores
+            if (num_index > 0 && current_value < 5) {
+                num_buf[num_index] = '\0';
+                temp_values[current_value++] = atof(num_buf);
+                num_index = 0;
+            }
+            return;
+        }
+
+        // Acumular caracteres numéricos
+        if ((c >= '0' && c <= '9') || c == '.' || c == '-') {
+            if (num_index < sizeof(num_buf) - 1) {
+                num_buf[num_index++] = c;
             }
         }
-        else {
-            // Ignorar otros caracteres
-        }
+        // Ignorar otros caracteres (incluyendo \n, \r)
     }
 }
 }

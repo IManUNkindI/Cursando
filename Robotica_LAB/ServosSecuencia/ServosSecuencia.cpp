@@ -118,8 +118,8 @@ int main(void) {
 			// Asignar angulo objetivo:
 			target1 = 90;		//0 - 360
 			target2 = 90;		//0 - 180
-			target3 = 45;		//0 -180
-			target4 = 172;	//0 - 172
+			target3 = 90;		//0 -180
+			target4 = 90;	//0 - 172
 			target5 = 90;		//0 - 180		
 			
 			Servo_SetAngle(TIM2, 1, target1); // Servo 1
