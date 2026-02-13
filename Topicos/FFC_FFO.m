@@ -37,7 +37,7 @@ det_controla = vpa(det(controla), 4)
 %% =========================================================
 %  POLINOMIO CARACTERISTICO
 % =========================================================
-FNC = expand(det(s*eye(n) - A));
+FNC = expand(det(s*eye(n) - A))
 coef = coeffs(FNC, s, 'All');  % [a0 a1 ... a_{n-1} 1]
 
 %% =========================================================

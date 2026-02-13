@@ -1,60 +1,118 @@
 import cv2
 import numpy as np
-
 import os
+import tkinter as tk
 
-# Cargar imágenes
+"""
+Generación de anaglifo 3D método Dubois
+con ajuste automático al tamaño de pantalla
+"""
+
+# ==============================
+# 1. Obtener resolución de pantalla
+# ==============================
+
+root = tk.Tk()
+screen_width = root.winfo_screenwidth()
+screen_height = root.winfo_screenheight()
+root.destroy()
+
+# Margen de seguridad (evita que toque los bordes)
+margin = 100
+
+max_width = screen_width - margin
+max_height = screen_height - margin
+
+# ==============================
+# 2. Cargar imágenes
+# ==============================
+
 script_dir = os.path.dirname(os.path.abspath(__file__))
-img_left_path = os.path.join(script_dir, "Izq.jpg")
-img_right_path = os.path.join(script_dir, "Der.jpg")
 
-img_left = cv2.imread(img_left_path)
-img_right = cv2.imread(img_right_path)
+img_left = cv2.imread(os.path.join(script_dir, "Izq.jpg"))
+img_right = cv2.imread(os.path.join(script_dir, "Der.jpg"))
 
-# Verificación básica
 if img_left is None or img_right is None:
-    raise ValueError("No se pudieron cargar las imágenes")
+    raise ValueError("Error cargando imágenes")
 
-# Redimensionar imágenes si son muy grandes
-def resize_if_needed(img, max_width=550):
-    height, width = img.shape[:2]
-    if width > max_width:
-        scaling_factor = max_width / width
-        new_height = int(height * scaling_factor)
-        return cv2.resize(img, (max_width, new_height), interpolation=cv2.INTER_AREA)
-    return img
+# ==============================
+# 3. Igualar tamaño entre imágenes
+# ==============================
 
-img_left = resize_if_needed(img_left)
-img_right = resize_if_needed(img_right)
+h = min(img_left.shape[0], img_right.shape[0])
+w = min(img_left.shape[1], img_right.shape[1])
 
-# Convertir de BGR (OpenCV) a RGB
-img_left = cv2.cvtColor(img_left, cv2.COLOR_BGR2RGB)
-img_right = cv2.cvtColor(img_right, cv2.COLOR_BGR2RGB)
+img_left = cv2.resize(img_left, (w, h), interpolation=cv2.INTER_AREA)
+img_right = cv2.resize(img_right, (w, h), interpolation=cv2.INTER_AREA)
 
-# Separar canales
-R_left, G_left, B_left = cv2.split(img_left)
-R_right, G_right, B_right = cv2.split(img_right)
+# ==============================
+# 4. Convertir a RGB float32
+# ==============================
 
-# --- Supresión de componentes ---
-# Imagen izquierda: eliminar ROJO
-R_left[:] = 0
+img_left = cv2.cvtColor(img_left, cv2.COLOR_BGR2RGB).astype(np.float32)
+img_right = cv2.cvtColor(img_right, cv2.COLOR_BGR2RGB).astype(np.float32)
 
-# Imagen derecha: eliminar VERDE y AZUL (amarillo y azul)
-G_right[:] = 0
-B_right[:] = 0
+# ==============================
+# 5. Matrices Dubois
+# ==============================
 
-# Reconstruir imágenes filtradas
-left_filtered = cv2.merge((R_left, G_left, B_left))
-right_filtered = cv2.merge((R_right, G_right, B_right))
+M_left = np.array([
+    [0.456, 0.500, 0.176],
+    [-0.040, -0.038, -0.016],
+    [-0.015, -0.021, -0.005]
+], dtype=np.float32)
 
-# Combinar ambas imágenes (suma saturada)
-anaglyph = cv2.add(left_filtered, right_filtered)
+M_right = np.array([
+    [-0.043, -0.088, -0.002],
+    [0.378, 0.734, -0.018],
+    [-0.072, -0.113, 1.226]
+], dtype=np.float32)
 
-# Guardar resultado
-anaglyph_bgr = cv2.cvtColor(anaglyph, cv2.COLOR_RGB2BGR)
-cv2.imwrite("anaglifo_3d.png", anaglyph_bgr)
+# ==============================
+# 6. Aplicar transformación
+# ==============================
 
-# Mostrar resultado
-cv2.imshow("Anaglifo 3D", anaglyph_bgr)
+left_transformed = img_left @ M_left.T
+right_transformed = img_right @ M_right.T
+
+anaglyph = left_transformed + right_transformed
+
+anaglyph = np.clip(anaglyph, 0, 255).astype(np.uint8)
+
+anaglyph = cv2.cvtColor(anaglyph, cv2.COLOR_RGB2BGR)
+
+# ==============================
+# 7. Redimensionar a pantalla
+# ==============================
+
+h, w = anaglyph.shape[:2]
+
+scale_w = max_width / w
+scale_h = max_height / h
+
+scale = min(scale_w, scale_h, 1.0)  # nunca agrandar, solo reducir
+
+new_w = int(w * scale)
+new_h = int(h * scale)
+
+anaglyph_resized = cv2.resize(anaglyph, (new_w, new_h), interpolation=cv2.INTER_AREA)
+
+# ==============================
+# 8. Guardar resultado
+# ==============================
+
+output_path = os.path.join(script_dir, "anaglifo_dubois.png")
+cv2.imwrite(output_path, anaglyph_resized)
+
+print("Imagen guardada en:", output_path)
+print(f"Resolución final: {new_w} x {new_h}")
+
+# ==============================
+# 9. Mostrar centrado
+# ==============================
+
+cv2.namedWindow("Anaglifo 3D", cv2.WINDOW_AUTOSIZE)
+cv2.imshow("Anaglifo 3D", anaglyph_resized)
+
 cv2.waitKey(0)
 cv2.destroyAllWindows()
