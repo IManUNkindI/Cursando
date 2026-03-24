@@ -4,6 +4,7 @@ import os
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 from sklearn.mixture import GaussianMixture
+from sklearn.metrics import silhouette_score
 
 def procesar_imagen(nombre_imagen, base_path="."):
     path = os.path.join(base_path, nombre_imagen)
@@ -77,7 +78,7 @@ def segmentar_imagen(features, n_clusters, metodo='kmeans'):
         raise ValueError("Metodo no soportado. Usa 'kmeans' o 'gmm'.")
     
     labels = model.fit_predict(features)
-    return labels
+    return labels, model
 
 def posprocesar_mascara(labels, shape):
     mask = labels.reshape(shape)
@@ -92,6 +93,24 @@ def posprocesar_mascara(labels, shape):
         processed_mask[closing == 1] = i
         
     return processed_mask
+
+def calcular_silhouette(features, labels, sample_size=2000):
+    """
+    Calcula el Silhouette Score usando una muestra aleatoria para eficiencia.
+    """
+    if len(features) > sample_size:
+        indices = np.random.choice(len(features), sample_size, replace=False)
+        features_sample = features[indices]
+        labels_sample = labels[indices]
+    else:
+        features_sample = features
+        labels_sample = labels
+    
+    # El Silhouette Score no está definido para 1 cluster
+    if len(np.unique(labels_sample)) < 2:
+        return 0.0
+        
+    return silhouette_score(features_sample, labels_sample)
 
 def visualizar_resultados(img_original, labels, n_clusters, titulo, save_path=None):
     alto, ancho = img_original.shape[:2]
@@ -170,7 +189,15 @@ class SegmentationApp:
 
         # Botón segmentar
         self.btn_segmentar = tk.Button(panel_controles, text="Segmentar", command=self.ejecutar_segmentacion, bg="#2196F3", fg="white", font=("Arial", 10, "bold"), state="disabled")
-        self.btn_segmentar.pack(fill="x", pady=20)
+        self.btn_segmentar.pack(fill="x", pady=10)
+
+        # Silhouette Score Display
+        self.lbl_silhouette = tk.Label(panel_controles, text="Silhouette Score: --", bg="#f0f0f0", font=("Arial", 10, "bold"))
+        self.lbl_silhouette.pack(pady=5)
+
+        # BIC Score Display (only for GMM)
+        self.lbl_bic = tk.Label(panel_controles, text="BIC Score: --", bg="#f0f0f0", font=("Arial", 10, "bold"))
+        self.lbl_bic.pack(pady=5)
 
         # Panel principal de visualización
         self.canvas_area = tk.Frame(self.root, bg="white")
@@ -223,7 +250,7 @@ class SegmentationApp:
 
         try:
             # Ejecutar segmentación
-            labels = segmentar_imagen(features, k, metodo=metodo)
+            labels, model = segmentar_imagen(features, k, metodo=metodo)
             labels_proc = posprocesar_mascara(labels, shape)
 
             # Generar imagen de visualización
@@ -255,7 +282,20 @@ class SegmentationApp:
             self.panel_img_res.config(image=img_tk)
             self.panel_img_res.image = img_tk
 
-            messagebox.showinfo("Éxito", f"Segmentación completada.\nGuardado en: {save_path}")
+            # Calcular y mostrar Silhouette Score
+            score = calcular_silhouette(features, labels)
+            self.lbl_silhouette.config(text=f"Silhouette Score: {score:.4f}")
+
+            # Calcular y mostrar BIC (solo para GMM)
+            if metodo == 'gmm':
+                bic_score = model.bic(features)
+                self.lbl_bic.config(text=f"BIC Score: {bic_score:,.0f}")
+                msg_bic = f"\nBIC Score: {bic_score:,.0f}"
+            else:
+                self.lbl_bic.config(text="BIC Score: N/A")
+                msg_bic = ""
+
+            messagebox.showinfo("Éxito", f"Segmentación completada.\nSilhouette Score: {score:.4f}{msg_bic}\nGuardado en: {save_path}")
 
         except Exception as e:
             messagebox.showerror("Error", f"Ocurrió un error: {str(e)}")
