@@ -1,0 +1,221 @@
+{
+    "version": 0,
+    "model_name": "Turbina.SLDASM",
+    "project_name": "Turbina",
+    "config_name": "Default",
+    "project_path": "C:\\Cursando\\Termofluidos\\Proyecto\\2\\2.xmlconfig",
+    "finished": true,
+    "mesh": {
+        "cells_total": 32602,
+        "cells_fluid": 32602,
+        "cells_solid": 21387,
+        "cells_fluid_containing_solid": 19776
+    },
+    "telemetry": {
+        "prepare_geometry_finished": "20:40:05-0500",
+        "prepare_geometry_total_time": 2,
+        "cpu_time_solver_total": 201,
+        "iteration": 256,
+        "travel": 4.0067774734575305,
+        "phys_time": 0.0,
+        "time_step": 0.0,
+        "last_iteration_finished": "20:43:21-0500",
+        "cpu_time_per_last_iter": 1,
+        "cpu_time_left": 0,
+        "iterations_per_travel": 64
+    },
+    "goals": [
+        {
+            "goal": {
+                "name": "GG Minimum Static Pressure 1",
+                "unit": "pressure and stress",
+                "value": 101325.0,
+                "progress": 100.0,
+                "criteria": 118.21077171416458,
+                "delta": 0.0,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Average Static Pressure 2",
+                "unit": "pressure and stress",
+                "value": 110516.46791720451,
+                "progress": 12.7,
+                "criteria": 80.30762971680717,
+                "delta": 629.4999836562347,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Maximum Static Pressure 3",
+                "unit": "pressure and stress",
+                "value": 151189.51621962004,
+                "progress": 12.7,
+                "criteria": 432.5244882345483,
+                "delta": 3390.9238085488905,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Minimum Total Pressure 4",
+                "unit": "pressure and stress",
+                "value": 101325.0,
+                "progress": 100.0,
+                "criteria": 118.21077171416458,
+                "delta": 0.0,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Average Total Pressure 5",
+                "unit": "pressure and stress",
+                "value": 110516.63193520582,
+                "progress": 12.7,
+                "criteria": 80.30760579904765,
+                "delta": 629.4971611287474,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Maximum Total Pressure 6",
+                "unit": "pressure and stress",
+                "value": 151412.18310270773,
+                "progress": 12.7,
+                "criteria": 431.13351661334576,
+                "delta": 3384.2682870894787,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Minimum Temperature (Fluid) 7",
+                "unit": "temperature",
+                "value": 293.20000000000306,
+                "progress": 100.0,
+                "criteria": 0.01884572803650485,
+                "delta": 2.2737367544323206e-13,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Average Temperature (Fluid) 8",
+                "unit": "temperature",
+                "value": 319.8811279344462,
+                "progress": 12.9,
+                "criteria": 0.23222446211233091,
+                "delta": 1.7942838546475741,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Maximum Temperature (Fluid) 9",
+                "unit": "temperature",
+                "value": 473.40214086500526,
+                "progress": 100.0,
+                "criteria": 0.055696229197099,
+                "delta": 0.03516582285550385,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Minimum Density (Fluid) 10",
+                "unit": "density",
+                "value": 0.691217423724619,
+                "progress": 12.7,
+                "criteria": 0.0019895969099121822,
+                "delta": 0.015576280952829924,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Average Density (Fluid) 11",
+                "unit": "density",
+                "value": 0.7487183052324482,
+                "progress": 59.8,
+                "criteria": 7.91506467484604e-07,
+                "delta": 1.322607429465883e-06,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Maximum Density (Fluid) 12",
+                "unit": "density",
+                "value": 0.9473302226864002,
+                "progress": 14.6,
+                "criteria": 0.002169836906030829,
+                "delta": 0.014815461978635258,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Minimum Velocity 13",
+                "unit": "speed and velocity",
+                "value": 0.0,
+                "progress": 100.0,
+                "criteria": 0.0,
+                "delta": 0.0,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Average Velocity 14",
+                "unit": "speed and velocity",
+                "value": 0.1200101684347799,
+                "progress": 100.0,
+                "criteria": 0.0030802588644369498,
+                "delta": 0.0017212688617574273,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Maximum Velocity 15",
+                "unit": "speed and velocity",
+                "value": 44.89368432621776,
+                "progress": 100.0,
+                "criteria": 0.33604651976601335,
+                "delta": 0.08912158944009008,
+                "use_in_convergence": true
+            }
+        }
+    ],
+    "settings": {
+        "default_fluids": [
+            "H2O"
+        ],
+        "analysis_type": "external",
+        "heat_conduction_in_solids": false,
+        "radiation": false,
+        "time_dependent": false,
+        "gravity": false,
+        "flow_type": "laminar and turbulent",
+        "cavitation": false,
+        "high_mach_number": true,
+        "free_surface": false,
+        "structural": false,
+        "electromagnetism": false
+    },
+    "system_info": {
+        "product_name": "Flow Simulation 2025  x64 / 6875 / SOLVER ver. efd_dev.5608_04.02.2022+HMN_Inlet_Rework_V1+HMN_Inlet_Rework_V2",
+        "cad_version": "SOLIDWORKS 2025 SP5.0",
+        "computer_name": "MANUNKIND",
+        "user_name": "andre",
+        "os": "Windows 11 (or higher) (Version 10.0.26200)",
+        "cpu": "AMD Ryzen 5 5500U with Radeon Graphics         ",
+        "number_of_cores": 12,
+        "memory_avail": 7168,
+        "memory_total": 15694
+    }
+}

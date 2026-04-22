@@ -1,0 +1,7 @@
+2026-Apr-19 20:43:22
+Computer name:	MANUNKIND
+Number of cores used in calculation:	12
+Configuration name:	Default
+Project name:	Turbina
+
+Warnings on last iteration: 

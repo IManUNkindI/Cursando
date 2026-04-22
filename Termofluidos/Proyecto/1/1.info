@@ -1,0 +1,61 @@
+Model: Caldera.SLDASM
+Project name: Caldera
+Config name: Default
+Project path: C:\Cursando\Termofluidos\Proyecto\1\1.xmlconfig
+Status: Calculating
+
+Number of cells:
+    Total cells: 21864
+    Fluid cells: 8101
+    Solid cells: 13763
+    Fluid cells containing solids: 4903
+
+
+Geometry preparation finished: 
+Geometry preparation time: 00:00:00
+Solver CPU time: 00:00:54
+Iterations: 161
+Travels: 4.00820
+Physical time: 0.000000e+00 s
+Current time step: 0.000000e+00 s
+Last iteration finished: 
+CPU time per last iteration: 00:00:00
+CPU time left: 00:00:00
+Iterations per 1 travel: 41
+
+Goals
+    Name                             | Unit (SI)           | Value           | Progress  | Critetia        | Delta           | Use in convergence
+    GG Minimum Static Pressure 1     | pressure and stress |       600000.00 |     100.0 |            0.03 |            0.00 | On
+    GG Bulk Av Static Pressure 2     | pressure and stress |       600000.92 |     100.0 |            0.03 |            0.02 | On
+    GG Minimum Total Pressure 3      | pressure and stress |       600000.00 |     100.0 |            0.03 |            0.00 | On
+    GG Maximum Total Pressure 4      | pressure and stress |       600002.42 |     100.0 |            0.12 |            0.04 | On
+    GG Average Temperature (Fluid) 5 | temperature         |          405.28 |      15.1 |            2.05 |           13.53 | On
+    GG Maximum Temperature (Fluid) 6 | temperature         |          451.51 |      34.1 |            3.50 |           10.24 | On
+    GG Minimum Density (Fluid) 7     | density             |          890.43 |      17.7 |            1.88 |           10.58 | On
+    GG Maximum Density (Fluid) 8     | density             |          997.56 |     100.0 |            0.00 |            0.00 | On
+    GG Heat Transfer Rate 9          | heat flow           |          432.14 |     100.0 |           35.79 |           22.26 | On
+
+Project details
+    Default fluids: 
+    Analysis type: Internal
+    Heat conduction in solids: On
+    Radiation: On
+    Time dependent: Off
+    Gravitational effects: Off
+    Flow type: Laminar and turbulent
+    Cavitation: Off
+    Hign Mach number flow: On
+    Free surface: Off
+    Structural: Off
+    Electromagnetism: Off
+
+System info
+    Product: Flow Simulation 2025  x64 / 6875 / SOLVER ver. efd_dev.5608_04.02.2022+HMN_Inlet_Rework_V1+HMN_Inlet_Rework_V2
+    CAD version: SOLIDWORKS 2025 SP5.0
+    Computer name: MANUNKIND
+    User name: andre
+    Operating system: Windows 11 (or higher) (Version 10.0.26200)
+    Processors: AMD Ryzen 5 5500U with Radeon Graphics         
+    Number of cores: 12
+    Memory: 6124 MB / 15694 MB
+

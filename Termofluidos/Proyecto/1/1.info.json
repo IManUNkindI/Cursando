@@ -1,0 +1,153 @@
+{
+    "version": 0,
+    "model_name": "Caldera.SLDASM",
+    "project_name": "Caldera",
+    "config_name": "Default",
+    "project_path": "C:\\Cursando\\Termofluidos\\Proyecto\\1\\1.xmlconfig",
+    "finished": false,
+    "mesh": {
+        "cells_total": 21864,
+        "cells_fluid": 8101,
+        "cells_solid": 13763,
+        "cells_fluid_containing_solid": 4903
+    },
+    "telemetry": {
+        "prepare_geometry_finished": null,
+        "prepare_geometry_total_time": 0,
+        "cpu_time_solver_total": 54,
+        "iteration": 161,
+        "travel": 4.008202651066067,
+        "phys_time": 0.0,
+        "time_step": 0.0,
+        "last_iteration_finished": null,
+        "cpu_time_per_last_iter": 0,
+        "cpu_time_left": -1,
+        "iterations_per_travel": 41
+    },
+    "goals": [
+        {
+            "goal": {
+                "name": "GG Minimum Static Pressure 1",
+                "unit": "pressure and stress",
+                "value": 600000.0,
+                "progress": 100.0,
+                "criteria": 0.026528796906283587,
+                "delta": 0.0,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Bulk Av Static Pressure 2",
+                "unit": "pressure and stress",
+                "value": 600000.924552585,
+                "progress": 100.0,
+                "criteria": 0.029968745764141432,
+                "delta": 0.016354128252714872,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Minimum Total Pressure 3",
+                "unit": "pressure and stress",
+                "value": 600000.0011543833,
+                "progress": 100.0,
+                "criteria": 0.027572874752086116,
+                "delta": 0.0003968054661527276,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Maximum Total Pressure 4",
+                "unit": "pressure and stress",
+                "value": 600002.4241158573,
+                "progress": 100.0,
+                "criteria": 0.1214661886728457,
+                "delta": 0.0389568725368008,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Average Temperature (Fluid) 5",
+                "unit": "temperature",
+                "value": 405.2833046644486,
+                "progress": 15.1,
+                "criteria": 2.0528574542717903,
+                "delta": 13.529220249555294,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Maximum Temperature (Fluid) 6",
+                "unit": "temperature",
+                "value": 451.5050791149215,
+                "progress": 34.1,
+                "criteria": 3.4986946574402245,
+                "delta": 10.241756106401908,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Minimum Density (Fluid) 7",
+                "unit": "density",
+                "value": 890.4284458790502,
+                "progress": 17.7,
+                "criteria": 1.8769328612152327,
+                "delta": 10.575650172201904,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Maximum Density (Fluid) 8",
+                "unit": "density",
+                "value": 997.5638006137017,
+                "progress": 100.0,
+                "criteria": 0.00036639329902015235,
+                "delta": 0.00021162509551686526,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Heat Transfer Rate 9",
+                "unit": "heat flow",
+                "value": 432.1438790561433,
+                "progress": 100.0,
+                "criteria": 35.79301062177927,
+                "delta": 22.26437378898123,
+                "use_in_convergence": true
+            }
+        }
+    ],
+    "settings": {
+        "default_fluids": [],
+        "analysis_type": "internal",
+        "heat_conduction_in_solids": true,
+        "radiation": true,
+        "time_dependent": false,
+        "gravity": false,
+        "flow_type": "laminar and turbulent",
+        "cavitation": false,
+        "high_mach_number": true,
+        "free_surface": false,
+        "structural": false,
+        "electromagnetism": false
+    },
+    "system_info": {
+        "product_name": "Flow Simulation 2025  x64 / 6875 / SOLVER ver. efd_dev.5608_04.02.2022+HMN_Inlet_Rework_V1+HMN_Inlet_Rework_V2",
+        "cad_version": "SOLIDWORKS 2025 SP5.0",
+        "computer_name": "MANUNKIND",
+        "user_name": "andre",
+        "os": "Windows 11 (or higher) (Version 10.0.26200)",
+        "cpu": "AMD Ryzen 5 5500U with Radeon Graphics         ",
+        "number_of_cores": 12,
+        "memory_avail": 6124,
+        "memory_total": 15694
+    }
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	<version>1</version>
+	<name>Turbina</name>
+	<uuid>9a05dfff-925f-430a-a084-10a07c4ce8a4</uuid>
+	<directory>prj1</directory>
+	<vwr_res_files_dir>2</vwr_res_files_dir>
+	<geom_db_uuid>4db382c3-8464-4d99-ba75-3f1b92b95f7c</geom_db_uuid>
+	<gdb_light_uuid>6df79bd6-4f99-4d28-9a89-7f5f05f9e73f</gdb_light_uuid>
+	<model_geom_uuid>9dda91eb-3b66-4378-ab62-2227025ac7c4</model_geom_uuid>
+	<template_id/>
+</project>
