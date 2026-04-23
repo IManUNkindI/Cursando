@@ -4,25 +4,25 @@
     "project_name": "Caldera",
     "config_name": "Default",
     "project_path": "C:\\Cursando\\Termofluidos\\Proyecto\\1\\1.xmlconfig",
-    "finished": false,
+    "finished": true,
     "mesh": {
-        "cells_total": 21864,
-        "cells_fluid": 8101,
-        "cells_solid": 13763,
-        "cells_fluid_containing_solid": 4903
+        "cells_total": 27567,
+        "cells_fluid": 10922,
+        "cells_solid": 16645,
+        "cells_fluid_containing_solid": 6723
     },
     "telemetry": {
-        "prepare_geometry_finished": null,
-        "prepare_geometry_total_time": 0,
-        "cpu_time_solver_total": 54,
-        "iteration": 161,
-        "travel": 4.008202651066067,
+        "prepare_geometry_finished": "13:18:59-0500",
+        "prepare_geometry_total_time": 2,
+        "cpu_time_solver_total": 105,
+        "iteration": 178,
+        "travel": 4.011338242396296,
         "phys_time": 0.0,
         "time_step": 0.0,
-        "last_iteration_finished": null,
+        "last_iteration_finished": "13:20:23-0500",
         "cpu_time_per_last_iter": 0,
-        "cpu_time_left": -1,
-        "iterations_per_travel": 41
+        "cpu_time_left": 0,
+        "iterations_per_travel": 45
     },
     "goals": [
         {
@@ -31,7 +31,7 @@
                 "unit": "pressure and stress",
                 "value": 600000.0,
                 "progress": 100.0,
-                "criteria": 0.026528796906283587,
+                "criteria": 0.012370418203063309,
                 "delta": 0.0,
                 "use_in_convergence": true
             }
@@ -40,10 +40,10 @@
             "goal": {
                 "name": "GG Bulk Av Static Pressure 2",
                 "unit": "pressure and stress",
-                "value": 600000.924552585,
+                "value": 600000.91538884,
                 "progress": 100.0,
-                "criteria": 0.029968745764141432,
-                "delta": 0.016354128252714872,
+                "criteria": 0.014079325671773403,
+                "delta": 0.012689888593740761,
                 "use_in_convergence": true
             }
         },
@@ -51,10 +51,10 @@
             "goal": {
                 "name": "GG Minimum Total Pressure 3",
                 "unit": "pressure and stress",
-                "value": 600000.0011543833,
+                "value": 600000.0001743159,
                 "progress": 100.0,
-                "criteria": 0.027572874752086116,
-                "delta": 0.0003968054661527276,
+                "criteria": 0.012890828159870579,
+                "delta": 0.00041740224696695805,
                 "use_in_convergence": true
             }
         },
@@ -62,10 +62,10 @@
             "goal": {
                 "name": "GG Maximum Total Pressure 4",
                 "unit": "pressure and stress",
-                "value": 600002.4241158573,
+                "value": 600002.4018374253,
                 "progress": 100.0,
-                "criteria": 0.1214661886728457,
-                "delta": 0.0389568725368008,
+                "criteria": 0.0576664827496279,
+                "delta": 0.03303670836612582,
                 "use_in_convergence": true
             }
         },
@@ -73,10 +73,10 @@
             "goal": {
                 "name": "GG Average Temperature (Fluid) 5",
                 "unit": "temperature",
-                "value": 405.2833046644486,
-                "progress": 15.1,
-                "criteria": 2.0528574542717903,
-                "delta": 13.529220249555294,
+                "value": 413.93562984113845,
+                "progress": 7.7,
+                "criteria": 1.0397671642864958,
+                "delta": 13.342697345225304,
                 "use_in_convergence": true
             }
         },
@@ -84,10 +84,10 @@
             "goal": {
                 "name": "GG Maximum Temperature (Fluid) 6",
                 "unit": "temperature",
-                "value": 451.5050791149215,
-                "progress": 34.1,
-                "criteria": 3.4986946574402245,
-                "delta": 10.241756106401908,
+                "value": 458.0596159542887,
+                "progress": 19.4,
+                "criteria": 1.8828304645121652,
+                "delta": 9.660283130561083,
                 "use_in_convergence": true
             }
         },
@@ -95,10 +95,10 @@
             "goal": {
                 "name": "GG Minimum Density (Fluid) 7",
                 "unit": "density",
-                "value": 890.4284458790502,
-                "progress": 17.7,
-                "criteria": 1.8769328612152327,
-                "delta": 10.575650172201904,
+                "value": 883.4003670978186,
+                "progress": 8.9,
+                "criteria": 0.9321061495131652,
+                "delta": 10.419745531569902,
                 "use_in_convergence": true
             }
         },
@@ -106,10 +106,10 @@
             "goal": {
                 "name": "GG Maximum Density (Fluid) 8",
                 "unit": "density",
-                "value": 997.5638006137017,
-                "progress": 100.0,
-                "criteria": 0.00036639329902015235,
-                "delta": 0.00021162509551686526,
+                "value": 997.5629701304482,
+                "progress": 78.1,
+                "criteria": 0.00016940069819725066,
+                "delta": 0.00021675266430065676,
                 "use_in_convergence": true
             }
         },
@@ -117,16 +117,18 @@
             "goal": {
                 "name": "GG Heat Transfer Rate 9",
                 "unit": "heat flow",
-                "value": 432.1438790561433,
-                "progress": 100.0,
-                "criteria": 35.79301062177927,
-                "delta": 22.26437378898123,
+                "value": 416.4747500499385,
+                "progress": 70.0,
+                "criteria": 16.928967532093264,
+                "delta": 24.162099464707353,
                 "use_in_convergence": true
             }
         }
     ],
     "settings": {
-        "default_fluids": [],
+        "default_fluids": [
+            "Water"
+        ],
         "analysis_type": "internal",
         "heat_conduction_in_solids": true,
         "radiation": true,
@@ -147,7 +149,7 @@
         "os": "Windows 11 (or higher) (Version 10.0.26200)",
         "cpu": "AMD Ryzen 5 5500U with Radeon Graphics         ",
         "number_of_cores": 12,
-        "memory_avail": 6124,
+        "memory_avail": 9098,
         "memory_total": 15694
     }
 }

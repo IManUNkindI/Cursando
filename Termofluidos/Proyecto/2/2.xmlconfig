@@ -60,7 +60,7 @@
 <VersionType value="2"/>
 <WallSlipping value="0"/>
 <ComputationalDomainSidesBCTypes size="6"> 0 0 0 0 0 0 </ComputationalDomainSidesBCTypes>
-<ComputationalDomainSize size="6"> 0.6569782296785821 0.85728329060689512 1.272811842423504 0.84823234341720188 0.95835859749101304 1.3766564131766963 </ComputationalDomainSize>
+<ComputationalDomainSize size="6"> 0.29486990774399724 0.49118800572621135 0.90963260428529236 1.1954176270756944 1.3211509716819612 1.7374695248632017 </ComputationalDomainSize>
 <DefaultFluids size="1"> 416EA41F-6244-4CBF-A898-FB0D58C1B3FE </DefaultFluids>
 <DisabledBodiesIDs size="0"> </DisabledBodiesIDs>
 <FluidSubstancesUUID size="1"> 416EA41F-6244-4CBF-A898-FB0D58C1B3FE </FluidSubstancesUUID>
@@ -1879,9 +1879,9 @@
 <MaxThinChannelRefinementLevel value="2"/>
 <MaximumChannelsThickness value="0"/>
 <MinimumChannelsThickness value="0"/>
-<Nx value="12"/>
-<Ny value="8"/>
-<Nz value="8"/>
+<Nx value="40"/>
+<Ny value="36"/>
+<Nz value="36"/>
 <PartialCellsRefinementLevel value="0"/>
 <RefineAllCells value="0"/>
 <RefineAllFluidCells value="0"/>
@@ -1893,22 +1893,22 @@
 <ToleranceCriteriaValue value="0.0010406375032230349"/>
 <DistanceRefinementLevels size="2"> 0 0 </DistanceRefinementLevels>
 <ControlPoints index="0">
-<Manual size="4"> 0 0 0 0 </Manual>
-<NumOfCells size="4"> 5 4 0 1 </NumOfCells>
-<Points size="4"> 0.6569782296785821 0.74524376740984577 0.82647829656406213 0.84823234341720188 </Points>
-<Ratio size="4"> 1 1 0.99062809271867647 1 </Ratio>
+<Manual size="5"> 0 0 0 0 0 </Manual>
+<NumOfCells size="5"> 12 3 3 17 1 </NumOfCells>
+<Points size="5"> 0.29486990774399724 0.66400723825562935 0.74514376740984578 0.82628029656406221 1.1954176270756944 </Points>
+<Ratio size="5"> 1.9219999999999999 1 1 0.52037003291214146 1 </Ratio>
 </ControlPoints>
 <ControlPoints index="1">
-<Manual size="3"> 0 0 0 </Manual>
-<NumOfCells size="3"> 3 3 1 </NumOfCells>
-<Points size="3"> 0.85728329060689512 0.90616948870408609 0.95835859749101304 </Points>
-<Ratio size="3"> 1 1 1 </Ratio>
+<Manual size="5"> 0 0 0 0 0 </Manual>
+<NumOfCells size="5"> 12 1 1 17 1 </NumOfCells>
+<Points size="5"> 0.49118800572621135 0.859619488704084 0.90616948870408631 0.95271948870408851 1.3211509716819612 </Points>
+<Ratio size="5"> 2 1 1 0.4999534975912987 1 </Ratio>
 </ControlPoints>
 <ControlPoints index="2">
-<Manual size="3"> 0 0 0 </Manual>
-<NumOfCells size="3"> 3 3 1 </NumOfCells>
-<Points size="3"> 1.272811842423504 1.323551064574247 1.3766564131766963 </Points>
-<Ratio size="3"> 1 1 1 </Ratio>
+<Manual size="5"> 0 0 0 0 0 </Manual>
+<NumOfCells size="5"> 12 1 1 18 1 </NumOfCells>
+<Points size="5"> 0.90963260428529236 1.2780428268093866 1.323551064574247 1.3690593023391073 1.7374695248632017 </Points>
+<Ratio size="5"> 2.004 1 1 0.49889266355729062 1 </Ratio>
 </ControlPoints>
 </BaseMeshSettings>
 <ConvergenceOptions index="0">
@@ -1936,7 +1936,7 @@
 <MaxIter value="100"/>
 <MaxPhysTime value="1"/>
 <MinRefinementNum value="0"/>
-<RRL value="2"/>
+<RRL value="3"/>
 <Rad_Ray_Tracing_Backward value="1"/>
 <Rad_n_DO_OrdinatesLevel value="3"/>
 <RadiationFreezingPeriodicity value="2"/>
@@ -3106,8 +3106,8 @@
 <RotateAxis value="0"/>
 <WallVelocityType value="0"/>
 <BodiesIDs size="0"> </BodiesIDs>
-<Excluded_Faces_Keys size="1"> 503 </Excluded_Faces_Keys>
-<Faces_Keys size="1"> 506 </Faces_Keys>
+<Excluded_Faces_Keys size="1"> 500 </Excluded_Faces_Keys>
+<Faces_Keys size="1"> 503 </Faces_Keys>
 <FeatureFrameOfRefXform size="16"> 1 0 0 0 1 0 0 0 1 -0.66369939590294014 -0.90866947683196808 -1.3088084684763668 1 0 0 0 </FeatureFrameOfRefXform>
 <ExcelParameterCollection index="0">
 <ExcelParameter index="0">
@@ -4330,8 +4330,8 @@
 <RotateAxis value="0"/>
 <WallVelocityType value="0"/>
 <BodiesIDs size="0"> </BodiesIDs>
-<Excluded_Faces_Keys size="1"> 506 </Excluded_Faces_Keys>
-<Faces_Keys size="1"> 503 </Faces_Keys>
+<Excluded_Faces_Keys size="1"> 503 </Excluded_Faces_Keys>
+<Faces_Keys size="1"> 500 </Faces_Keys>
 <FeatureFrameOfRefXform size="16"> -2.312964634635743e-16 1 0 0 0 1 1 2.312964634635743e-16 0 -1.2785512936904471 -0.7476361458107843 -0.87304995971003063 1 0 0 0 </FeatureFrameOfRefXform>
 <ExcelParameterCollection index="0">
 <ExcelParameter index="0">
@@ -5760,7 +5760,7 @@
 <GeomMeshType value="1"/>
 <GeomType value="0"/>
 <GeomUUID value="00000000-0000-0000-0000-000000000000"/>
-<BodiesIDs size="2"> 39a44144-f6e1-4cf3-b8cd-f74ed35e800a eff08365-dd23-40df-a704-07450f6db905 </BodiesIDs>
+<BodiesIDs size="2"> a043fd96-9190-40d0-9ea5-13155179a0d3 784d3ce4-88ac-4457-bd27-29ed086c96d3 </BodiesIDs>
 </Geometry>
 <ReferenceParameters index="0">
 <ConstTemperature value="293.19999999999999"/>
@@ -5888,7 +5888,7 @@
 </ReferenceTemperatureConditionCollection>
 </ReferenceParameters>
 <UnitsSystem index="0">
-<UnitsSystem_ParameterPrecision size="157"> 0 2 3 4 2 4 3 3 3 7 3 3 4 4 2 1 6 1 3 3 2 4 3 2 3 3 6 5 3 0 2 3 4 2 3 4 4 4 3 3 3 3 0 1 2 2 2 3 0 0 0 4 4 4 3 3 4 3 0 0 0 0 3 3 4 4 4 2 2 2 0 1 0 0 0 2 1 1 1 2 2 1 1 3 3 3 3 0 2 1 4 4 4 4 4 2 2 2 2 2 0 2 3 4 6 2 4 4 4 2 2 2 2 2 3 5 5 2 7 7 3 4 4 2 0 3 5 4 4 7 3 3 4 3 3 3 1 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 </UnitsSystem_ParameterPrecision>
+<UnitsSystem_ParameterPrecision size="157"> 0 2 3 4 2 4 3 3 3 7 3 3 4 4 2 1 6 1 3 3 2 4 3 2 3 3 6 5 3 0 2 3 4 2 3 4 4 4 3 3 3 3 0 1 2 2 2 3 0 0 0 4 4 4 3 3 4 3 0 0 0 0 3 3 4 4 4 2 2 2 0 1 0 3 0 2 1 1 1 2 2 1 1 3 3 3 3 0 2 1 4 4 4 4 4 2 2 2 2 2 0 2 3 4 6 2 4 4 4 2 2 2 2 2 3 5 5 2 7 7 3 4 4 2 0 3 5 4 4 7 3 3 4 3 3 3 1 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 </UnitsSystem_ParameterPrecision>
 <UnitsSystem_ParameterUnit size="157"> 0 800 300 100 1400 1700 2100 1100 1900 2500 0 900 1000 1800 1200 501 400 1500 2000 700 1300 1600 600 2200 2400 2300 200 2600 2700 600 10000 2800 2900 3000 3400 3500 3600 3700 3800 3900 4000 4100 10001 4300 4400 4500 4600 4700 0 0 0 4800 4900 5000 5100 5200 5300 5400 0 0 0 0 5900 6000 6100 6200 6300 6400 6502 6600 6701 6800 7200 10001 10000 7500 7600 7700 7800 7900 8000 8100 8200 8300 8400 8500 8600 8700 8800 8900 9000 9100 9200 9300 9400 9500 9600 9700 9800 9900 0 10100 10201 10301 10400 10501 10601 10701 10801 10900 11000 11100 11200 11300 11400 11500 11600 11700 11800 11900 12000 12100 12200 12300 12400 12500 12600 12703 12801 12900 13000 13100 13200 13300 13400 13502 13600 13700 13800 13900 14000 14100 14205 14303 14400 14500 14600 14700 14800 14900 15000 15100 15200 15300 15400 15500 15600 </UnitsSystem_ParameterUnit>
 </UnitsSystem>
 <UserParameterCollection index="0">

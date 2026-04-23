@@ -3,12 +3,12 @@
 	<version>1</version>
 	<computational_domain>
 		<cd_box>
-			<item>0.6569782296785821</item>
-			<item>0.84823234341720188</item>
-			<item>0.85728329060689512</item>
-			<item>0.95835859749101304</item>
-			<item>1.272811842423504</item>
-			<item>1.3766564131766963</item>
+			<item>0.29486990774399724</item>
+			<item>1.1954176270756944</item>
+			<item>0.49118800572621135</item>
+			<item>1.3211509716819612</item>
+			<item>0.90963260428529236</item>
+			<item>1.7374695248632017</item>
 		</cd_box>
 		<cd_symmetry>
 			<item>false</item>
@@ -46,19 +46,19 @@
 	</computational_domain>
 	<model_box>
 		<item>0.66235139072186988</item>
-		<item>0.82813614409782166</item>
+		<item>0.82793614409782168</item>
 		<item>0.85866948870408399</item>
-		<item>0.9536694887040883</item>
+		<item>0.95366948870408852</item>
 		<item>1.277114087263165</item>
 		<item>1.369988041885329</item>
 	</model_box>
-	<cd_dim>0.23995426297187805</cd_dim>
-	<model_dim>0.21245036102366532</model_dim>
+	<cd_dim>1.4782214164733887</cd_dim>
+	<model_dim>0.21229432869894432</model_dim>
 	<flow_space_type>0</flow_space_type>
 	<problem_type>0</problem_type>
 	<rotation_type>0</rotation_type>
 	<plane_irr_shift>4.3300999999999998e-05</plane_irr_shift>
-	<min_grid_step>0.00023689525050965137</min_grid_step>
+	<min_grid_step>0.00042213174343673303</min_grid_step>
 	<transient>false</transient>
 	<task_attributes>
 		<arrFSubst>

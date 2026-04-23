@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feature>
+	<version>1</version>
+	<uuid/>
+	<name>Global Min/Max: Temperature (Fluid)</name>
+	<type>13</type>
+	<res_file_key>a8d6a2e6-2afc-406e-96a3-a89f409a1d06</res_file_key>
+	<cs_name/>
+	<cs_uuid/>
+	<x_form>
+		<global>true</global>
+		<origin>
+			<item>0</item>
+			<item>0</item>
+			<item>0</item>
+		</origin>
+		<translate>
+			<item>1</item>
+			<item>0</item>
+			<item>0</item>
+			<item>0</item>
+			<item>1</item>
+			<item>0</item>
+			<item>0</item>
+			<item>0</item>
+			<item>1</item>
+		</translate>
+	</x_form>
+	<display_bl>false</display_bl>
+	<interpolate>true</interpolate>
+	<use_cad_geom>false</use_cad_geom>
+	<moving_reference>true</moving_reference>
+	<moving_display>true</moving_display>
+	<full_task>false</full_task>
+	<use_in_BRP>false</use_in_BRP>
+	<parameter>
+		<uuid>10D4FAE8-644D-4066-B057-01CB07D22173</uuid>
+		<name>Temperature (Fluid)</name>
+		<unit>20</unit>
+		<formula/>
+		<formula2/>
+		<formula3/>
+		<locality>0</locality>
+	</parameter>
+</feature>

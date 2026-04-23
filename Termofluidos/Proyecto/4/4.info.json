@@ -1,0 +1,188 @@
+{
+    "version": 0,
+    "model_name": "condensador.SLDASM",
+    "project_name": "Condensador",
+    "config_name": "Default",
+    "project_path": "C:\\Cursando\\Termofluidos\\Proyecto\\4\\4.xmlconfig",
+    "finished": true,
+    "mesh": {
+        "cells_total": 91109,
+        "cells_fluid": 54421,
+        "cells_solid": 36688,
+        "cells_fluid_containing_solid": 25777
+    },
+    "telemetry": {
+        "prepare_geometry_finished": "15:27:31-0500",
+        "prepare_geometry_total_time": 3,
+        "cpu_time_solver_total": 298,
+        "iteration": 304,
+        "travel": 4.011019286691139,
+        "phys_time": 0.0,
+        "time_step": 0.0,
+        "last_iteration_finished": "15:32:23-0500",
+        "cpu_time_per_last_iter": 1,
+        "cpu_time_left": 0,
+        "iterations_per_travel": 76
+    },
+    "goals": [
+        {
+            "goal": {
+                "name": "GG Minimum Static Pressure 1",
+                "unit": "pressure and stress",
+                "value": 101323.3270759809,
+                "progress": 50.3,
+                "criteria": 0.18594270572735694,
+                "delta": 0.3695917132718023,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Average Static Pressure 2",
+                "unit": "pressure and stress",
+                "value": 101325.5405220396,
+                "progress": 100.0,
+                "criteria": 0.027493075245874934,
+                "delta": 0.019310731440782547,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Maximum Static Pressure 3",
+                "unit": "pressure and stress",
+                "value": 101428.67617023244,
+                "progress": 100.0,
+                "criteria": 5.849970510587445,
+                "delta": 2.69880008965265,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Minimum Total Pressure 4",
+                "unit": "pressure and stress",
+                "value": 101323.32716800096,
+                "progress": 50.3,
+                "criteria": 0.18594270572735694,
+                "delta": 0.36952806553745177,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Average Total Pressure 5",
+                "unit": "pressure and stress",
+                "value": 101325.57403799762,
+                "progress": 100.0,
+                "criteria": 0.027507315600378206,
+                "delta": 0.018979084779857658,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Maximum Total Pressure 6",
+                "unit": "pressure and stress",
+                "value": 101431.9723733738,
+                "progress": 100.0,
+                "criteria": 5.847329219307576,
+                "delta": 2.698746676527662,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Minimum Temperature (Fluid) 7",
+                "unit": "temperature",
+                "value": 293.2,
+                "progress": 100.0,
+                "criteria": 4.618406731481173e-05,
+                "delta": 0.0,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Average Temperature (Fluid) 8",
+                "unit": "temperature",
+                "value": 439.5443440346542,
+                "progress": 16.5,
+                "criteria": 1.262114105723465,
+                "delta": 7.604079261831544,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Maximum Temperature (Fluid) 9",
+                "unit": "temperature",
+                "value": 600.0,
+                "progress": 100.0,
+                "criteria": 6e-06,
+                "delta": 0.0,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Minimum Heat Flux 10",
+                "unit": "heat flow",
+                "value": -1496214.3127910448,
+                "progress": 79.7,
+                "criteria": 63391.74079709418,
+                "delta": 79470.94650769932,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Average Heat Flux 11",
+                "unit": "heat flow",
+                "value": -2.7450116606665045,
+                "progress": 100.0,
+                "criteria": 8.094682566565531,
+                "delta": 0.8631786793524103,
+                "use_in_convergence": true
+            }
+        },
+        {
+            "goal": {
+                "name": "GG Maximum Heat Flux 12",
+                "unit": "heat flow",
+                "value": 580649.0871303175,
+                "progress": 100.0,
+                "criteria": 23734.58905915851,
+                "delta": 5036.72511621553,
+                "use_in_convergence": true
+            }
+        }
+    ],
+    "settings": {
+        "default_fluids": [
+            "Water"
+        ],
+        "analysis_type": "internal",
+        "heat_conduction_in_solids": true,
+        "radiation": false,
+        "time_dependent": false,
+        "gravity": false,
+        "flow_type": "laminar and turbulent",
+        "cavitation": false,
+        "high_mach_number": true,
+        "free_surface": false,
+        "structural": false,
+        "electromagnetism": false
+    },
+    "system_info": {
+        "product_name": "Flow Simulation 2025  x64 / 6875 / SOLVER ver. efd_dev.5608_04.02.2022+HMN_Inlet_Rework_V1+HMN_Inlet_Rework_V2",
+        "cad_version": "SOLIDWORKS 2025 SP5.0",
+        "computer_name": "MANUNKIND",
+        "user_name": "andre",
+        "os": "Windows 11 (or higher) (Version 10.0.26200)",
+        "cpu": "AMD Ryzen 5 5500U with Radeon Graphics         ",
+        "number_of_cores": 12,
+        "memory_avail": 8430,
+        "memory_total": 15694
+    }
+}

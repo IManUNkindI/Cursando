@@ -2,41 +2,41 @@ Model: Caldera.SLDASM
 Project name: Caldera
 Config name: Default
 Project path: C:\Cursando\Termofluidos\Proyecto\1\1.xmlconfig
-Status: Calculating
+Status: Finished
 
 Number of cells:
-    Total cells: 21864
-    Fluid cells: 8101
-    Solid cells: 13763
-    Fluid cells containing solids: 4903
+    Total cells: 27567
+    Fluid cells: 10922
+    Solid cells: 16645
+    Fluid cells containing solids: 6723
 
 
-Geometry preparation finished: 
-Geometry preparation time: 00:00:00
-Solver CPU time: 00:00:54
-Iterations: 161
-Travels: 4.00820
+Geometry preparation finished: 13:18:59
+Geometry preparation time: 00:00:02
+Solver CPU time: 00:01:45
+Iterations: 178
+Travels: 4.01134
 Physical time: 0.000000e+00 s
 Current time step: 0.000000e+00 s
-Last iteration finished: 
+Last iteration finished: 13:20:23
 CPU time per last iteration: 00:00:00
 CPU time left: 00:00:00
-Iterations per 1 travel: 41
+Iterations per 1 travel: 45
 
 Goals
     Name                             | Unit (SI)           | Value           | Progress  | Critetia        | Delta           | Use in convergence
-    GG Minimum Static Pressure 1     | pressure and stress |       600000.00 |     100.0 |            0.03 |            0.00 | On
-    GG Bulk Av Static Pressure 2     | pressure and stress |       600000.92 |     100.0 |            0.03 |            0.02 | On
-    GG Minimum Total Pressure 3      | pressure and stress |       600000.00 |     100.0 |            0.03 |            0.00 | On
-    GG Maximum Total Pressure 4      | pressure and stress |       600002.42 |     100.0 |            0.12 |            0.04 | On
-    GG Average Temperature (Fluid) 5 | temperature         |          405.28 |      15.1 |            2.05 |           13.53 | On
-    GG Maximum Temperature (Fluid) 6 | temperature         |          451.51 |      34.1 |            3.50 |           10.24 | On
-    GG Minimum Density (Fluid) 7     | density             |          890.43 |      17.7 |            1.88 |           10.58 | On
-    GG Maximum Density (Fluid) 8     | density             |          997.56 |     100.0 |            0.00 |            0.00 | On
-    GG Heat Transfer Rate 9          | heat flow           |          432.14 |     100.0 |           35.79 |           22.26 | On
+    GG Minimum Static Pressure 1     | pressure and stress |       600000.00 |     100.0 |            0.01 |            0.00 | On
+    GG Bulk Av Static Pressure 2     | pressure and stress |       600000.92 |     100.0 |            0.01 |            0.01 | On
+    GG Minimum Total Pressure 3      | pressure and stress |       600000.00 |     100.0 |            0.01 |            0.00 | On
+    GG Maximum Total Pressure 4      | pressure and stress |       600002.40 |     100.0 |            0.06 |            0.03 | On
+    GG Average Temperature (Fluid) 5 | temperature         |          413.94 |       7.7 |            1.04 |           13.34 | On
+    GG Maximum Temperature (Fluid) 6 | temperature         |          458.06 |      19.4 |            1.88 |            9.66 | On
+    GG Minimum Density (Fluid) 7     | density             |          883.40 |       8.9 |            0.93 |           10.42 | On
+    GG Maximum Density (Fluid) 8     | density             |          997.56 |      78.1 |            0.00 |            0.00 | On
+    GG Heat Transfer Rate 9          | heat flow           |          416.47 |      70.0 |           16.93 |           24.16 | On
 
 Project details
-    Default fluids: 
+    Default fluids: Water
     Analysis type: Internal
     Heat conduction in solids: On
     Radiation: On
@@ -57,5 +57,5 @@ System info
     Operating system: Windows 11 (or higher) (Version 10.0.26200)
     Processors: AMD Ryzen 5 5500U with Radeon Graphics         
     Number of cores: 12
-    Memory: 6124 MB / 15694 MB
+    Memory: 9098 MB / 15694 MB
 

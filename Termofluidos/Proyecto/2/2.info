@@ -5,41 +5,41 @@ Project path: C:\Cursando\Termofluidos\Proyecto\2\2.xmlconfig
 Status: Finished
 
 Number of cells:
-    Total cells: 32602
-    Fluid cells: 32602
-    Solid cells: 21387
-    Fluid cells containing solids: 19776
+    Total cells: 82044
+    Fluid cells: 82044
+    Solid cells: 22965
+    Fluid cells containing solids: 19069
 
 
-Geometry preparation finished: 20:40:05
-Geometry preparation time: 00:00:02
-Solver CPU time: 00:03:21
-Iterations: 256
-Travels: 4.00678
+Geometry preparation finished: 13:37:57
+Geometry preparation time: 00:00:03
+Solver CPU time: 00:06:31
+Iterations: 348
+Travels: 4.00436
 Physical time: 0.000000e+00 s
 Current time step: 0.000000e+00 s
-Last iteration finished: 20:43:21
-CPU time per last iteration: 00:00:01
+Last iteration finished: 13:44:21
+CPU time per last iteration: 00:00:02
 CPU time left: 00:00:00
-Iterations per 1 travel: 64
+Iterations per 1 travel: 87
 
 Goals
     Name                             | Unit (SI)           | Value           | Progress  | Critetia        | Delta           | Use in convergence
-    GG Minimum Static Pressure 1     | pressure and stress |       101325.00 |     100.0 |          118.21 |            0.00 | On
-    GG Average Static Pressure 2     | pressure and stress |       110516.47 |      12.7 |           80.31 |          629.50 | On
-    GG Maximum Static Pressure 3     | pressure and stress |       151189.52 |      12.7 |          432.52 |         3390.92 | On
-    GG Minimum Total Pressure 4      | pressure and stress |       101325.00 |     100.0 |          118.21 |            0.00 | On
-    GG Average Total Pressure 5      | pressure and stress |       110516.63 |      12.7 |           80.31 |          629.50 | On
-    GG Maximum Total Pressure 6      | pressure and stress |       151412.18 |      12.7 |          431.13 |         3384.27 | On
+    GG Minimum Static Pressure 1     | pressure and stress |       101325.00 |     100.0 |           84.49 |            0.00 | On
+    GG Average Static Pressure 2     | pressure and stress |       101349.83 |      42.3 |            0.23 |            0.55 | On
+    GG Maximum Static Pressure 3     | pressure and stress |       160035.20 |      43.0 |          552.82 |         1285.02 | On
+    GG Minimum Total Pressure 4      | pressure and stress |       101325.00 |     100.0 |           84.49 |            0.00 | On
+    GG Average Total Pressure 5      | pressure and stress |       101349.83 |      42.3 |            0.23 |            0.55 | On
+    GG Maximum Total Pressure 6      | pressure and stress |       160222.00 |      42.2 |          542.12 |         1283.41 | On
     GG Minimum Temperature (Fluid) 7 | temperature         |          293.20 |     100.0 |            0.02 |            0.00 | On
-    GG Average Temperature (Fluid) 8 | temperature         |          319.88 |      12.9 |            0.23 |            1.79 | On
-    GG Maximum Temperature (Fluid) 9 | temperature         |          473.40 |     100.0 |            0.06 |            0.04 | On
-    GG Minimum Density (Fluid) 10    | density             |            0.69 |      12.7 |            0.00 |            0.02 | On
-    GG Average Density (Fluid) 11    | density             |            0.75 |      59.8 |            0.00 |            0.00 | On
-    GG Maximum Density (Fluid) 12    | density             |            0.95 |      14.6 |            0.00 |            0.01 | On
+    GG Average Temperature (Fluid) 8 | temperature         |          293.27 |      42.0 |            0.00 |            0.00 | On
+    GG Maximum Temperature (Fluid) 9 | temperature         |          473.37 |     100.0 |            0.06 |            0.01 | On
+    GG Minimum Density (Fluid) 10    | density             |            0.73 |      42.4 |            0.00 |            0.01 | On
+    GG Average Density (Fluid) 11    | density             |            0.75 |       8.4 |            0.00 |            0.00 | On
+    GG Maximum Density (Fluid) 12    | density             |            0.98 |       8.2 |            0.00 |            0.05 | On
     GG Minimum Velocity 13           | speed and velocity  |            0.00 |     100.0 |            0.00 |            0.00 | On
-    GG Average Velocity 14           | speed and velocity  |            0.12 |     100.0 |            0.00 |            0.00 | On
-    GG Maximum Velocity 15           | speed and velocity  |           44.89 |     100.0 |            0.34 |            0.09 | On
+    GG Average Velocity 14           | speed and velocity  |            0.00 |     100.0 |            0.00 |            0.00 | On
+    GG Maximum Velocity 15           | speed and velocity  |           40.16 |     100.0 |            0.47 |            0.19 | On
 
 Project details
     Default fluids: H2O
@@ -63,5 +63,5 @@ System info
     Operating system: Windows 11 (or higher) (Version 10.0.26200)
     Processors: AMD Ryzen 5 5500U with Radeon Graphics         
     Number of cores: 12
-    Memory: 7168 MB / 15694 MB
+    Memory: 8975 MB / 15694 MB
 
