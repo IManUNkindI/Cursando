@@ -4,35 +4,35 @@
     "project_name": "Turbina",
     "config_name": "Default",
     "project_path": "C:\\Cursando\\Termofluidos\\Proyecto\\2\\2.xmlconfig",
-    "finished": true,
+    "finished": false,
     "mesh": {
-        "cells_total": 82044,
-        "cells_fluid": 82044,
-        "cells_solid": 22965,
-        "cells_fluid_containing_solid": 19069
+        "cells_total": 32164,
+        "cells_fluid": 32164,
+        "cells_solid": 26293,
+        "cells_fluid_containing_solid": 20401
     },
     "telemetry": {
-        "prepare_geometry_finished": "13:37:57-0500",
-        "prepare_geometry_total_time": 3,
-        "cpu_time_solver_total": 391,
-        "iteration": 348,
-        "travel": 4.0043648569621295,
+        "prepare_geometry_finished": null,
+        "prepare_geometry_total_time": 0,
+        "cpu_time_solver_total": 194,
+        "iteration": 255,
+        "travel": 4.009161044129651,
         "phys_time": 0.0,
         "time_step": 0.0,
-        "last_iteration_finished": "13:44:21-0500",
-        "cpu_time_per_last_iter": 2,
-        "cpu_time_left": 0,
-        "iterations_per_travel": 87
+        "last_iteration_finished": null,
+        "cpu_time_per_last_iter": 0,
+        "cpu_time_left": -1,
+        "iterations_per_travel": 64
     },
     "goals": [
         {
             "goal": {
                 "name": "GG Minimum Static Pressure 1",
                 "unit": "pressure and stress",
-                "value": 101325.0,
+                "value": 79509.674267756,
                 "progress": 100.0,
-                "criteria": 84.49266701783635,
-                "delta": 0.0,
+                "criteria": 52.47378531666574,
+                "delta": 15.120284930526395,
                 "use_in_convergence": true
             }
         },
@@ -40,10 +40,10 @@
             "goal": {
                 "name": "GG Average Static Pressure 2",
                 "unit": "pressure and stress",
-                "value": 101349.8261631248,
-                "progress": 42.3,
-                "criteria": 0.23168062823329819,
-                "delta": 0.5470785938814515,
+                "value": 97889.18336685153,
+                "progress": 100.0,
+                "criteria": 67.31099495055197,
+                "delta": 3.507548233057605,
                 "use_in_convergence": true
             }
         },
@@ -51,10 +51,10 @@
             "goal": {
                 "name": "GG Maximum Static Pressure 3",
                 "unit": "pressure and stress",
-                "value": 160035.19806820966,
-                "progress": 43.0,
-                "criteria": 552.8235621281566,
-                "delta": 1285.0154917014588,
+                "value": 101325.0,
+                "progress": 100.0,
+                "criteria": 0.00101325,
+                "delta": 0.0,
                 "use_in_convergence": true
             }
         },
@@ -62,10 +62,10 @@
             "goal": {
                 "name": "GG Minimum Total Pressure 4",
                 "unit": "pressure and stress",
-                "value": 101325.0,
+                "value": 79509.674267756,
                 "progress": 100.0,
-                "criteria": 84.49266701783635,
-                "delta": 0.0,
+                "criteria": 42.22704077122369,
+                "delta": 15.120284930526395,
                 "use_in_convergence": true
             }
         },
@@ -73,10 +73,10 @@
             "goal": {
                 "name": "GG Average Total Pressure 5",
                 "unit": "pressure and stress",
-                "value": 101349.82659326759,
-                "progress": 42.3,
-                "criteria": 0.23168698999827028,
-                "delta": 0.5470783718046732,
+                "value": 97889.37777179049,
+                "progress": 100.0,
+                "criteria": 67.3108598438221,
+                "delta": 3.5082015662192134,
                 "use_in_convergence": true
             }
         },
@@ -84,10 +84,10 @@
             "goal": {
                 "name": "GG Maximum Total Pressure 6",
                 "unit": "pressure and stress",
-                "value": 160221.9973627257,
-                "progress": 42.2,
-                "criteria": 542.1248861734989,
-                "delta": 1283.4122841829376,
+                "value": 101325.0,
+                "progress": 100.0,
+                "criteria": 0.00101325,
+                "delta": 0.0,
                 "use_in_convergence": true
             }
         },
@@ -95,10 +95,10 @@
             "goal": {
                 "name": "GG Minimum Temperature (Fluid) 7",
                 "unit": "temperature",
-                "value": 293.2000000000214,
+                "value": 293.20000000001517,
                 "progress": 100.0,
-                "criteria": 0.015821236020913714,
-                "delta": 3.126388037344441e-12,
+                "criteria": 0.04620168503101411,
+                "delta": 1.5347723092418164e-12,
                 "use_in_convergence": true
             }
         },
@@ -106,10 +106,10 @@
             "goal": {
                 "name": "GG Average Temperature (Fluid) 8",
                 "unit": "temperature",
-                "value": 293.27362179144046,
-                "progress": 42.0,
-                "criteria": 0.0007349157712229726,
-                "delta": 0.001746484816010252,
+                "value": 320.9004455409757,
+                "progress": 19.9,
+                "criteria": 0.2461106243557884,
+                "delta": 1.2349612211096996,
                 "use_in_convergence": true
             }
         },
@@ -117,10 +117,10 @@
             "goal": {
                 "name": "GG Maximum Temperature (Fluid) 9",
                 "unit": "temperature",
-                "value": 473.37148755852456,
+                "value": 473.6417532162398,
                 "progress": 100.0,
-                "criteria": 0.057610613518113495,
-                "delta": 0.00644766423135934,
+                "criteria": 0.028270237701952965,
+                "delta": 0.004863780576044974,
                 "use_in_convergence": true
             }
         },
@@ -128,10 +128,10 @@
             "goal": {
                 "name": "GG Minimum Density (Fluid) 10",
                 "unit": "density",
-                "value": 0.7314423459409499,
-                "progress": 42.4,
-                "criteria": 0.002500962948207693,
-                "delta": 0.005896641374929956,
+                "value": 0.3703281044825105,
+                "progress": 100.0,
+                "criteria": 0.0031203671106886243,
+                "delta": 9.25428225223568e-05,
                 "use_in_convergence": true
             }
         },
@@ -139,10 +139,10 @@
             "goal": {
                 "name": "GG Average Density (Fluid) 11",
                 "unit": "density",
-                "value": 0.7487802036039246,
-                "progress": 8.4,
-                "criteria": 2.2968764740031808e-08,
-                "delta": 2.7254760659456423e-07,
+                "value": 0.6872351137108912,
+                "progress": 72.4,
+                "criteria": 0.0007676432252397336,
+                "delta": 0.001060186362925708,
                 "use_in_convergence": true
             }
         },
@@ -150,10 +150,10 @@
             "goal": {
                 "name": "GG Maximum Density (Fluid) 12",
                 "unit": "density",
-                "value": 0.9837365874614626,
-                "progress": 8.2,
-                "criteria": 0.0040092858527618624,
-                "delta": 0.048845581844735975,
+                "value": 0.7487830392944335,
+                "progress": 100.0,
+                "criteria": 7.487830392944334e-09,
+                "delta": 3.774758283725532e-15,
                 "use_in_convergence": true
             }
         },
@@ -172,10 +172,10 @@
             "goal": {
                 "name": "GG Average Velocity 14",
                 "unit": "speed and velocity",
-                "value": 0.00028696413733861895,
+                "value": 0.16183343146751256,
                 "progress": 100.0,
-                "criteria": 6.979861774636751e-06,
-                "delta": 1.741209852220869e-06,
+                "criteria": 0.002839549871276095,
+                "delta": 0.0002737008313417888,
                 "use_in_convergence": true
             }
         },
@@ -183,18 +183,16 @@
             "goal": {
                 "name": "GG Maximum Velocity 15",
                 "unit": "speed and velocity",
-                "value": 40.15819357478745,
-                "progress": 100.0,
-                "criteria": 0.46512499695876713,
-                "delta": 0.18900008337594443,
+                "value": 69.76287309730932,
+                "progress": 80.5,
+                "criteria": 1.196157546808677,
+                "delta": 1.485843003073029,
                 "use_in_convergence": true
             }
         }
     ],
     "settings": {
-        "default_fluids": [
-            "H2O"
-        ],
+        "default_fluids": [],
         "analysis_type": "external",
         "heat_conduction_in_solids": false,
         "radiation": false,
@@ -215,7 +213,7 @@
         "os": "Windows 11 (or higher) (Version 10.0.26200)",
         "cpu": "AMD Ryzen 5 5500U with Radeon Graphics         ",
         "number_of_cores": 12,
-        "memory_avail": 8975,
+        "memory_avail": 7355,
         "memory_total": 15694
     }
 }

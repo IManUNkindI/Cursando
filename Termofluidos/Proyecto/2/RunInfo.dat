@@ -1,13 +1,13 @@
 ﻿absolute path:C:\Cursando\Termofluidos\Proyecto\2
 init:1
-run_capture:1
+run_capture:0
 run_solver:1
-new_calc:1
+new_calc:0
 close_monitor:0
 run_convert:0
 isOK:1
-ForceNewCalc:1
-run_capture_prestate:1
+ForceNewCalc:0
+run_capture_prestate:0
 StartFldName:C:\Cursando\Termofluidos\Proyecto\2\2.fld
 NewCalcStartCptName:
 TransTimeMoments:
@@ -15,15 +15,15 @@ TransFldNames:
 CurSelTranFld:0
 Trans:0
 UsePrevRes:0
-ForcetoRunCPT:1
+ForcetoRunCPT:0
 ComputerName:
-port:49698
+port:50718
 ProcessResults:1
 LoadLastResult:1
 ProcessorsToUse:0
 LoadBaseFLDFile:0
 BaseFLDFile:
-id:{1003A4D9-1972-4470-8280-7F42C5DD0AF6}
+id:{470F077E-0EC1-4E42-88D2-C01BB14DDAD9}
 calculation_state:5
 ForceContinue:0
-SolverProcessId:18316
+SolverProcessId:18584

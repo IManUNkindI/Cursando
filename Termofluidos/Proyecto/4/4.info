@@ -1,42 +1,42 @@
-Model: condensador.SLDASM
+Model: Condensador.SLDASM
 Project name: Condensador
 Config name: Default
 Project path: C:\Cursando\Termofluidos\Proyecto\4\4.xmlconfig
 Status: Finished
 
 Number of cells:
-    Total cells: 91109
-    Fluid cells: 54421
-    Solid cells: 36688
-    Fluid cells containing solids: 25777
+    Total cells: 79692
+    Fluid cells: 52587
+    Solid cells: 27105
+    Fluid cells containing solids: 22214
 
 
-Geometry preparation finished: 15:27:31
+Geometry preparation finished: 10:10:40
 Geometry preparation time: 00:00:03
-Solver CPU time: 00:04:58
-Iterations: 304
-Travels: 4.01102
+Solver CPU time: 00:04:19
+Iterations: 300
+Travels: 4.00373
 Physical time: 0.000000e+00 s
 Current time step: 0.000000e+00 s
-Last iteration finished: 15:32:23
+Last iteration finished: 10:14:53
 CPU time per last iteration: 00:00:01
 CPU time left: 00:00:00
-Iterations per 1 travel: 76
+Iterations per 1 travel: 75
 
 Goals
     Name                             | Unit (SI)           | Value           | Progress  | Critetia        | Delta           | Use in convergence
-    GG Minimum Static Pressure 1     | pressure and stress |       101323.33 |      50.3 |            0.19 |            0.37 | On
-    GG Average Static Pressure 2     | pressure and stress |       101325.54 |     100.0 |            0.03 |            0.02 | On
-    GG Maximum Static Pressure 3     | pressure and stress |       101428.68 |     100.0 |            5.85 |            2.70 | On
-    GG Minimum Total Pressure 4      | pressure and stress |       101323.33 |      50.3 |            0.19 |            0.37 | On
-    GG Average Total Pressure 5      | pressure and stress |       101325.57 |     100.0 |            0.03 |            0.02 | On
-    GG Maximum Total Pressure 6      | pressure and stress |       101431.97 |     100.0 |            5.85 |            2.70 | On
-    GG Minimum Temperature (Fluid) 7 | temperature         |          293.20 |     100.0 |            0.00 |            0.00 | On
-    GG Average Temperature (Fluid) 8 | temperature         |          439.54 |      16.5 |            1.26 |            7.60 | On
-    GG Maximum Temperature (Fluid) 9 | temperature         |          600.00 |     100.0 |            0.00 |            0.00 | On
-    GG Minimum Heat Flux 10          | heat flow           |     -1496214.31 |      79.7 |        63391.74 |        79470.95 | On
-    GG Average Heat Flux 11          | heat flow           |           -2.75 |     100.0 |            8.09 |            0.86 | On
-    GG Maximum Heat Flux 12          | heat flow           |       580649.09 |     100.0 |        23734.59 |         5036.73 | On
+    GG Minimum Total Pressure 1      | pressure and stress |        79999.99 |     100.0 |            0.00 |            0.00 | On
+    GG Average Total Pressure 2      | pressure and stress |       101213.37 |     100.0 |            0.36 |            0.13 | On
+    GG Maximum Total Pressure 3      | pressure and stress |       101427.01 |     100.0 |            0.76 |            0.12 | On
+    GG Minimum Temperature (Fluid) 4 | temperature         |          293.20 |     100.0 |            0.00 |            0.00 | On
+    GG Average Temperature (Fluid) 5 | temperature         |          296.35 |       8.9 |            0.03 |            0.30 | On
+    GG Maximum Temperature (Fluid) 6 | temperature         |          473.15 |     100.0 |            0.00 |            0.00 | On
+    GG Minimum Density (Fluid) 7     | density             |          863.84 |     100.0 |            0.00 |            0.00 | On
+    GG Average Density (Fluid) 8     | density             |          996.71 |       8.8 |            0.01 |            0.08 | On
+    GG Maximum Density (Fluid) 9     | density             |          997.56 |     100.0 |            0.00 |            0.00 | On
+    GG Minimum Heat Flux 10          | heat flow           |      -563960.38 |     100.0 |        10166.34 |         1202.14 | On
+    GG Average Heat Flux 11          | heat flow           |            0.09 |     100.0 |            1.26 |            0.04 | On
+    GG Maximum Heat Flux 12          | heat flow           |       165616.62 |     100.0 |         6070.76 |         2274.84 | On
 
 Project details
     Default fluids: Water
@@ -60,5 +60,5 @@ System info
     Operating system: Windows 11 (or higher) (Version 10.0.26200)
     Processors: AMD Ryzen 5 5500U with Radeon Graphics         
     Number of cores: 12
-    Memory: 8430 MB / 15694 MB
+    Memory: 7330 MB / 15694 MB
 

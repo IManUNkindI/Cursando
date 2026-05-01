@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	<version>1</version>
+	<name>Caldera</name>
+	<uuid>748bae29-fd33-4301-b83d-a9b8678ba8af</uuid>
+	<directory>prj1</directory>
+	<vwr_res_files_dir>1</vwr_res_files_dir>
+	<geom_db_uuid>19d10d18-0ba7-493a-8653-5c85ab53d406</geom_db_uuid>
+	<gdb_light_uuid>dbc5630f-f6ae-4f97-b618-a1ad581a717a</gdb_light_uuid>
+	<model_geom_uuid>b6006c7f-5efa-4e72-826e-0b4f02edcad7</model_geom_uuid>
+	<template_id/>
+</project>

@@ -5,41 +5,47 @@ Project path: C:\Cursando\Termofluidos\Proyecto\1\1.xmlconfig
 Status: Finished
 
 Number of cells:
-    Total cells: 27567
-    Fluid cells: 10922
-    Solid cells: 16645
-    Fluid cells containing solids: 6723
+    Total cells: 28784
+    Fluid cells: 13743
+    Solid cells: 15041
+    Fluid cells containing solids: 7717
 
 
-Geometry preparation finished: 13:18:59
+Geometry preparation finished: 11:16:50
 Geometry preparation time: 00:00:02
 Solver CPU time: 00:01:45
-Iterations: 178
-Travels: 4.01134
+Iterations: 192
+Travels: 4.00784
 Physical time: 0.000000e+00 s
 Current time step: 0.000000e+00 s
-Last iteration finished: 13:20:23
-CPU time per last iteration: 00:00:00
+Last iteration finished: 11:18:15
+CPU time per last iteration: 00:00:01
 CPU time left: 00:00:00
-Iterations per 1 travel: 45
+Iterations per 1 travel: 48
 
 Goals
-    Name                             | Unit (SI)           | Value           | Progress  | Critetia        | Delta           | Use in convergence
-    GG Minimum Static Pressure 1     | pressure and stress |       600000.00 |     100.0 |            0.01 |            0.00 | On
-    GG Bulk Av Static Pressure 2     | pressure and stress |       600000.92 |     100.0 |            0.01 |            0.01 | On
-    GG Minimum Total Pressure 3      | pressure and stress |       600000.00 |     100.0 |            0.01 |            0.00 | On
-    GG Maximum Total Pressure 4      | pressure and stress |       600002.40 |     100.0 |            0.06 |            0.03 | On
-    GG Average Temperature (Fluid) 5 | temperature         |          413.94 |       7.7 |            1.04 |           13.34 | On
-    GG Maximum Temperature (Fluid) 6 | temperature         |          458.06 |      19.4 |            1.88 |            9.66 | On
-    GG Minimum Density (Fluid) 7     | density             |          883.40 |       8.9 |            0.93 |           10.42 | On
-    GG Maximum Density (Fluid) 8     | density             |          997.56 |      78.1 |            0.00 |            0.00 | On
-    GG Heat Transfer Rate 9          | heat flow           |          416.47 |      70.0 |           16.93 |           24.16 | On
+    Name                              | Unit (SI)           | Value           | Progress  | Critetia        | Delta           | Use in convergence
+    GG Minimum Static Pressure 1      | pressure and stress |       300000.00 |     100.0 |            0.00 |            0.00 | On
+    GG Average Static Pressure 2      | pressure and stress |       300002.08 |     100.0 |            0.03 |            0.01 | On
+    GG Maximum Static Pressure 3      | pressure and stress |       300004.42 |     100.0 |            0.13 |            0.01 | On
+    GG Minimum Total Pressure 4       | pressure and stress |       300000.04 |     100.0 |            0.00 |            0.00 | On
+    GG Average Total Pressure 5       | pressure and stress |       300002.08 |     100.0 |            0.03 |            0.01 | On
+    GG Maximum Total Pressure 6       | pressure and stress |       300004.53 |     100.0 |            0.13 |            0.01 | On
+    GG Minimum Temperature (Fluid) 7  | temperature         |          366.75 |     100.0 |            0.72 |            0.00 | On
+    GG Average Temperature (Fluid) 8  | temperature         |          468.77 |       6.3 |            1.47 |           23.08 | On
+    GG Maximum Temperature (Fluid) 9  | temperature         |         2233.45 |     100.0 |           45.56 |            4.32 | On
+    GG Minimum Heat Flux 10           | heat flow           |     -4224821.61 |      96.2 |       104546.75 |       108576.96 | On
+    GG Average Heat Flux 11           | heat flow           |         3369.36 |     100.0 |           96.96 |            1.90 | On
+    GG Maximum Heat Flux 12           | heat flow           |      4288033.62 |     100.0 |       124474.09 |        48231.58 | On
+    GG Minimum Temperature (Solid) 13 | temperature         |          408.82 |      11.2 |            1.03 |            9.18 | On
+    GG Average Temperature (Solid) 14 | temperature         |          470.11 |       6.6 |            1.45 |           21.79 | On
+    GG Maximum Temperature (Solid) 15 | temperature         |         2233.59 |     100.0 |           47.26 |            4.33 | On
 
 Project details
     Default fluids: Water
     Analysis type: Internal
     Heat conduction in solids: On
-    Radiation: On
+    Radiation: Off
     Time dependent: Off
     Gravitational effects: Off
     Flow type: Laminar and turbulent
@@ -57,5 +63,5 @@ System info
     Operating system: Windows 11 (or higher) (Version 10.0.26200)
     Processors: AMD Ryzen 5 5500U with Radeon Graphics         
     Number of cores: 12
-    Memory: 9098 MB / 15694 MB
+    Memory: 7295 MB / 15694 MB
 

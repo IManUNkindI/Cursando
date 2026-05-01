@@ -60,7 +60,7 @@
 <VersionType value="2"/>
 <WallSlipping value="0"/>
 <ComputationalDomainSidesBCTypes size="6"> 0 0 0 0 0 0 </ComputationalDomainSidesBCTypes>
-<ComputationalDomainSize size="6"> 0.29486990774399724 0.49118800572621135 0.90963260428529236 1.1954176270756944 1.3211509716819612 1.7374695248632017 </ComputationalDomainSize>
+<ComputationalDomainSize size="6"> 0.65840424648023577 0.85484395422212323 1.2718568373140542 0.8318832883394558 0.96035847923864159 1.3752164912070555 </ComputationalDomainSize>
 <DefaultFluids size="1"> 416EA41F-6244-4CBF-A898-FB0D58C1B3FE </DefaultFluids>
 <DisabledBodiesIDs size="0"> </DisabledBodiesIDs>
 <FluidSubstancesUUID size="1"> 416EA41F-6244-4CBF-A898-FB0D58C1B3FE </FluidSubstancesUUID>
@@ -1879,9 +1879,9 @@
 <MaxThinChannelRefinementLevel value="2"/>
 <MaximumChannelsThickness value="0"/>
 <MinimumChannelsThickness value="0"/>
-<Nx value="40"/>
-<Ny value="36"/>
-<Nz value="36"/>
+<Nx value="10"/>
+<Ny value="8"/>
+<Nz value="8"/>
 <PartialCellsRefinementLevel value="0"/>
 <RefineAllCells value="0"/>
 <RefineAllFluidCells value="0"/>
@@ -1893,22 +1893,22 @@
 <ToleranceCriteriaValue value="0.0010406375032230349"/>
 <DistanceRefinementLevels size="2"> 0 0 </DistanceRefinementLevels>
 <ControlPoints index="0">
-<Manual size="5"> 0 0 0 0 0 </Manual>
-<NumOfCells size="5"> 12 3 3 17 1 </NumOfCells>
-<Points size="5"> 0.29486990774399724 0.66400723825562935 0.74514376740984578 0.82628029656406221 1.1954176270756944 </Points>
-<Ratio size="5"> 1.9219999999999999 1 1 0.52037003291214146 1 </Ratio>
+<Manual size="3"> 0 0 0 </Manual>
+<NumOfCells size="3"> 4 4 1 </NumOfCells>
+<Points size="3"> 0.65840424648023577 0.74514376740984578 0.8318832883394558 </Points>
+<Ratio size="3"> 1 1 1 </Ratio>
 </ControlPoints>
 <ControlPoints index="1">
-<Manual size="5"> 0 0 0 0 0 </Manual>
-<NumOfCells size="5"> 12 1 1 17 1 </NumOfCells>
-<Points size="5"> 0.49118800572621135 0.859619488704084 0.90616948870408631 0.95271948870408851 1.3211509716819612 </Points>
-<Ratio size="5"> 2 1 1 0.4999534975912987 1 </Ratio>
+<Manual size="3"> 0 0 0 </Manual>
+<NumOfCells size="3"> 3 3 1 </NumOfCells>
+<Points size="3"> 0.85484395422212323 0.90616948870408631 0.96035847923864159 </Points>
+<Ratio size="3"> 1 1 1 </Ratio>
 </ControlPoints>
 <ControlPoints index="2">
-<Manual size="5"> 0 0 0 0 0 </Manual>
-<NumOfCells size="5"> 12 1 1 18 1 </NumOfCells>
-<Points size="5"> 0.90963260428529236 1.2780428268093866 1.323551064574247 1.3690593023391073 1.7374695248632017 </Points>
-<Ratio size="5"> 2.004 1 1 0.49889266355729062 1 </Ratio>
+<Manual size="3"> 0 0 0 </Manual>
+<NumOfCells size="3"> 3 3 1 </NumOfCells>
+<Points size="3"> 1.2718568373140542 1.323551064574247 1.3752164912070555 </Points>
+<Ratio size="3"> 1 1 1 </Ratio>
 </ControlPoints>
 </BaseMeshSettings>
 <ConvergenceOptions index="0">
@@ -3169,7 +3169,7 @@
 <ExcelParameterLinkedSubId value=""/>
 <ExcelParameterPeriodic value="0"/>
 <ExcelParameterType value="6"/>
-<ExcelParameterValue value="600000"/>
+<ExcelParameterValue value="300000"/>
 <UUID value=""/>
 <Units value="14"/>
 <UseDampedGoalsValues value="0"/>
@@ -3339,7 +3339,7 @@
 <ExcelParameterLinkedSubId value=""/>
 <ExcelParameterPeriodic value="0"/>
 <ExcelParameterType value="108"/>
-<ExcelParameterValue value="0.00025999999999999998"/>
+<ExcelParameterValue value="0.00020000000000000001"/>
 <UUID value=""/>
 <Units value="12"/>
 <UseDampedGoalsValues value="0"/>
@@ -4321,11 +4321,11 @@
 </BC>
 <BC index="1">
 <FeatureType value="0"/>
-<FlowConditionsTypes value="100"/>
+<FlowConditionsTypes value="202"/>
 <FrameOfRefUUID value="935110fe-b625-41fe-a184-e269e4279e55"/>
 <GUID value="171bf271-7b78-4b76-95c5-66db2ab86da1"/>
 <IsMovingWall value="0"/>
-<Name value="Outlet Mass Flow 2"/>
+<Name value="Environment Pressure 2"/>
 <ParentFeatureUUID value=""/>
 <RotateAxis value="0"/>
 <WallVelocityType value="0"/>
@@ -4342,7 +4342,7 @@
 <ExcelParameterLinkedSubId value=""/>
 <ExcelParameterPeriodic value="0"/>
 <ExcelParameterType value="1"/>
-<ExcelParameterValue value="293.19999999999999"/>
+<ExcelParameterValue value="366.64999999999998"/>
 <UUID value=""/>
 <Units value="20"/>
 <UseDampedGoalsValues value="0"/>
@@ -4410,7 +4410,7 @@
 <ExcelParameterLinkedSubId value=""/>
 <ExcelParameterPeriodic value="0"/>
 <ExcelParameterType value="7"/>
-<ExcelParameterValue value="101325"/>
+<ExcelParameterValue value="80000"/>
 <UUID value=""/>
 <Units value="14"/>
 <UseDampedGoalsValues value="0"/>
@@ -5760,7 +5760,7 @@
 <GeomMeshType value="1"/>
 <GeomType value="0"/>
 <GeomUUID value="00000000-0000-0000-0000-000000000000"/>
-<BodiesIDs size="2"> a043fd96-9190-40d0-9ea5-13155179a0d3 784d3ce4-88ac-4457-bd27-29ed086c96d3 </BodiesIDs>
+<BodiesIDs size="2"> 4d22bf0b-7fcb-42af-90e7-396f387800c4 45e473f1-8f45-46ab-ba6b-75d2ffe1a617 </BodiesIDs>
 </Geometry>
 <ReferenceParameters index="0">
 <ConstTemperature value="293.19999999999999"/>
@@ -5956,8 +5956,7 @@
 <WarningCommentFormat25 value="Please check that the fluid/fluid interface of the region %s and %s is axisymmetric."/>
 <WarningCommentFormat26 value="Condition name : %s"/>
 <WarningCommentFormat27 value="Condition name : %s"/>
-<WarningCommentFormat28 value="Cannot save the file. Disk full or you do not have permission to write.
-File name: %s"/>
+<WarningCommentFormat28 value=""/>
 <WarningCommentFormat29 value="Specifying of global goal average density is recommended."/>
 <WarningCommentFormat3 value="dV/V=%g"/>
 <WarningCommentFormat30 value="Specified %s; Automatically defined %s"/>

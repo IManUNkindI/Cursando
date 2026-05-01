@@ -142,7 +142,7 @@
 	<support>false</support>
 	<project_name>Condensador</project_name>
 	<config_name>Default</config_name>
-	<model_name>condensador.SLDASM</model_name>
+	<model_name>Condensador.SLDASM</model_name>
 	<res_file_key>
 		<key0/>
 		<key1/>
