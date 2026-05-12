@@ -4,7 +4,7 @@
     "project_name": "Condensador",
     "config_name": "Default",
     "project_path": "C:\\Cursando\\Termofluidos\\Proyecto\\4\\4.xmlconfig",
-    "finished": true,
+    "finished": false,
     "mesh": {
         "cells_total": 79692,
         "cells_fluid": 52587,
@@ -12,16 +12,16 @@
         "cells_fluid_containing_solid": 22214
     },
     "telemetry": {
-        "prepare_geometry_finished": "10:10:40-0500",
-        "prepare_geometry_total_time": 3,
-        "cpu_time_solver_total": 259,
+        "prepare_geometry_finished": null,
+        "prepare_geometry_total_time": 0,
+        "cpu_time_solver_total": 257,
         "iteration": 300,
         "travel": 4.0037331942207794,
         "phys_time": 0.0,
         "time_step": 0.0,
-        "last_iteration_finished": "10:14:53-0500",
-        "cpu_time_per_last_iter": 1,
-        "cpu_time_left": 0,
+        "last_iteration_finished": null,
+        "cpu_time_per_last_iter": 0,
+        "cpu_time_left": -1,
         "iterations_per_travel": 75
     },
     "goals": [
@@ -159,9 +159,7 @@
         }
     ],
     "settings": {
-        "default_fluids": [
-            "Water"
-        ],
+        "default_fluids": [],
         "analysis_type": "internal",
         "heat_conduction_in_solids": true,
         "radiation": false,
@@ -182,7 +180,7 @@
         "os": "Windows 11 (or higher) (Version 10.0.26200)",
         "cpu": "AMD Ryzen 5 5500U with Radeon Graphics         ",
         "number_of_cores": 12,
-        "memory_avail": 7330,
+        "memory_avail": 6901,
         "memory_total": 15694
     }
 }

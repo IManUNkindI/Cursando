@@ -2,7 +2,7 @@ Model: Caldera.SLDASM
 Project name: Caldera
 Config name: Default
 Project path: C:\Cursando\Termofluidos\Proyecto\1\1.xmlconfig
-Status: Finished
+Status: Calculating
 
 Number of cells:
     Total cells: 28784
@@ -11,15 +11,15 @@ Number of cells:
     Fluid cells containing solids: 7717
 
 
-Geometry preparation finished: 11:16:50
-Geometry preparation time: 00:00:02
-Solver CPU time: 00:01:45
+Geometry preparation finished: 
+Geometry preparation time: 00:00:00
+Solver CPU time: 00:01:28
 Iterations: 192
 Travels: 4.00784
 Physical time: 0.000000e+00 s
 Current time step: 0.000000e+00 s
-Last iteration finished: 11:18:15
-CPU time per last iteration: 00:00:01
+Last iteration finished: 
+CPU time per last iteration: 00:00:00
 CPU time left: 00:00:00
 Iterations per 1 travel: 48
 
@@ -42,7 +42,7 @@ Goals
     GG Maximum Temperature (Solid) 15 | temperature         |         2233.59 |     100.0 |           47.26 |            4.33 | On
 
 Project details
-    Default fluids: Water
+    Default fluids: 
     Analysis type: Internal
     Heat conduction in solids: On
     Radiation: Off
@@ -63,5 +63,5 @@ System info
     Operating system: Windows 11 (or higher) (Version 10.0.26200)
     Processors: AMD Ryzen 5 5500U with Radeon Graphics         
     Number of cores: 12
-    Memory: 7295 MB / 15694 MB
+    Memory: 6892 MB / 15694 MB
 

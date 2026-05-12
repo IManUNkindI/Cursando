@@ -46005,3 +46005,359 @@ Algebra Pool      : mem_usage = 201.19 Mb, allocated count = 0
 Solver finished in 259.089 seconds
 finished solver summary thread
 Log ended at 29.04.2026	10:14:56
+started solver summary thread
+Log started at 03.05.2026	15:17:48
+Number of used processors (NPROC): 12.
+Number of mesh partitions (NPART): 12.
+Computer name:	MANUNKIND
+Operating system:	Windows 11 (or higher) (Version 10.0.26200)
+Commandline:	"C:\Program Files\SOLIDWORKS Corp\SOLIDWORKS Flow Simulation\BINCFW\efdsolver.exe" /config:"C:\Cursando\Termofluidos\Proyecto\4\4.xmlconfig" /guid:c9d5bd90-c92a-40c2-a728-2cc2ccb62c43 /processors:max /s /continue /prjnamelm:"Flow Simulation 2025" /prjnamehabout:"Flow Simulation 2025" /companyname:"COSMOS Applications" /prjaliasid:1002 /lang:English /port:65133
+Total Physical Memory = 15.33 Gb, Available Physical Memory = 6.74 Gb
+-----------------------------------------------------------------------
+Memory Working Set Current = 24.33 Mb, Memory Working Set Peak = 24.33 Mb
+Memory Private Bytes Current = 21.69 Mb, Memory Private Bytes Peak = 21.69 Mb
+Process Threads Number: 9
+-----------------------------------------------------------------------
+CPU:	AuthenticAMD, Stepping ID = 1, Model = 8, Family = 15, Extended model = 6, Extended family = 8, MMX SSE SSE2 Hyper-Threading Technology SSE3
+CPU Brand String: AMD Ryzen 5 5500U with Radeon Graphics         
+Cache Line Size = 64, L2 Associativity = 6, Cache Size = 512K
+Number of cores: 12, Processor type: 8664, Active processor mask: 4095, Page size: 4096 bites
+Package 0 [ ProcessorGroup 0 [ 0 1 2 3 4 5 6 7 8 9 10 11 ] ]
+NUMA Node 0: Available Memory = 6.74 Gb. ProcessorGroup 0 [ 0 1 2 3 4 5 6 7 8 9 10 11 ]
+std::thread::hardware_concurrency = 12
+No NUMA support
+OpenMP enabled (spec=200203). max_threads = 12, num_procs = 12.
+
+SOLIDWORKS 2025 SP5.0
+C:\Cursando\Termofluidos\Proyecto\4\4.fld
+Configuration name:	Default
+Project name:	Condensador
+/*******************************************/
+/*         Project Summary                 */
+/*******************************************/
+Analysis type:						CFD
+Problem type:						internal
+Result resolution:					3
+Minimum gap size:					0.00502627
+Minimum wall thickness:				0.00502627
+Manual refinement:					Off
+Fluid substances count				1
+
+		Advanced capabilities
+Heat transfer						On
+Transient						Off
+Gravitation						Off
+Laminar flow						Off
+Compressibility					Off
+Number of solid substances			1
+Roughness:						0
+
+************************************************
+Flow Simulation 2025  x64 / 6875 / SOLVER ver. efd_dev.5608_04.02.2022+HMN_Inlet_Rework_V1+HMN_Inlet_Rework_V2 
+BRANCH: git--efd_2406.6875_25.07.2025
+
+
+
+STATIONARY
+
+
+LAM-BREMHORST K-EPSILON TURBULENCE MODEL
+EXTERNAL=0  CHT=1  FROZEN=0  RADIATION=0  HVAC_COMFORT_PARAMETERS=0
+Solver mode: normal
+X_STACK_LIST::read_x_stack_list4: started...
+X_STACK_LIST::read_x_stack_list4: finished in 0.019 s
+X_STACK_LIST::write_x_stack_list4: started...
+X_STACK_LIST::write_x_stack_list4: finished in 0.021 s
+Memory Status before reading BCF:
+-----------------------------------------------------------------------
+Memory Working Set Current = 30.20 Mb, Memory Working Set Peak = 46.72 Mb
+Memory Private Bytes Current = 29.79 Mb, Memory Private Bytes Peak = 46.15 Mb
+Process Threads Number: 20
+-----------------------------------------------------------------------
+bcf::mesh::read_bcf_mesh: started...
+Read section 436 takes 0.000 s
+Read section 101 takes 0.000 s
+Read section 400 takes 0.003 s
+Read section 437 takes 0.003 s
+Read section 408 takes 0.035 s
+Read section 427 takes 0.002 s
+Read section 446 takes 0.000 s
+Read section 516 takes 0.000 s
+Read section 406 takes 0.006 s
+Read section 405 takes 0.000 s
+Read section 401 takes 0.013 s
+Read section 402 takes 0.018 s
+Adding faces to av takes 0.005 s
+Read section 407 takes 0.008 s
+Read section 421 takes 0.015 s
+Read section 404 takes 0.002 s
+Read section 416 takes 0.002 s
+Read section 411 takes 0.003 s
+Read section 413 takes 0.000 s
+Read section 432 takes 0.000 s
+
+-----------------------------------------------------------------------
+BCF CHECKSUM DATA (Mesh 0):
+
+BRICK |Level1| Sum:               85190
+FACE_A Area Sum:   G.Fluid        1.5977248476745278
+FACE_A Area Sum:   G.Solid        0.2393377989557198
+FACE_W Area Sum:                  0.4422919364953612
+FACE_W Nb   Sum:                  255918
+FACE_W min curvatures sum:        -3039207.15207730
+FACE_W max curvatures sum:        2407905.89033059
+FACE_W ss lambda sum:             -8884
+AV Max Disbalance(Const) :        4.5611e-10 (cid=4935, t={28, 66, 1}, avid=5099, pid=2188)
+AV Max Disbalance(Linear):        7.88972e-10 (cid=23062, t={26, 70, 52}, avid=65568, pid=12968)
+BRICK-AV Volume Disbalance:       0 (cid=0, t={0, 0, 0})
+-----------------------------------------------------------------------
+
+
+-----------------------------------------------------------------------
+MESHER TOPOLOGY DATA:
+
+BRICKS: Total                 49399
+BRICKS: Fluid                 47407
+BRICKS: Fluid Partial         17034
+BRICKS: Type 1                18992
+BRICKS: Max AV number         4
+BRICKS: |level1| sum          85190
+
+
+AV:     G.Total               79692
+AV:     G.Fluid               52587
+AV:     G.Solid               27105
+
+AV:     G.Fluid Thin Profile    0.21 % (110)
+AV:     G.Solid Thin Profile   41.13 % (11149)
+
+AV:     G.Fluid Thin For Mega   0.21 % (110)
+AV:     G.Solid Thin For Mega  39.33 % (10661)
+
+AV:     G.Fluid Non-Convex     12.05 % (6337)
+AV:     G.Solid Non-Convex     20.97 % (5684)
+
+AV:     G.Fluid Non-Ess-Convex      0.35 % (185)
+AV:     G.Solid Non-Ess-Convex     12.55 % (3403)
+
+FACE_A: G.Fluid          (af) 158680 (partially opened 46980)
+FACE_A: G.Solid          (as) 61283 (partially opened 58783)
+
+FACE_W: G.Total                 40676       Brick/Bound
+FACE_W: G.Fluid/Solid    (fs_g) 23403       0           
+FACE_W: G.Fluid/Fluid    (ff_g) 0           0           
+FACE_W: G.Solid/Solid    (ss_g) 8884        0           
+FACE_W: G.Fluid/Void     (fv_g) 0           0           
+FACE_W: G.Fluid/External (fe_g) 0
+FACE_W: G.Solid/External (se_g) 8389
+
+AV/CV max fa count (on brick side):7
+AV/CV max fw count:                7
+AV/CV max fw poly count:           18
+
+MEMORY: Total                   25.787 MB
+MEMORY: Per Brick               0.535 KB
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+Memory Working Set Current = 119.63 Mb, Memory Working Set Peak = 119.63 Mb
+Memory Private Bytes Current = 113.20 Mb, Memory Private Bytes Peak = 113.26 Mb
+Process Threads Number: 20
+-----------------------------------------------------------------------
+----------------------------------------------------------
+BCF --> BCF.GEOMSUBDOM (bridge arrays):
+MESH (0):
+	Front spread algorithm. Partition count = 12
+	Time (front spread): 0.004 s
+	Fluid Subdom Constructor: 2 subdom(s).
+	Front spread algorithm. Partition count = 12
+	Time (front spread): 0.002 s
+	Solid Subdom Constructor: 2 subdom(s).
+	Front spread algorithm. Partition count = 12
+	Time (front spread): 0.000 s
+	Net Asm Subdom Constructor: 0 subdom(s).
+	GEOMSUBDOM (0): gi=0 Fluid av=44682 cv=41096 fa=137399 fw=16081 V=2.747596e-03
+	Cache data...OK
+	GEOMSUBDOM (1): gi=0 Fluid av=7905 cv=6917 fa=21281 fw=7322 V=2.266788e-05
+	Cache data...OK
+	GEOMSUBDOM (2): gi=1 Solid av=19137 cv=19137 fa=44969 fw=32287 V=3.793451e-04
+	Cache data...OK
+	GEOMSUBDOM (3): gi=2 Void av=7968 cv=7968 fa=16314 fw=17273 V=8.292095e-05
+	Cache data...OK
+	Setting nb of w-faces...OK (0.005 s).
+	Correcting nb of w-faces...
+	Time(correct_fw_nb)=0.005 s
+
+MESH (0) checking:
+	GEOMSUBDOM (0):fa_s=1.5615791948643811 fw_s=0.1517502255540588 fw_nb=126440
+	              :d_const(18068)=1.17104e-10 d_linear(18068)=4.56489e-10
+	GEOMSUBDOM (1):fa_s=0.0361456528101448 fw_s=0.0211055850143429 fw_nb=58924
+	              :d_const(3471)=1.13009e-10 d_linear(3636)=2.99698e-10
+	GEOMSUBDOM (2):fa_s=0.2097782591966770 fw_s=0.3062026560368969 fw_nb=221602
+	              :d_const(8275)=1.7876e-10 d_linear(8286)=7.88972e-10
+	GEOMSUBDOM (3):fa_s=0.0295595397590428 fw_s=0.2694361259269594 fw_nb=70554
+	              :d_const(2342)=1.31102e-10 d_linear(2337)=1.90768e-10
+MESH (0) checking: OK.
+Time (MDS): 	0.067 s
+----------------------------------------------------------
+-----------------------------------------------------------------------
+Memory Working Set Current = 151.03 Mb, Memory Working Set Peak = 151.03 Mb
+Memory Private Bytes Current = 153.71 Mb, Memory Private Bytes Peak = 153.71 Mb
+Process Threads Number: 20
+-----------------------------------------------------------------------
+Read section 448 takes 0.000 s
+bcf::mesh::read_bcf_mesh: finished in 0.204 s
+Read section 404 takes 0.001 s
+Read section 433 takes 0.002 s
+
+===ThermodynamicsHolder:===
+Subdom 0 Incompressible liquid thermodynamics
+	substance 0 type=fwLiquid, guid=6D4EB34F944911D4B47100A024552746, name=Water
+Subdom 1 Incompressible liquid thermodynamics
+	substance 0 type=fwLiquid, guid=6D4EB34F944911D4B47100A024552746, name=Water
+===ThermodynamicsHolder:===
+CD X0= -0.002208008, X1= 0.202208008, Y0= -0.105105, Y1= 0.000105, Z0= -0.121951870765, Z1= 0.028352137235
+Memory Status after reading BCF:
+-----------------------------------------------------------------------
+Memory Working Set Current = 158.57 Mb, Memory Working Set Peak = 158.57 Mb
+Memory Private Bytes Current = 161.11 Mb, Memory Private Bytes Peak = 161.11 Mb
+Process Threads Number: 20
+-----------------------------------------------------------------------
+Total read CPT took 0.28 sec.
+Save msh-format to file...Write section 408 takes 0.052 s
+Write section 427 takes 0.004 s
+OK (0.064 s).
+MMP (gbs): locals=0, allc_sz=0.00 MB (0.00 MB), used_sz=0.00 MB, blk_sz=(0.00 MB/0.00 MB), blks-min-max=0/0 (big 0/0)
+MMP (cpt_rgs): locals=0, allc_sz=0.00 MB (0.00 MB), used_sz=0.00 MB, blk_sz=(0.00 MB/0.00 MB), blks-min-max=0/0 (big 0/0)
+MMP (slv_rgs): locals=0, allc_sz=0.00 MB (0.00 MB), used_sz=0.00 MB, blk_sz=(0.00 MB/0.00 MB), blks-min-max=0/0 (big 0/0)
+MMP (msh): locals=12, allc_sz=7.12 MB (0.00 MB), used_sz=6.42 MB, blk_sz=(0.05 MB/0.24 MB), blks-min-max=8/18 (big 0/0)
+MMP (brx): locals=0, allc_sz=0.00 MB (0.00 MB), used_sz=0.00 MB, blk_sz=(0.00 MB/0.00 MB), blks-min-max=0/0 (big 0/0)
+MMP (bcf): locals=12, allc_sz=58.19 MB (0.00 MB), used_sz=44.06 MB, blk_sz=(0.14 MB/2.72 MB), blks-min-max=23/38 (big 0/0)
+MMP (xsl): locals=0, allc_sz=0.00 MB (0.00 MB), used_sz=0.00 MB, blk_sz=(0.00 MB/0.00 MB), blks-min-max=0/0 (big 0/0)
+MESH::Bricks: Total=49399
+Update time step in solids: STATIONARY IN SOLIDS
+Update Use 1st order approx in solids: 2nd_order IN SOLIDS
+107 parameter(s) in list of scalar parameters
+7 parameter(s) in list of vector parameters
+*** Goals loaded ok. Continue calculation. ***
+Collecting Reference Parameters... OK
+Total read FLD took 0.40 sec.
+
+IT   : 300  
+
+-----------------------------------------------------------------------
+Mesh dimensions:
+				I[0 ]=18
+				I[1 ]=10
+				I[2 ]=14
+Solver refinement level	I[47]=0
+
+Comp. domain size:
+				a[0  ]=-0.00220801
+				a[1  ]=0.202208
+				a[2  ]=-0.105105
+				a[3  ]=0.000105
+				a[4  ]=-0.121952
+				a[5  ]=0.0283521
+Wall thickness		a[231]=0
+Gap size			a[232]=1
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+Preparing for calculations started at	3.5.2026	15:17:49
+FLUID SUBDOMAIN   0 LC =0 LAMTURB=1 NONNEWTON=0  STEAM=0  CAVITATION=0 IT=6 NT=2 NC=1 U_DIM_EXT=14
+FLUID SUBDOMAIN   1 LC =0 LAMTURB=1 NONNEWTON=0  STEAM=0  CAVITATION=0 IT=6 NT=2 NC=1 U_DIM_EXT=14
+sd=   0: dependence of enthalpy on pressure is switched ON 
+sd=   1: dependence of enthalpy on pressure is switched ON 
+-----------------------------------------------------------------------
+Loading mesh settings (global/local/SAR)...
+Setting regions (49399 / 49399)...OK (0.000 s)
+Max SAR level = 0
+-----------------------------------------------------------------------
+Solver finished at	3.5.2026	15:17:49
+Free memory:
+slv : +----------------+------------+-------+------------+------------+
+slv : | Collector name | Total Time | Count |  Avg Time  |  Max Time  |
+slv : +----------------+------------+-------+------------+------------+
+slv : +----------------+------------+-------+------------+------------+
+-----------------------------------------------------------------------
+Start to free mesher data...
+MMP (gbs): locals=0, allc_sz=0.00 MB (0.00 MB), used_sz=0.00 MB, blk_sz=(0.00 MB/0.00 MB), blks-min-max=0/0 (big 0/0)
+MMP (cpt_rgs): locals=0, allc_sz=0.00 MB (0.00 MB), used_sz=0.00 MB, blk_sz=(0.00 MB/0.00 MB), blks-min-max=0/0 (big 0/0)
+MMP (slv_rgs): locals=0, allc_sz=0.00 MB (0.00 MB), used_sz=0.00 MB, blk_sz=(0.00 MB/0.00 MB), blks-min-max=0/0 (big 0/0)
+MMP (msh): locals=12, allc_sz=7.12 MB (0.00 MB), used_sz=6.42 MB, blk_sz=(0.05 MB/0.24 MB), blks-min-max=8/18 (big 0/0)
+MMP (brx): locals=0, allc_sz=0.00 MB (0.00 MB), used_sz=0.00 MB, blk_sz=(0.00 MB/0.00 MB), blks-min-max=0/0 (big 0/0)
+MMP (bcf): locals=12, allc_sz=58.19 MB (0.00 MB), used_sz=44.06 MB, blk_sz=(0.14 MB/2.72 MB), blks-min-max=23/38 (big 0/0)
+MMP (xsl): locals=0, allc_sz=0.00 MB (0.00 MB), used_sz=0.00 MB, blk_sz=(0.00 MB/0.00 MB), blks-min-max=0/0 (big 0/0)
+Free xsl...            OK	Time=0.001 s
+Free ray collector...  OK	Time=0.000 s
+Free ray intersector...OK	Time=0.000 s
+Free body sets...      OK	Time=0.000 s
+Free Geometry DB takes 0.000 s
+Free mesh conn...      OK	Time=0.000 s
+Free geomsd...         OK	Time=0.000 s
+Free mbricks...        OK	Time=0.000 s
+Free hash info...      OK	Time=0.000 s
+Free bricks-x...       OK	Time=0.000 s
+Free bcf...            OK	Time=0.004 s
+Free mesh h...         OK	Time=0.000 s
+Free bricks arr..      OK	Time=0.000 s
+Free bricks tree...    OK	Time=0.000 s
+Free mesh pools...     OK	Time=0.012 s
+Free bodies mapper...  OK	Time=0.000 s
+Free geom crits...     OK	Time=0.000 s
+Free cpt regions...    OK	Time=0.000 s
+Free peculiar surfs... OK	Time=0.000 s
+Free sw-geometries...  OK	Time=0.000 s
+Free mesher wrk data...OK	Time=0.000 s
+Total free mesher data time: 0.021 s
+-----------------------------------------------------------------------
+Free memory: OK (0.029 s)
+-----------------------------------------------------------------------
+Memory Working Set Current = 83.23 Mb, Memory Working Set Peak = 168.20 Mb
+Memory Private Bytes Current = 78.05 Mb, Memory Private Bytes Peak = 177.71 Mb
+Process Threads Number: 20
+Process Threads Number Peak: 20
+-----------------------------------------------------------------------
+Free memory:
+-----------------------------------------------------------------------
+Start to free mesher data...
+MMP (gbs): locals=0, allc_sz=0.00 MB (0.00 MB), used_sz=0.00 MB, blk_sz=(0.00 MB/0.00 MB), blks-min-max=0/0 (big 0/0)
+MMP (cpt_rgs): locals=0, allc_sz=0.00 MB (0.00 MB), used_sz=0.00 MB, blk_sz=(0.00 MB/0.00 MB), blks-min-max=0/0 (big 0/0)
+MMP (slv_rgs): locals=0, allc_sz=0.00 MB (0.00 MB), used_sz=0.00 MB, blk_sz=(0.00 MB/0.00 MB), blks-min-max=0/0 (big 0/0)
+MMP (msh): locals=0, allc_sz=0.00 MB (0.00 MB), used_sz=0.00 MB, blk_sz=(0.00 MB/0.00 MB), blks-min-max=0/0 (big 0/0)
+MMP (brx): locals=0, allc_sz=0.00 MB (0.00 MB), used_sz=0.00 MB, blk_sz=(0.00 MB/0.00 MB), blks-min-max=0/0 (big 0/0)
+MMP (bcf): locals=0, allc_sz=0.00 MB (0.00 MB), used_sz=0.00 MB, blk_sz=(0.00 MB/0.00 MB), blks-min-max=0/0 (big 0/0)
+MMP (xsl): locals=0, allc_sz=0.00 MB (0.00 MB), used_sz=0.00 MB, blk_sz=(0.00 MB/0.00 MB), blks-min-max=0/0 (big 0/0)
+Free xsl...            OK	Time=0.000 s
+Free ray collector...  OK	Time=0.000 s
+Free ray intersector...OK	Time=0.000 s
+Free body sets...      OK	Time=0.000 s
+Free Geometry DB takes 0.000 s
+Free mesh conn...      OK	Time=0.000 s
+Free geomsd...         OK	Time=0.000 s
+Free mbricks...        OK	Time=0.000 s
+Free hash info...      OK	Time=0.000 s
+Free bricks-x...       OK	Time=0.000 s
+Free mesh h...         OK	Time=0.000 s
+Free bricks arr..      OK	Time=0.000 s
+Free bricks tree...    OK	Time=0.000 s
+Free mesh pools...     OK	Time=0.000 s
+Free bodies mapper...  OK	Time=0.000 s
+Free geom crits...     OK	Time=0.000 s
+Free cpt regions...    OK	Time=0.000 s
+Free peculiar surfs... OK	Time=0.000 s
+Free sw-geometries...  OK	Time=0.000 s
+Free mesher wrk data...OK	Time=0.000 s
+Total free mesher data time: 0.003 s
+-----------------------------------------------------------------------
+Free memory: OK (0.003 s)
+-----------------------------------------------------------------------
+Memory Working Set Current = 83.30 Mb, Memory Working Set Peak = 168.20 Mb
+Memory Private Bytes Current = 78.83 Mb, Memory Private Bytes Peak = 177.71 Mb
+Process Threads Number: 20
+Process Threads Number Peak: 20
+-----------------------------------------------------------------------
+Algebra Pool      : mem_usage = 28.44 Mb, allocated count = 0
+Solver finished in 0.830 seconds
+finished solver summary thread
+Log ended at 03.05.2026	15:17:49

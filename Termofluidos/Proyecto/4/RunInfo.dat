@@ -2,7 +2,7 @@
 init:1
 run_capture:0
 run_solver:1
-new_calc:1
+new_calc:0
 close_monitor:0
 run_convert:0
 isOK:1
@@ -17,13 +17,13 @@ Trans:0
 UsePrevRes:0
 ForcetoRunCPT:0
 ComputerName:
-port:52368
+port:65133
 ProcessResults:1
 LoadLastResult:1
 ProcessorsToUse:0
 LoadBaseFLDFile:0
 BaseFLDFile:
-id:{F4B3987F-8066-432C-8802-C4B0FC996101}
+id:{C9D5BD90-C92A-40C2-A728-2CC2CCB62C43}
 calculation_state:5
 ForceContinue:0
-SolverProcessId:15292
+SolverProcessId:4360

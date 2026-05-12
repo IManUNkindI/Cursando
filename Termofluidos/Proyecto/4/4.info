@@ -2,7 +2,7 @@ Model: Condensador.SLDASM
 Project name: Condensador
 Config name: Default
 Project path: C:\Cursando\Termofluidos\Proyecto\4\4.xmlconfig
-Status: Finished
+Status: Calculating
 
 Number of cells:
     Total cells: 79692
@@ -11,15 +11,15 @@ Number of cells:
     Fluid cells containing solids: 22214
 
 
-Geometry preparation finished: 10:10:40
-Geometry preparation time: 00:00:03
-Solver CPU time: 00:04:19
+Geometry preparation finished: 
+Geometry preparation time: 00:00:00
+Solver CPU time: 00:04:17
 Iterations: 300
 Travels: 4.00373
 Physical time: 0.000000e+00 s
 Current time step: 0.000000e+00 s
-Last iteration finished: 10:14:53
-CPU time per last iteration: 00:00:01
+Last iteration finished: 
+CPU time per last iteration: 00:00:00
 CPU time left: 00:00:00
 Iterations per 1 travel: 75
 
@@ -39,7 +39,7 @@ Goals
     GG Maximum Heat Flux 12          | heat flow           |       165616.62 |     100.0 |         6070.76 |         2274.84 | On
 
 Project details
-    Default fluids: Water
+    Default fluids: 
     Analysis type: Internal
     Heat conduction in solids: On
     Radiation: Off
@@ -60,5 +60,5 @@ System info
     Operating system: Windows 11 (or higher) (Version 10.0.26200)
     Processors: AMD Ryzen 5 5500U with Radeon Graphics         
     Number of cores: 12
-    Memory: 7330 MB / 15694 MB
+    Memory: 6901 MB / 15694 MB
 

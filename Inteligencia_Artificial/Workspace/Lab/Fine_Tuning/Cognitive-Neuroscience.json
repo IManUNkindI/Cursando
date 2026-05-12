@@ -1,0 +1,472 @@
+[
+  {
+    "pregunta": "¿Qué área del cerebro es crucial para la planificación, la toma de decisiones y el control de los impulsos?",
+    "razonamiento": "<think>La corteza prefrontal (PFC), especialmente la porción dorsolateral, es el centro neurálgico de las funciones ejecutivas. Actúa como el 'CEO' del cerebro, integrando información sensorial y memorística para establecer metas, diseñar planes, anticipar consecuencias y suprimir acciones inapropiadas, una función conocida como inhibición cognitiva. Lesiones en esta área, como en el famoso caso de Phineas Gage, provocan cambios drásticos en la personalidad y una incapacidad para planificar el futuro.</think>",
+    "respuesta": "La corteza prefrontal (PFC), responsable de las funciones ejecutivas como la planificación y el autocontrol."
+  },
+  {
+    "pregunta": "¿Qué estructura cerebral es fundamental para formar nuevos recuerdos a largo plazo de eventos y hechos?",
+    "razonamiento": "<think>El hipocampo, ubicado en el lóbulo temporal medial, es esencial para la consolidación de la memoria declarativa (episódica y semántica). Funciona como un sistema de indexación temporal que une los diferentes componentes de un recuerdo (visual, auditivo, emocional) almacenados en la corteza. El caso del paciente H.M., a quien se le extirparon los hipocampos, demostró su importancia: perdió la capacidad de formar nuevos recuerdos (amnesia anterógrada) pero conservó los antiguos y la memoria procedimental.</think>",
+    "respuesta": "El hipocampo, esencial para la consolidación de la memoria declarativa (eventos y hechos) a largo plazo."
+  },
+  {
+    "pregunta": "¿Qué papel juega la amígdala en nuestra vida emocional?",
+    "razonamiento": "<think>La amígdala, un conjunto de núcleos en el lóbulo temporal, es el centro de procesamiento del significado emocional de los estímulos, especialmente el miedo. Es crucial para el condicionamiento del miedo, permitiendo aprender qué es peligroso. Funciona como un sistema de alerta temprana que puede desencadenar respuestas fisiológicas rápidas (eje HPA) incluso antes de que la corteza procese completamente la información, priorizando la supervivencia sobre el análisis detallado.</think>",
+    "respuesta": "La amígdala es el centro de procesamiento del miedo y la asignación de relevancia emocional a las experiencias."
+  },
+  {
+    "pregunta": "¿Cuál es la diferencia funcional entre el Área de Broca y el Área de Wernicke?",
+    "razonamiento": "<think>Ambas son cruciales para el lenguaje, pero tienen funciones disociables. El Área de Broca, en el lóbulo frontal izquierdo, se encarga de la producción del lenguaje: la sintaxis y la articulación motora del habla. El Área de Wernicke, en el lóbulo temporal izquierdo, se encarga de la comprensión semántica del lenguaje. Una lesión en Broca causa afasia expresiva (dificultad para hablar con gramática), mientras que una en Wernicke causa afasia receptiva (habla fluida pero sin sentido y dificultad para comprender).</think>",
+    "respuesta": "El Área de Broca se encarga de la producción del habla (sintaxis), mientras que el Área de Wernicke se ocupa de su comprensión (semántica)."
+  },
+  {
+    "pregunta": "¿Qué es la neuroplasticidad y por qué es fundamental para el aprendizaje?",
+    "razonamiento": "<think>La neuroplasticidad es la capacidad del cerebro para reorganizarse física y funcionalmente en respuesta a la experiencia. Es el mecanismo fundamental del aprendizaje. A nivel sináptico, se manifiesta como la Potenciación a Largo Plazo (LTP), donde las conexiones entre neuronas que se activan juntas se fortalecen. A nivel estructural, puede implicar la creación de nuevas sinapsis (sinaptogénesis) o incluso la reorganización de mapas corticales. Es la base de cómo la experiencia esculpe el cerebro.</think>",
+    "respuesta": "Es la capacidad del cerebro para cambiar y adaptarse. Es la base neuronal del aprendizaje, permitiendo que la experiencia fortalezca las conexiones neuronales."
+  },
+  {
+    "pregunta": "¿Cómo permite la Resonancia Magnética funcional (fMRI) estudiar el cerebro en acción?",
+    "razonamiento": "<think>La fMRI no mide la actividad neuronal directamente. Mide un correlato hemodinámico: los cambios en el flujo sanguíneo y la oxigenación de la sangre (el efecto BOLD). Cuando un área del cerebro se activa, consume más oxígeno, lo que provoca un aumento del flujo de sangre oxigenada a esa región. La fMRI detecta estas diferencias magnéticas entre sangre oxigenada y desoxigenada, permitiendo crear mapas de las áreas cerebrales que están metabólicamente más activas durante tareas cognitivas.</think>",
+    "respuesta": "Mide los cambios en el flujo sanguíneo cerebral (efecto BOLD), indicando qué áreas están más activas durante una tarea."
+  },
+  {
+    "pregunta": "¿Qué son las neuronas espejo y para qué sirven?",
+    "razonamiento": "<think>Las neuronas espejo son neuronas que se activan tanto cuando un individuo realiza una acción como cuando observa a otro realizar esa misma acción. Se consideran la base neuronal de la 'simulación interna', permitiéndonos entender las acciones e intenciones de otros al mapearlas en nuestro propio sistema motor. Son fundamentales para el aprendizaje por imitación, la empatía (al permitirnos 'sentir' lo que otros sienten) y la teoría de la mente.</think>",
+    "respuesta": "Son neuronas que se activan al actuar y al observar la misma acción en otros, siendo clave para la empatía y la imitación."
+  },
+  {
+    "pregunta": "¿Por qué es crucial el sueño para la consolidación de la memoria?",
+    "razonamiento": "<think>Durante el sueño, especialmente en las fases de ondas lentas y REM, el cerebro consolida los recuerdos. El hipocampo 'reproduce' (neural replay) las secuencias de actividad del día, transfiriendo esta información a la neocorteza para su almacenamiento a largo plazo. Este proceso, conocido como consolidación de sistemas, fortalece las memorias importantes y las integra en las redes de conocimiento existentes, liberando al hipocampo para codificar nuevas experiencias al día siguiente.</think>",
+    "respuesta": "Durante el sueño, el cerebro transfiere y fortalece los recuerdos del hipocampo a la corteza para su almacenamiento a largo plazo."
+  },
+  {
+    "pregunta": "¿Qué función principal tiene el cerebelo, más allá del equilibrio?",
+    "razonamiento": "<think>Tradicionalmente asociado con la coordinación motora, el cerebelo es ahora entendido como un 'optimizador' de procesos. Es crucial para el aprendizaje procedural (habilidades motoras automáticas). Cognitivamente, se cree que participa en la temporización y automatización de pensamientos y procesos, actuando como un 'simulador interno' que refina tanto los movimientos físicos como los mentales. Participa en la atención, el lenguaje y la cognición social, asegurando que nuestras respuestas sean fluidas y adecuadas al contexto.</think>",
+    "respuesta": "Además del control motor, el cerebelo es clave para el aprendizaje procedural y la optimización de funciones cognitivas, actuando como un temporizador y refinador."
+  },
+  {
+    "pregunta": "¿Qué es la 'atención selectiva' a nivel neuronal?",
+    "razonamiento": "<think>La atención selectiva es un mecanismo de control de arriba hacia abajo (top-down) gestionado por una red fronto-parietal. Esta red modula la actividad en las cortezas sensoriales. Funciona de dos maneras: aumenta la 'ganancia' de las neuronas que procesan el estímulo atendido (mejora sensorial) y, al mismo tiempo, suprime activamente la actividad de las neuronas que procesan los estímulos distractores. Es un mecanismo de mejora de la relación señal-ruido para priorizar la información relevante.</think>",
+    "respuesta": "Es un mecanismo neuronal que amplifica la respuesta neuronal al estímulo de interés e inhibe la respuesta a los distractores."
+  },
+  {
+    "pregunta": "¿Cómo procesa el cerebro la recompensa y la motivación?",
+    "razonamiento": "<think>El circuito mesolímbico de la dopamina es central. El área tegmental ventral (VTA) libera dopamina en el núcleo accumbens y la corteza prefrontal en respuesta a recompensas o señales que las predicen. Crucialmente, la dopamina codifica el 'error de predicción de la recompensa': la diferencia entre la recompensa esperada y la recibida. Esta señal impulsa el aprendizaje por refuerzo, motivando la repetición de comportamientos que llevan a resultados mejores de lo esperado.</think>",
+    "respuesta": "A través del circuito de la dopamina, que se activa ante la predicción de una recompensa, generando motivación para repetir el comportamiento."
+  },
+  {
+    "pregunta": "¿Qué es la 'memoria de trabajo' (working memory) y en qué parte del cerebro reside?",
+    "razonamiento": "<think>La memoria de trabajo es un sistema de capacidad limitada para mantener y manipular información temporalmente. No es un 'lugar', sino un proceso de actividad neuronal sostenida, principalmente en la corteza prefrontal dorsolateral. Estas neuronas se mantienen disparando para representar la información relevante, protegiéndola de la interferencia mientras se utiliza para guiar el comportamiento o el pensamiento en curso.</think>",
+    "respuesta": "Es un sistema de retención y manipulación temporal de información, dependiente de la actividad sostenida en la corteza prefrontal."
+  },
+  {
+    "pregunta": "¿Cómo interactúan la cognición y la emoción en la toma de decisiones?",
+    "razonamiento": "<think>La emoción es crucial para la decisión racional. La hipótesis del marcador somático de Damasio postula que las emociones, mediadas por la amígdala y la corteza orbitofrontal, guían las decisiones al 'marcar' las opciones con un valor afectivo basado en experiencias pasadas. Estas 'sensaciones viscerales' nos permiten descartar rápidamente opciones malas y centrarnos en las prometedoras, haciendo el proceso de decisión más eficiente y adaptativo.</think>",
+    "respuesta": "Las emociones, a través de 'marcadores somáticos', guían y agilizan la toma de decisiones racionales al asignar un valor afectivo a las opciones."
+  },
+  {
+    "pregunta": "¿Qué es la 'Teoría de la Mente' (Theory of Mind) y qué red cerebral la sustenta?",
+    "razonamiento": "<think>La Teoría de la Mente es la capacidad de atribuir estados mentales (creencias, deseos) a otros para entender y predecir su comportamiento. Es fundamental para la interacción social. La neuroimagen ha identificado una red específica para esta función, que incluye la unión temporoparietal (TPJ), la corteza prefrontal medial (mPFC) y el precúneo. Esta red se activa cuando pensamos en los pensamientos de los demás.</think>",
+    "respuesta": "Es la capacidad de atribuir estados mentales a otros, sustentada por una red cerebral que incluye la unión temporoparietal (TPJ) y la corteza prefrontal medial."
+  },
+  {
+    "pregunta": "¿Por qué el cerebro de los adolescentes es más propenso a la toma de riesgos?",
+    "razonamiento": "<think>Se explica por un desajuste en el desarrollo de dos sistemas. El sistema límbico, especialmente el circuito de recompensa sensible a la dopamina, madura pronto, aumentando la búsqueda de sensaciones. Sin embargo, la corteza prefrontal, responsable del control de impulsos y la evaluación de consecuencias, no madura completamente hasta los 25 años. Este desfase crea un período en el que el 'acelerador' (recompensa) está a pleno rendimiento mientras que el 'freno' (control) aún se está desarrollando.</think>",
+    "respuesta": "Porque su sistema de recompensa (límbico) madura antes que su sistema de control de impulsos (corteza prefrontal)."
+  },
+  {
+    "pregunta": "¿Qué es la 'ceguera al cambio' (change blindness) y qué nos dice sobre la atención?",
+    "razonamiento": "<think>Es la incapacidad de detectar cambios grandes en una escena visual si ocurren durante una breve interrupción. Esto demuestra que la atención es necesaria para la percepción consciente. No creamos una representación detallada de todo el campo visual; en cambio, la atención actúa como un 'foco' que selecciona una pequeña porción para un procesamiento profundo. Si el cambio ocurre fuera de ese foco, nuestro cerebro no lo registra, revelando que nuestra percepción del mundo es mucho menos completa de lo que creemos.</think>",
+    "respuesta": "Es la incapacidad de notar cambios visuales si no les estamos prestando atención, demostrando que la atención es necesaria para la percepción consciente."
+  },
+  {
+    "pregunta": "¿Cuál es la función del cuerpo calloso (corpus callosum)?",
+    "razonamiento": "<think>El cuerpo calloso es un enorme haz de fibras nerviosas que conecta los hemisferios cerebrales. Su función es permitir la comunicación y la integración de la información entre ellos. Los estudios en pacientes con el cuerpo calloso seccionado ('split-brain') han revelado las especializaciones de cada hemisferio (lenguaje en el izquierdo, espacial en el derecho) y cómo esta estructura permite una percepción y acción unificadas.</think>",
+    "respuesta": "Es un gran haz de fibras que conecta los hemisferios cerebrales, permitiendo su comunicación e integración."
+  },
+  {
+    "pregunta": "¿Cómo procesa nuestro cerebro las caras de forma diferente a otros objetos?",
+    "razonamiento": "<think>El cerebro tiene un área especializada, el área fusiforme de las caras (FFA), que se activa intensamente ante una cara. Este procesamiento es holístico o configuracional: percibimos la cara como un todo integrado, no como una suma de partes. Esto explica el 'efecto de inversión', por el que nos cuesta mucho reconocer una cara si está boca abajo, algo que no ocurre con la misma intensidad con otros objetos.</think>",
+    "respuesta": "Utiliza un área especializada (área fusiforme de las caras) que procesa las caras de manera holística, como un todo integrado."
+  },
+  {
+    "pregunta": "¿Qué es el 'síndrome del miembro fantasma' y cómo lo explica la neurociencia?",
+    "razonamiento": "<think>Es la sensación de que un miembro amputado todavía está presente. Se explica por la neuroplasticidad cortical. El área del córtex somatosensorial que representaba al miembro amputado ya no recibe información. Con el tiempo, las áreas vecinas (que representan, por ejemplo, la cara) 'invaden' este territorio. Cuando se toca la cara, se activan también las neuronas que antes representaban la mano, creando la sensación de que la mano fantasma está siendo tocada.</think>",
+    "respuesta": "Es la sensación de un miembro amputado, explicada por la reorganización (neuroplasticidad) del mapa corporal en la corteza cerebral."
+  },
+  {
+    "pregunta": "¿Qué es la 'red neuronal por defecto' (Default Mode Network - DMN)?",
+    "razonamiento": "<think>La DMN es una red de regiones cerebrales (corteza prefrontal medial, precúneo) que está más activa cuando estamos en reposo, sin realizar una tarea externa. Se asocia con el pensamiento introspectivo: divagar, recordar el pasado, planificar el futuro y pensar en la perspectiva de otros. Su actividad se suprime cuando nos enfocamos en una tarea que requiere atención externa.</think>",
+    "respuesta": "Es una red cerebral activa durante el reposo y la introspección, asociada con divagar, recordar y pensar en el futuro."
+  },
+  {
+    "pregunta": "¿Cómo diferencia el cerebro entre un recuerdo real y uno imaginado?",
+    "razonamiento": "<think>Aunque las redes implicadas son similares (hipocampo, corteza prefrontal), hay diferencias. Los recuerdos reales tienden a generar más actividad en regiones sensoriales y perceptivas, lo que les da una mayor 'riqueza' de detalles contextuales. La corteza prefrontal, a través de un proceso llamado 'monitoreo de la realidad', evalúa estas características para decidir el origen de la experiencia mental. Sin embargo, este proceso no es infalible, lo que puede llevar a la creación de falsos recuerdos.</think>",
+    "respuesta": "Los recuerdos reales suelen generar más actividad en las cortezas sensoriales. El cerebro usa un 'monitoreo de la realidad' para evaluar la riqueza de estos detalles."
+  },
+  {
+    "pregunta": "¿Qué nos dice el estudio de las ilusiones ópticas sobre el cerebro?",
+    "razonamiento": "<think>Las ilusiones revelan que la percepción es una construcción activa, no un registro pasivo. El cerebro utiliza atajos, suposiciones y conocimientos previos (priors bayesianos) sobre cómo funciona el mundo para interpretar la información sensorial ambigua. Las ilusiones ocurren cuando estas suposiciones, normalmente útiles, nos llevan a una interpretación incorrecta en una situación artificial. Demuestran que el cerebro construye nuestra percepción, no solo la recibe.</think>",
+    "respuesta": "Demuestran que la percepción es una construcción activa del cerebro basada en suposiciones y conocimientos previos, no un reflejo pasivo de la realidad."
+  },
+  {
+    "pregunta": "¿Cuál es la función cognitiva del lóbulo parietal?",
+    "razonamiento": "<think>El lóbulo parietal es un centro de integración multisensorial. Su función principal es construir una representación espacial del mundo y de nuestro propio cuerpo en él (propiocepción). Es crucial para la navegación, la atención espacial, la coordinación visomotora y el procesamiento numérico y matemático, que tiene una fuerte componente espacial. El daño puede causar negligencia espacial (ignorar la mitad del espacio).</think>",
+    "respuesta": "Se encarga de la integración sensorial para crear una conciencia espacial del mundo y de nuestro cuerpo, siendo clave para la atención y la navegación."
+  },
+  {
+    "pregunta": "¿Qué es la sinestesia desde el punto de vista de la neurociencia?",
+    "razonamiento": "<think>La sinestesia es una condición en la que la estimulación de una vía sensorial conduce a experiencias en una segunda vía (ej. ver colores al oír música). La teoría más aceptada es la de la 'activación cruzada', que postula una mayor conectividad anatómica o una menor inhibición entre áreas cerebrales adyacentes que procesan diferentes sentidos. Esto causa que la activación de una 'se desborde' hacia la otra, creando la experiencia sinestésica.</think>",
+    "respuesta": "Es una condición de 'mezcla de sentidos', probablemente causada por una mayor conectividad o activación cruzada entre diferentes áreas sensoriales del cerebro."
+  },
+  {
+    "pregunta": "¿Cómo contribuye el sueño REM al procesamiento emocional?",
+    "razonamiento": "<think>Durante el sueño REM, la amígdala (emoción) está muy activa, mientras que los niveles del neurotransmisor noradrenalina (estrés) son casi nulos. Esta combinación única permite al cerebro reprocesar los recuerdos emocionales del día en un entorno neuroquímico 'seguro', despojándolos de su carga de estrés agudo. Es una especie de 'terapia nocturna' que nos ayuda a integrar las experiencias emocionales.</think>",
+    "respuesta": "El sueño REM permite reprocesar recuerdos emocionales en un estado de bajo estrés neuroquímico, ayudando a disminuir su intensidad emocional."
+  },
+  {
+    "pregunta": "¿Qué es la memoria procedimental y dónde se almacena?",
+    "razonamiento": "<think>La memoria procedimental es la memoria implícita de habilidades y hábitos ('saber cómo'). A diferencia de la memoria episódica (hipocampo), depende de un circuito que incluye los ganglios basales, el cerebelo y la corteza motora. Es una memoria de automatismos que opera de forma inconsciente, como se ve en el paciente H.M., que podía mejorar en una tarea motora sin recordar haberla hecho antes.</think>",
+    "respuesta": "Es la memoria de habilidades y hábitos ('saber cómo'). Se almacena principalmente en los ganglios basales y el cerebelo."
+  },
+  {
+    "pregunta": "¿Cómo afecta el estrés crónico a la estructura y función del cerebro?",
+    "razonamiento": "<think>El estrés crónico provoca una liberación sostenida de cortisol, que es tóxico para el cerebro. Afecta negativamente al hipocampo, reduciendo su volumen y perjudicando la memoria. Por el contrario, fortalece las conexiones en la amígdala, haciéndonos más ansiosos. También puede dañar la corteza prefrontal, dificultando el control ejecutivo. En resumen, debilita los centros de memoria y control, y fortalece los centros de miedo.</think>",
+    "respuesta": "El estrés crónico daña el hipocampo (memoria) y la corteza prefrontal (control), mientras que hiperactiva la amígdala (miedo y ansiedad)."
+  },
+  {
+    "pregunta": "¿Qué es la 'potenciación a largo plazo' (LTP) y por qué es un mecanismo clave?",
+    "razonamiento": "<think>La LTP es un fortalecimiento persistente de las sinapsis basado en patrones de actividad. Es el mecanismo celular que subyace al aprendizaje y la memoria. Cuando dos neuronas se activan juntas de forma repetida, la conexión entre ellas se vuelve más fuerte y eficiente. Es la manifestación física del principio de Hebb: 'las neuronas que se disparan juntas, se conectan juntas'.</think>",
+    "respuesta": "Es el fortalecimiento duradero de las conexiones sinápticas, considerado el mecanismo celular fundamental del aprendizaje y la memoria."
+  },
+  {
+    "pregunta": "¿Cómo explica la neurociencia el 'efecto placebo'?",
+    "razonamiento": "<think>El efecto placebo no es 'solo psicológico'. La expectativa de mejora puede provocar cambios neurobiológicos reales. En el caso del dolor, la creencia de que se está tomando un analgésico activa la liberación de endorfinas (opiáceos naturales del cerebro) en regiones cerebrales como la corteza cingulada anterior, reduciendo así la percepción del dolor. El cerebro, a través de la expectativa, activa sus propios mecanismos de curación.</think>",
+    "respuesta": "La expectativa de mejora puede desencadenar la liberación de neuroquímicos reales en el cerebro, como endorfinas, que alivian los síntomas."
+  },
+  {
+    "pregunta": "¿Cuál es la función cognitiva del lóbulo occipital?",
+    "razonamiento": "<think>El lóbulo occipital está casi exclusivamente dedicado al procesamiento visual. La corteza visual primaria (V1) recibe la información de los ojos y la descompone en características básicas (líneas, orientaciones). A partir de ahí, la información fluye por dos vías principales: la vía dorsal ('dónde', hacia el lóbulo parietal) para el procesamiento espacial y del movimiento, y la vía ventral ('qué', hacia el lóbulo temporal) para el reconocimiento de objetos.</think>",
+    "respuesta": "Está especializado en el procesamiento visual, siendo el punto de partida para las vías del 'qué' (reconocimiento) y el 'dónde' (espacio)."
+  },
+  {
+    "pregunta": "¿Qué son los 'ritmos circadianos' y qué estructura cerebral los controla?",
+    "razonamiento": "<think>Son los ciclos de ~24 horas que regulan procesos fisiológicos como el sueño-vigilia. El 'reloj maestro' es el núcleo supraquiasmático (NSQ) en el hipotálamo. El NSQ recibe información directa de la luz a través de los ojos, lo que le permite sincronizar nuestro reloj biológico interno con el ciclo de día y noche del mundo exterior. Actúa como el director de orquesta de los relojes periféricos en todo el cuerpo.</think>",
+    "respuesta": "Son ciclos biológicos de ~24h regulados por el núcleo supraquiasmático (NSQ) en el hipotálamo, que se sincroniza con la luz."
+  },
+  {
+    "pregunta": "¿Cómo representa el cerebro el valor subjetivo al tomar una decisión económica?",
+    "razonamiento": "<think>Áreas como la corteza orbitofrontal (OFC) y la corteza prefrontal ventromedial (vmPFC) actúan como un 'centro de valoración'. Integran múltiples factores (recompensa, probabilidad, coste) y los traducen a una 'moneda neuronal' común. La actividad neuronal en estas áreas se correlaciona con el valor que una persona asigna a una opción, permitiendo comparar alternativas tan diferentes como una manzana y un coche.</think>",
+    "respuesta": "La corteza orbitofrontal y prefrontal ventromedial calculan un 'valor subjetivo' común, permitiendo la comparación entre diferentes opciones."
+  },
+  {
+    "pregunta": "¿Por qué nos cuesta tanto hacer dos tareas a la vez (multitarea)?",
+    "razonamiento": "<think>El cerebro no realiza multitarea en paralelo, sino que cambia rápidamente su atención entre tareas. Este cambio, gestionado por la corteza prefrontal, tiene un coste cognitivo: perdemos tiempo y eficiencia, y aumenta la probabilidad de errores. La corteza prefrontal actúa como un 'cuello de botella' de recursos, impidiendo la gestión simultánea de dos tareas que demanden atención.</think>",
+    "respuesta": "Porque el cerebro no puede hacer dos tareas a la vez, sino que cambia rápidamente la atención entre ellas, un proceso costoso y propenso a errores."
+  },
+  {
+    "pregunta": "¿Qué es la memoria episódica y por qué se considera un 'viaje mental en el tiempo'?",
+    "razonamiento": "<think>La memoria episódica es el recuerdo de eventos autobiográficos específicos ('qué', 'dónde' y 'cuándo'). Se le llama 'viaje mental en el tiempo' por la experiencia subjetiva de 'revivir' el evento (conciencia autonoética). Depende del hipocampo para la reconstrucción del evento y de la corteza prefrontal para el contexto y la sensación de ser uno mismo en el pasado.</think>",
+    "respuesta": "Es la memoria de eventos autobiográficos específicos. Su componente de 'viaje mental en el tiempo' permite revivir subjetivamente el pasado."
+  },
+  {
+    "pregunta": "¿Qué nos enseña la afasia sobre la organización del lenguaje en el cerebro?",
+    "razonamiento": "<think>La afasia demuestra que el lenguaje no es una función monolítica, sino modular y distribuida. La existencia de diferentes tipos de afasia (Broca, Wernicke, de conducción) revela que diferentes regiones del hemisferio izquierdo están especializadas en componentes distintos como la sintaxis, la semántica y la conexión entre ellas. Muestra la compleja red neuronal necesaria para esta función.</think>",
+    "respuesta": "Demuestra que el lenguaje es una función modular y distribuida, con diferentes regiones cerebrales especializadas en componentes distintos."
+  },
+  {
+    "pregunta": "¿Cómo procesa el cerebro la música?",
+    "razonamiento": "<think>El procesamiento musical es una función de todo el cerebro. La corteza auditiva procesa el tono. El cerebelo y los ganglios basales procesan el ritmo. La corteza prefrontal se activa con las expectativas armónicas. Y lo más importante, la música con carga emocional activa el sistema límbico (amígdala) y el circuito de recompensa (núcleo accumbens), explicando por qué puede evocar emociones tan intensas.</think>",
+    "respuesta": "Involucra a múltiples áreas: la corteza auditiva (tono), el cerebelo (ritmo), la corteza prefrontal (estructura) y el sistema límbico (emoción)."
+  },
+  {
+    "pregunta": "¿Qué es el 'efecto de primacía' y 'recencia' en la memoria?",
+    "razonamiento": "<think>Al memorizar una lista, recordamos mejor los primeros elementos (primacía) y los últimos (recencia). La primacía ocurre porque los primeros ítems tienen más tiempo para ser transferidos a la memoria a largo plazo (hipocampo). La recencia ocurre porque los últimos ítems todavía están activos en la memoria de trabajo de capacidad limitada (corteza prefrontal). Los del medio sufren interferencia y no se benefician de ninguno de los dos procesos.</think>",
+    "respuesta": "Recordamos mejor los primeros ítems de una lista (primacía) porque se consolidan en la memoria a largo plazo, y los últimos (recencia) porque aún están en la memoria de trabajo."
+  },
+  {
+    "pregunta": "¿Cómo el cerebro suprime los recuerdos no deseados?",
+    "razonamiento": "<think>La supresión de recuerdos es un proceso activo. Estudios de neuroimagen muestran que cuando intentamos activamente no pensar en algo, la corteza prefrontal dorsolateral (control cognitivo) se activa. Esta área ejerce una influencia inhibitoria sobre el hipocampo (memoria), reduciendo su actividad y dificultando así la recuperación del recuerdo no deseado. Es un ejemplo de control ejecutivo sobre la memoria.</think>",
+    "respuesta": "A través de un control activo de la corteza prefrontal, que inhibe la actividad del hipocampo para impedir la recuperación del recuerdo."
+  },
+  {
+    "pregunta": "¿Qué es un 'periodo crítico' en el desarrollo cerebral?",
+    "razonamiento": "<think>Es una ventana de tiempo limitada durante la cual el cerebro es extremadamente plástico y sensible a ciertas experiencias para desarrollar una función. El ejemplo clásico es el lenguaje o el sistema visual. Si un niño no está expuesto a los estímulos correctos durante este periodo, los circuitos neuronales correspondientes no se establecen adecuadamente y la capacidad para desarrollar esa función se ve permanentemente mermada.</think>",
+    "respuesta": "Es una ventana temporal en el desarrollo donde el cerebro es especialmente sensible a experiencias específicas para formar circuitos neuronales clave."
+  },
+  {
+    "pregunta": "¿Cómo nos orientamos en el espacio? ¿Cuál es el 'GPS' del cerebro?",
+    "razonamiento": "<think>El 'GPS' del cerebro se encuentra en el lóbulo temporal medial. En el hipocampo están las 'células de lugar', que se disparan cuando estamos en una ubicación específica. En la corteza entorrinal están las 'células de red' (grid cells), que forman un mapa de coordenadas hexagonales. Juntas, estas células crean una representación cognitiva del entorno que nos permite saber dónde estamos y cómo navegar.</think>",
+    "respuesta": "A través de un sistema en el hipocampo y la corteza entorrinal que contiene 'células de lugar' y 'células de red', creando un mapa espacial cognitivo."
+  },
+  {
+    "pregunta": "¿Qué diferencia a la atención 'de abajo hacia arriba' (bottom-up) de la 'de arriba hacia abajo' (top-down)?",
+    "razonamiento": "<think>La atención 'bottom-up' es guiada por el estímulo. Es un proceso automático y rápido donde un estímulo saliente (un sonido fuerte) captura nuestra atención. La atención 'top-down', en cambio, es guiada por nuestras metas. Es un proceso voluntario y más lento, controlado por la corteza prefrontal y parietal, que nos permite dirigir deliberadamente nuestra atención a algo relevante (buscar a un amigo en una multitud).</think>",
+    "respuesta": "La atención 'bottom-up' es automática y guiada por el estímulo, mientras que la 'top-down' es voluntaria y guiada por nuestras metas."
+  },
+  {
+    "pregunta": "¿Cómo codifica el cerebro el paso del tiempo?",
+    "razonamiento": "<think>El cerebro no tiene un único 'reloj'. La percepción del tiempo es distribuida. Para duraciones cortas, el cerebelo y los ganglios basales están implicados. Para duraciones más largas, está influenciada por la atención y la memoria (un período lleno de nuevos recuerdos parece más largo en retrospectiva). La dopamina también modula nuestra percepción del tiempo, haciéndolo parecer más rápido cuando nos divertimos.</think>",
+    "respuesta": "No hay un único reloj; es una función distribuida influenciada por el cerebelo, la memoria, la atención y la dopamina."
+  },
+  {
+    "pregunta": "¿Qué le sucede al cerebro durante la meditación?",
+    "razonamiento": "<think>La meditación entrena las redes de atención. Estudios de neuroimagen muestran mayor activación en la corteza prefrontal (control de la atención) y menor activación en la Red Neuronal por Defecto (DMN), la red de 'divagación mental'. Estructuralmente, se asocia con un aumento de la densidad de materia gris en el hipocampo y una reducción en la amígdala.</think>",
+    "respuesta": "Aumenta la actividad en las redes de atención y disminuye la actividad en la red de divagación mental, además de inducir cambios estructurales."
+  },
+  {
+    "pregunta": "¿Cuál es la base neuronal de la lectura?",
+    "razonamiento": "<think>La lectura 'recicla' circuitos neuronales existentes. Implica a la corteza visual para reconocer las letras, que se conectan a un área llamada 'área de la forma visual de las palabras' (VWFA). Esta área se especializa en reconocer palabras escritas y las conecta con las áreas del lenguaje hablado (Wernicke y Broca) para acceder a su significado y sonido.</think>",
+    "respuesta": "La lectura recicla circuitos visuales y los conecta, a través del 'área de la forma visual de las palabras', con las redes del lenguaje hablado."
+  },
+  {
+    "pregunta": "¿Cómo el cerebro procesa y regula el dolor?",
+    "razonamiento": "<think>El dolor implica una 'matriz del dolor'. La corteza somatosensorial procesa la localización e intensidad. La corteza cingulada anterior y la ínsula procesan el aspecto emocional. El cerebro también puede regular el dolor a través de vías descendentes desde la corteza prefrontal que liberan endorfinas y pueden suprimir la señal de dolor, explicando cómo la atención puede modularlo.</think>",
+    "respuesta": "A través de una 'matriz del dolor' que procesa los aspectos sensoriales y emocionales, y que puede ser regulada por vías descendentes."
+  },
+  {
+    "pregunta": "¿Cómo se representa el 'yo' (self) en el cerebro?",
+    "razonamiento": "<think>El 'yo' es un constructo que emerge de varias redes. La Red Neuronal por Defecto (DMN) es clave para el 'yo' narrativo. La corteza insular es fundamental para el 'yo' somático (la conciencia de nuestro cuerpo). La corteza prefrontal medial está implicada en la autoevaluación y en la distinción entre uno mismo y los demás. Juntas, estas redes crean nuestra experiencia de ser un 'yo'.</think>",
+    "respuesta": "El 'yo' es un constructo que emerge de varias redes: la DMN para el 'yo' narrativo, la ínsula para el 'yo' corporal, y la corteza prefrontal para la autoevaluación."
+  },
+  {
+    "pregunta": "¿Qué es la 'consolidación de sistemas' en la memoria a largo plazo?",
+    "razonamiento": "<think>Es un proceso de reorganización de la memoria que ocurre a lo largo de meses o años. Inicialmente, un recuerdo depende del hipocampo. Con el tiempo y las reactivaciones (especialmente durante el sueño), se forman conexiones directas entre las áreas corticales. El recuerdo se vuelve independiente del hipocampo y se integra en nuestras redes de conocimiento. Esto explica por qué los pacientes con daño hipocampal pueden recordar eventos muy antiguos.</think>",
+    "respuesta": "Es un proceso lento por el cual los recuerdos se vuelven independientes del hipocampo y se integran directamente en la corteza cerebral."
+  },
+  {
+    "pregunta": "¿Cómo el ejercicio físico beneficia la función cognitiva?",
+    "razonamiento": "<think>El ejercicio estimula la producción de una proteína llamada Factor Neurotrófico Derivado del Cerebro (BDNF), que actúa como un 'fertilizante' para las neuronas. El BDNF promueve la neurogénesis (nacimiento de nuevas neuronas, especialmente en el hipocampo), la sinaptogénesis (creación de nuevas sinapsis) y la supervivencia neuronal, mejorando así la memoria y el aprendizaje.</think>",
+    "respuesta": "Estimula la producción de BDNF, una proteína que promueve el nacimiento de nuevas neuronas y la creación de sinapsis, especialmente en el hipocampo."
+  },
+  {
+    "pregunta": "¿Qué es la 'cognición social' y por qué es tan exigente para el cerebro?",
+    "razonamiento": "<think>Es el conjunto de procesos para entender e interactuar con otros. Es extremadamente exigente porque el mundo social es dinámico e impredecible. Requiere la integración de múltiples redes cerebrales (Teoría de la Mente, neuronas espejo, sistema límbico) para interpretar rápidamente señales sutiles, predecir el comportamiento de otros y adaptar nuestra propia conducta.</think>",
+    "respuesta": "Son los procesos para entender e interactuar con otros. Es exigente porque requiere la integración de múltiples redes cerebrales para interpretar un entorno social dinámico."
+  },
+  {
+    "pregunta": "¿Qué es el 'fenómeno de la punta de la lengua' (Tip-of-the-Tongue)?",
+    "razonamiento": "<think>Se interpreta como un fallo temporal en la recuperación de la memoria. Sabemos el significado (memoria semántica) pero no podemos acceder a la forma fonológica completa de la palabra. Esto sugiere que el significado de una palabra y su sonido se almacenan de forma separada y que la conexión entre ellos ha fallado momentáneamente. La corteza prefrontal (implicada en la búsqueda) muestra una alta actividad durante este estado.</think>",
+    "respuesta": "Es un fallo temporal en la recuperación de la forma fonológica (sonido) de una palabra, aunque su significado semántico sí es accesible."
+  },
+  {
+    "pregunta": "¿Cuál es la diferencia entre memoria explícita e implícita?",
+    "razonamiento": "<think>La memoria explícita (declarativa) es consciente (hechos, eventos) y depende del hipocampo. La memoria implícita (no declarativa) es inconsciente y se expresa a través del rendimiento (habilidades motoras, condicionamiento). El paciente H.M. podía aprender nuevas habilidades motoras (implícita) sin recordar haberlas practicado (explícita), demostrando la existencia de estos dos sistemas de memoria independientes.</think>",
+    "respuesta": "La memoria explícita es consciente (hechos, eventos) y depende del hipocampo, mientras que la implícita es inconsciente (habilidades, hábitos)."
+  },
+  {
+    "pregunta": "¿Cómo procesa el cerebro el humor?",
+    "razonamiento": "<think>Implica varias etapas. Primero, la corteza prefrontal detecta la incongruencia en un chiste. Luego, el lóbulo temporal ayuda a resolver esa incongruencia y 'entenderlo'. Finalmente, si es divertido, se activa el sistema de recompensa (núcleo accumbens), liberando dopamina y generando placer. Por tanto, implica detección de incongruencia, resolución y recompensa.</think>",
+    "respuesta": "Implica tres etapas: detección de la incongruencia (corteza prefrontal), resolución de la misma (lóbulo temporal) y la experiencia de placer (sistema de recompensa)."
+  },
+  {
+    "pregunta": "¿Qué es la Estimulación Magnética Transcraneal (TMS)?",
+    "razonamiento": "<think>La TMS es una técnica no invasiva que usa un campo magnético para inducir una corriente eléctrica en una pequeña área del cerebro, excitando o inhibiendo su actividad. Se usa terapéuticamente (ej. depresión) y en investigación para crear 'lesiones virtuales' temporales y así inferir una relación causal entre un área cerebral y una función cognitiva.</think>",
+    "respuesta": "Es una técnica no invasiva que usa campos magnéticos para activar o inhibir áreas cerebrales, utilizada para investigación y terapia."
+  },
+  {
+    "pregunta": "¿Cómo se produce el 'déjà vu' según la neurociencia cognitiva?",
+    "razonamiento": "<think>Una teoría prominente sugiere que es un 'fallo' en el sistema de memoria. Podría ocurrir cuando un circuito que detecta la familiaridad (corteza rinal) se activa por error, mientras que el circuito que recupera los detalles (hipocampo) no encuentra una coincidencia. Esto crea una sensación de 'he vivido esto antes' sin un recuerdo concreto asociado. Es una sensación de familiaridad sin un recuerdo real.</think>",
+    "respuesta": "Se cree que es un fallo momentáneo del sistema de memoria, donde el circuito de detección de familiaridad se activa por error sin un recuerdo real que lo respalde."
+  },
+  {
+    "pregunta": "¿Cuál es la base neuronal de la creatividad?",
+    "razonamiento": "<think>La creatividad no reside en un solo lugar, sino en la interacción dinámica de redes. Implica una cooperación entre la Red Neuronal por Defecto (DMN), asociada con la generación de ideas (pensamiento divergente), y la Red de Control Ejecutivo (corteza prefrontal), que se encarga de evaluar y refinar esas ideas (pensamiento convergente). La creatividad reside en la capacidad de alternar flexiblemente entre estos dos modos.</think>",
+    "respuesta": "Emerge de la interacción flexible entre la Red Neuronal por Defecto (generación de ideas) y la Red de Control Ejecutivo (evaluación y selección de ideas)."
+  },
+  {
+    "pregunta": "¿Qué es la 'carga cognitiva' y cómo afecta al rendimiento?",
+    "razonamiento": "<think>Es la cantidad total de esfuerzo mental que se utiliza en la memoria de trabajo. Como la memoria de trabajo tiene una capacidad muy limitada (controlada por la corteza prefrontal), si una tarea impone una carga cognitiva demasiado alta, el rendimiento se degrada drásticamente. El cerebro se sobrecarga, lo que lleva a errores y a la incapacidad de procesar más información.</think>",
+    "respuesta": "Es el esfuerzo mental total impuesto a la memoria de trabajo. Una carga excesiva sobrecarga la capacidad limitada del cerebro, empeorando el rendimiento."
+  },
+  {
+    "pregunta": "¿Cómo afecta la edad avanzada a las diferentes funciones cognitivas?",
+    "razonamiento": "<think>No afecta a todas las funciones por igual. Las 'habilidades fluidas', como la velocidad de procesamiento y la memoria de trabajo, tienden a disminuir. Sin embargo, las 'habilidades cristalizadas', como el vocabulario y el conocimiento general, a menudo se mantienen estables o incluso mejoran. Refleja un cambio de la velocidad y flexibilidad a la experiencia y el conocimiento acumulado.</think>",
+    "respuesta": "Tienden a disminuir las 'habilidades fluidas' (velocidad, memoria de trabajo), mientras que las 'habilidades cristalizadas' (conocimiento) se mantienen o mejoran."
+  },
+  {
+    "pregunta": "¿Qué es la 'inhibición cognitiva' y por qué es tan importante?",
+    "razonamiento": "<think>Es una función ejecutiva clave, mediada por la corteza prefrontal, que nos permite suprimir deliberadamente pensamientos o respuestas automáticas irrelevantes. Es fundamental para el autocontrol (no comerse el pastel), la atención (ignorar un distractor) y la flexibilidad cognitiva. Las dificultades en la inhibición son un rasgo central de trastornos como el TDAH.</think>",
+    "respuesta": "Es una función ejecutiva que nos permite suprimir pensamientos o respuestas irrelevantes, siendo crucial para el autocontrol y la atención."
+  },
+  {
+    "pregunta": "¿Cuál es el rol de la serotonina en el estado de ánimo y la cognición?",
+    "razonamiento": "<think>La serotonina es un neuromodulador con efectos amplios. A menudo se asocia con la felicidad, pero su función es más compleja: está implicada en la regulación del estado de ánimo, la ansiedad, el sueño y el apetito. A nivel cognitivo, parece promover la paciencia y la inhibición de respuestas impulsivas, favoreciendo la planificación a largo plazo sobre la gratificación inmediata. Los fármacos ISRS aumentan sus niveles sinápticos para tratar la depresión y la ansiedad.</think>",
+    "respuesta": "Es un neuromodulador clave en la regulación del estado de ánimo, la ansiedad y la impulsividad, favoreciendo el comportamiento a largo plazo."
+  },
+  {
+    "pregunta": "¿Qué es la 'poda sináptica' y por qué es crucial en el desarrollo?",
+    "razonamiento": "<think>La poda sináptica es un proceso que ocurre principalmente en la adolescencia, donde el cerebro elimina las conexiones sinápticas que son débiles o poco utilizadas. Lejos de ser una pérdida, es un proceso de optimización crucial. Permite que los circuitos neuronales restantes se vuelvan más eficientes y especializados. Es un caso de 'menos es más', donde se eliminan las conexiones redundantes para fortalecer las importantes, esculpiendo así el cerebro adulto.</think>",
+    "respuesta": "Es el proceso de eliminación de sinapsis no utilizadas durante el desarrollo, lo que optimiza y hace más eficientes los circuitos neuronales del cerebro."
+  },
+  {
+    "pregunta": "¿Cómo el cerebro logra la 'constancia perceptual'?",
+    "razonamiento": "<think>La constancia perceptual es nuestra capacidad para percibir un objeto como inalterado (en tamaño, forma, color) a pesar de los enormes cambios en la información sensorial que llega a la retina. Por ejemplo, una persona que se aleja parece del mismo tamaño, aunque su imagen en la retina se encoja. El cerebro logra esto al usar claves contextuales y conocimiento previo para 'descontar' las variaciones del entorno, calculando las propiedades intrínsecas del objeto en lugar de tomar la entrada sensorial al pie de la letra.</think>",
+    "respuesta": "El cerebro usa el contexto y el conocimiento previo para calcular las propiedades reales de un objeto, descontando las variaciones en la entrada sensorial."
+  },
+  {
+    "pregunta": "¿Qué es la 'reconsolidación de la memoria'?",
+    "razonamiento": "<think>Contrario a la idea de que los recuerdos se almacenan y permanecen estáticos, la teoría de la reconsolidación sugiere que cada vez que se recupera un recuerdo, este entra en un estado lábil y maleable. Durante esta ventana de tiempo, el recuerdo puede ser modificado, actualizado con nueva información o incluso debilitado antes de ser 'guardado' de nuevo. Este mecanismo permite que nuestros recuerdos sean dinámicos y adaptables, pero también es la puerta de entrada para la distorsión de la memoria.</think>",
+    "respuesta": "Es el proceso por el cual los recuerdos se vuelven temporalmente modificables cada vez que son recuperados, permitiendo su actualización o distorsión."
+  },
+  {
+    "pregunta": "¿Cuál es la función del lóbulo temporal, además del hipocampo y la amígdala?",
+    "razonamiento": "<think>El lóbulo temporal es un centro crucial para múltiples funciones. Alberga la corteza auditiva primaria para procesar el sonido. Contiene el área de Wernicke para la comprensión del lenguaje. Y su porción inferior, la corteza inferotemporal, es el final de la vía visual ventral ('qué'), siendo fundamental para el reconocimiento de objetos complejos, como las caras (en el área fusiforme).</think>",
+    "respuesta": "Alberga la corteza auditiva, la comprensión del lenguaje (Wernicke) y el reconocimiento de objetos y caras."
+  },
+  {
+    "pregunta": "¿Qué es la 'cognición corporeizada' (embodied cognition)?",
+    "razonamiento": "<think>Es una teoría que postula que la cognición no es un proceso abstracto y separado del cuerpo, sino que está profundamente arraigada en nuestras experiencias corporales y sensoriales. Por ejemplo, entender una metáfora como 'agarrar una idea' puede activar sutilmente las áreas motoras de la mano. El pensamiento no ocurre solo en el cerebro, sino en la interacción dinámica entre el cerebro, el cuerpo y el entorno.</think>",
+    "respuesta": "Es la teoría de que nuestros procesos cognitivos están fundamentalmente moldeados por nuestras experiencias corporales y sensoriales."
+  },
+  {
+    "pregunta": "¿Cómo afecta la oxitocina al comportamiento social?",
+    "razonamiento": "<think>Conocida como la 'hormona del vínculo', la oxitocina, liberada por el hipotálamo, facilita la confianza, la empatía y el apego, especialmente en contextos sociales seguros. Sin embargo, no es universalmente 'buena'; su efecto depende del contexto. Puede aumentar la cooperación dentro del propio grupo ('in-group') pero también puede aumentar la hostilidad y la defensa hacia los extraños ('out-group'). Modula la saliencia de las señales sociales.</think>",
+    "respuesta": "Facilita el vínculo social y la confianza dentro del propio grupo, pero también puede aumentar la defensa contra los extraños."
+  },
+  {
+    "pregunta": "¿Qué es el 'efecto Stroop' y qué revela sobre el control cognitivo?",
+    "razonamiento": "<think>El efecto Stroop es la interferencia que ocurre cuando se nombra el color de la tinta de una palabra que nombra un color diferente (ej., la palabra 'ROJO' escrita en tinta azul). La lectura es un proceso tan automatizado que interfiere con la tarea más controlada de nombrar el color. Para tener éxito, la corteza cingulada anterior detecta este conflicto y la corteza prefrontal dorsolateral debe ejercer un control inhibitorio para suprimir la respuesta automática (leer la palabra) y favorecer la tarea requerida (nombrar el color).</think>",
+    "respuesta": "Revela el conflicto entre un proceso automático (leer) y uno controlado (nombrar colores), y la necesidad del control ejecutivo para resolverlo."
+  },
+  {
+    "pregunta": "¿Qué es la 'neurogénesis adulta' y dónde ocurre?",
+    "razonamiento": "<think>Contrario al dogma antiguo de que no nacen nuevas neuronas en el cerebro adulto, ahora se sabe que la neurogénesis ocurre en áreas muy específicas, principalmente en el giro dentado del hipocampo. Estas nuevas neuronas son altamente plásticas y se cree que son cruciales para la formación de nuevos recuerdos y para la flexibilidad cognitiva. Factores como el ejercicio y el aprendizaje pueden aumentarla, mientras que el estrés crónico la reduce.</think>",
+    "respuesta": "Es el nacimiento de nuevas neuronas en el cerebro adulto, principalmente en el hipocampo, y es importante para la memoria y la flexibilidad."
+  },
+  {
+    "pregunta": "¿Cómo el cerebro procesa la información numérica?",
+    "razonamiento": "<think>El procesamiento numérico básico parece estar asociado con el surco intraparietal. Se cree que esta área alberga una representación espacial de la cantidad, a menudo visualizada como una 'línea numérica mental'. Esto explica el efecto SNARC, donde respondemos más rápido a números pequeños con la mano izquierda y a números grandes con la derecha. La matemática compleja, por supuesto, recluta redes más amplias, incluyendo la corteza prefrontal y las áreas del lenguaje.</think>",
+    "respuesta": "El lóbulo parietal, a través de una 'línea numérica mental', representa la cantidad de forma espacial, asociando números pequeños con la izquierda y grandes con la derecha."
+  },
+  {
+    "pregunta": "¿Qué es la 'inteligencia fluida' y la 'inteligencia cristalizada'?",
+    "razonamiento": "<think>Son dos componentes de la inteligencia general. La inteligencia fluida es la capacidad de resolver problemas nuevos, razonar lógicamente y pensar de forma abstracta; depende fuertemente de la memoria de trabajo y la corteza prefrontal. La inteligencia cristalizada es el conocimiento acumulado, las habilidades y el vocabulario; depende de redes de memoria a largo plazo. La fluida tiende a disminuir con la edad, mientras que la cristalizada se mantiene o aumenta.</think>",
+    "respuesta": "La inteligencia fluida es la capacidad de resolver problemas nuevos, mientras que la cristalizada es el conocimiento acumulado. Se apoyan en redes cerebrales diferentes."
+  },
+  {
+    "pregunta": "¿Qué es un 'engrama' de memoria?",
+    "razonamiento": "<think>Un engrama es la representación física de un recuerdo en el cerebro. Se cree que consiste en un conjunto específico de neuronas (una 'asamblea celular') que se activaron durante la experiencia original y cuyas conexiones sinápticas se fortalecieron. La reactivación de este conjunto específico de neuronas es lo que permite la evocación del recuerdo. Técnicas como la optogenética han permitido a los científicos etiquetar y reactivar artificialmente engramas en animales, demostrando su existencia.</think>",
+    "respuesta": "Es el rastro físico de un recuerdo, que consiste en un conjunto específico de neuronas cuyas conexiones se fortalecen durante el aprendizaje."
+  },
+  {
+    "pregunta": "¿Cómo explica la neurociencia el sesgo de confirmación?",
+    "razonamiento": "<think>El sesgo de confirmación, la tendencia a favorecer la información que confirma nuestras creencias, puede tener raíces neuronales. El procesamiento de información congruente con nuestras creencias es más fluido y menos demandante cognitivamente, e incluso puede ser gratificante, activando el sistema de dopamina. Por el contrario, la información que contradice nuestras creencias puede generar un 'error de predicción' negativo y activar áreas asociadas con el conflicto y la emoción negativa, como la corteza cingulada anterior y la ínsula. El cerebro prefiere la coherencia a la disonancia.</think>",
+    "respuesta": "Procesar información que confirma nuestras creencias es cognitivamente más fácil y gratificante, mientras que la información contradictoria puede generar conflicto y malestar neuronal."
+  },
+  {
+    "pregunta": "¿Qué papel juega el tálamo en la función cerebral?",
+    "razonamiento": "<think>El tálamo es mucho más que una simple estación de relevo. Es la principal puerta de entrada de la información sensorial (excepto el olfato) a la corteza. Pero también juega un papel crucial en la regulación de la atención, la vigilia y la conciencia a través de sus bucles recíprocos con la corteza. Actúa como un 'marcapasos' que sincroniza la actividad de diferentes áreas corticales, permitiendo la integración de la información y la percepción consciente.</think>",
+    "respuesta": "Actúa como la principal puerta de entrada sensorial a la corteza y como un regulador clave de la atención, la vigilia y la conciencia."
+  },
+  {
+    "pregunta": "¿Qué es la 'carga alostática' y cómo impacta en el cerebro?",
+    "razonamiento": "<think>Es el 'desgaste' que sufre el cuerpo y el cerebro al estar expuesto a un estrés crónico y repetido. La adaptación constante al estrés (alostasis) tiene un coste. La exposición prolongada a hormonas del estrés como el cortisol conduce a la carga alostática, que se manifiesta en el cerebro como la atrofia del hipocampo y la corteza prefrontal, y la hipertrofia de la amígdala, aumentando el riesgo de trastornos de ansiedad y depresión.</think>",
+    "respuesta": "Es el desgaste del cerebro debido al estrés crónico, lo que lleva a cambios estructurales perjudiciales en el hipocampo, la amígdala y la corteza prefrontal."
+  },
+  {
+    "pregunta": "¿Cómo el cerebro genera predicciones y por qué es tan importante?",
+    "razonamiento": "<think>El cerebro es una 'máquina de predicción'. Utiliza modelos internos del mundo, basados en la experiencia, para anticipar constantemente la siguiente entrada sensorial. Esto es fundamental para la eficiencia. En lugar de procesar todo de cero, el cerebro solo procesa la diferencia entre la predicción y la realidad (el 'error de predicción'). Este principio, conocido como codificación predictiva, se aplica a todo, desde el control motor (predecir las consecuencias sensoriales de un movimiento) hasta la percepción y el lenguaje.</think>",
+    "respuesta": "A través de la 'codificación predictiva', el cerebro usa modelos internos para anticipar la información sensorial, procesando principalmente la 'sorpresa' o el error."
+  },
+  {
+    "pregunta": "¿Qué es la 'empatía cognitiva' versus la 'empatía afectiva'?",
+    "razonamiento": "<think>Son dos formas de empatía que dependen de redes cerebrales distintas. La empatía cognitiva es la capacidad de entender la perspectiva y los estados mentales de otra persona (Teoría de la Mente), y depende de la red de mentalización (TPJ, mPFC). La empatía afectiva es la capacidad de sentir y compartir las emociones de otra persona, y depende de la red de saliencia (ínsula anterior) y el sistema de neuronas espejo, que nos permiten 'resonar' emocionalmente.</think>",
+    "respuesta": "La empatía cognitiva es entender el punto de vista de otro (Teoría de la Mente), mientras que la afectiva es sentir la emoción de otro (resonancia emocional)."
+  },
+  {
+    "pregunta": "¿Cómo el cerebro procesa el lenguaje figurado como las metáforas?",
+    "razonamiento": "<think>Inicialmente se pensaba que era una función exclusiva del hemisferio derecho. Ahora se sabe que es más complejo. Mientras que el hemisferio izquierdo procesa los significados literales de las palabras, el derecho es crucial para entender el significado no literal, la intención y el contexto más amplio de la metáfora. Además, la cognición corporeizada sugiere que entender una metáfora como 'un día duro' puede implicar la activación sutil de áreas somatosensoriales asociadas con la textura.</think>",
+    "respuesta": "Implica una colaboración entre el hemisferio izquierdo (significado literal) y el derecho (significado no literal y contexto)."
+  },
+  {
+    "pregunta": "¿Qué es la 'disonancia cognitiva' a nivel cerebral?",
+    "razonamiento": "<think>La disonancia cognitiva es el malestar que sentimos cuando mantenemos dos creencias contradictorias o cuando nuestro comportamiento contradice nuestras creencias. Estudios de neuroimagen sugieren que este conflicto es detectado por la corteza cingulada anterior (una especie de 'detector de errores'). Para reducir este malestar, la corteza prefrontal se activa para cambiar una de las creencias o racionalizar el comportamiento, un proceso que a menudo va acompañado de una reducción de la actividad en áreas de emoción negativa.</think>",
+    "respuesta": "Es un estado de conflicto detectado por la corteza cingulada anterior, que motiva a la corteza prefrontal a cambiar una creencia para restaurar la coherencia."
+  },
+  {
+    "pregunta": "¿Cuál es la función de los ganglios basales en el comportamiento?",
+    "razonamiento": "<think>Los ganglios basales son un conjunto de núcleos subcorticales cruciales para la selección de acciones y la formación de hábitos. Funcionan como un 'guardabarrera' que, bajo la influencia de la dopamina y la corteza, facilita la ejecución de acciones apropiadas y suprime las inapropiadas. Son el centro neurálgico del aprendizaje por refuerzo, convirtiendo las acciones que han sido recompensadas en el pasado en hábitos automáticos y eficientes.</think>",
+    "respuesta": "Son clave para la selección de acciones y la formación de hábitos, actuando como un 'guardabarrera' que facilita los comportamientos apropiados."
+  },
+  {
+    "pregunta": "¿Qué es la 'Teoría de la Mente Corporeizada' (Embodied Theory of Mind)?",
+    "razonamiento": "<think>Es una extensión de la Teoría de la Mente que postula que entendemos los estados mentales de los demás no solo a través de un razonamiento abstracto, sino también simulando sus experiencias en nuestros propios sistemas sensoriomotores (a través de las neuronas espejo). Al simular internamente la postura, la expresión facial y las acciones de otra persona, podemos inferir su estado emocional e intenciones de una manera directa e intuitiva, no solo lógica.</think>",
+    "respuesta": "Postula que entendemos la mente de los demás no solo pensando, sino simulando internamente sus acciones y sensaciones corporales."
+  },
+  {
+    "pregunta": "¿Cómo el cerebro crea mapas cognitivos?",
+    "razonamiento": "<think>Los mapas cognitivos son representaciones mentales de las relaciones en nuestro entorno, no solo espaciales. Las células de lugar y de red en el hipocampo y la corteza entorrinal, que originalmente se pensaba que solo mapeaban el espacio físico, ahora se cree que también mapean espacios conceptuales y sociales. Por ejemplo, podríamos organizar a nuestros amigos en un 'mapa social' basado en su estatus y afinidad, utilizando los mismos mecanismos neuronales que usamos para navegar por una ciudad.</think>",
+    "respuesta": "El hipocampo y la corteza entorrinal crean representaciones de relaciones, no solo del espacio físico, sino también de conceptos y estructuras sociales."
+  },
+  {
+    "pregunta": "¿Qué es la 'supresión por recuperación' (retrieval-induced forgetting)?",
+    "razonamiento": "<think>Es el fenómeno por el cual recordar activamente un elemento de la memoria puede causar el olvido de otros elementos relacionados. Cuando recuperamos un recuerdo específico (ej. una de varias frutas estudiadas), los mecanismos de control inhibitorio de la corteza prefrontal suprimen la activación de los recuerdos competidores (las otras frutas). Este acto de supresión puede debilitar a largo plazo las conexiones de los recuerdos no recuperados, haciéndolos más difíciles de recordar en el futuro. Es un efecto secundario de la focalización de la memoria.</think>",
+    "respuesta": "Es el olvido de información que resulta de recordar activamente otra información relacionada, debido a la inhibición de los recuerdos competidores."
+  },
+  {
+    "pregunta": "¿Qué es el 'efecto de anclaje' desde la perspectiva neuronal?",
+    "razonamiento": "<think>El efecto de anclaje, donde la primera información que recibimos influye desproporcionadamente en las decisiones posteriores, puede verse como un fallo en el ajuste. La 'ancla' (el número inicial) establece un punto de partida en la corteza prefrontal. Los ajustes posteriores desde ese punto de partida suelen ser insuficientes. Esto podría deberse a que el ancla consume recursos de la memoria de trabajo, dejando menos capacidad para el complejo proceso de ajuste, o porque el cerebro busca activamente evidencia que confirme el ancla inicial (sesgo de confirmación).</think>",
+    "respuesta": "Ocurre cuando una información inicial sesga los juicios posteriores. Neurológicamente, implica un ajuste insuficiente desde un punto de partida establecido en la corteza prefrontal."
+  },
+  {
+    "pregunta": "¿Qué es el 'procesamiento de fluidez' y cómo influye en nuestros juicios?",
+    "razonamiento": "<think>La fluidez de procesamiento es la facilidad subjetiva con la que procesamos un estímulo. El cerebro interpreta esta facilidad como una señal positiva. Un estímulo que se procesa con fluidez (porque es familiar, simple o claro) es juzgado como más verdadero, más agradable, más frecuente y menos arriesgado. Esta es una heurística que a menudo funciona bien, pero puede ser explotada. Por ejemplo, una afirmación escrita en una fuente fácil de leer se juzga a menudo como más creíble.</think>",
+    "respuesta": "Es la facilidad con la que procesamos información. El cerebro utiliza esta sensación de facilidad como un atajo para juzgar algo como más verdadero, bueno o familiar."
+  },
+  {
+    "pregunta": "¿Cómo el cerebro maneja la incertidumbre?",
+    "razonamiento": "<think>El cerebro odia la incertidumbre. La corteza cingulada anterior y la ínsula se activan fuertemente en condiciones de incertidumbre, señalando una situación potencialmente aversiva que requiere más atención y control cognitivo. El sistema de la dopamina, a su vez, no solo responde a la recompensa, sino también a la información que reduce la incertidumbre. Esto explica por qué a menudo preferimos saber una mala noticia con certeza que permanecer en un estado de ambigüedad.</think>",
+    "respuesta": "La incertidumbre activa áreas cerebrales asociadas con la alerta y la aversión (ínsula, cingulada anterior), motivándonos a buscar información que la reduzca."
+  },
+  {
+    "pregunta": "¿Qué es el 'espacio de trabajo neuronal global' (Global Neuronal Workspace)?",
+    "razonamiento": "<think>Es una teoría de la conciencia que postula que la experiencia consciente ocurre cuando la información se 'difunde' a través de una red distribuida de neuronas de largo alcance, principalmente en la corteza prefrontal y parietal. La información inconsciente se procesa en módulos especializados y aislados. Sin embargo, cuando una información es seleccionada por la atención, entra en este 'espacio de trabajo global', haciéndose accesible a múltiples procesos cognitivos (memoria, lenguaje, planificación), lo que corresponde a la experiencia subjetiva de la conciencia.</think>",
+    "respuesta": "Es una teoría que propone que la conciencia surge cuando la información se vuelve ampliamente accesible a través de una red cerebral distribuida (fronto-parietal)."
+  },
+  {
+    "pregunta": "¿Cuál es la función del neurotransmisor acetilcolina en la cognición?",
+    "razonamiento": "<think>La acetilcolina es crucial para la atención y la plasticidad de la memoria. Proyectada desde el prosencéfalo basal a toda la corteza, actúa como un 'interruptor' que aumenta la plasticidad sináptica. Cuando prestamos atención a un estímulo, la liberación de acetilcolina 'abre una puerta' para que esa experiencia modifique las conexiones neuronales. Su degeneración en la enfermedad de Alzheimer está directamente relacionada con los déficits de memoria.</think>",
+    "respuesta": "Es un neurotransmisor clave para la atención y la plasticidad de la memoria, ayudando a 'grabar' nuevas experiencias en el cerebro."
+  },
+  {
+    "pregunta": "¿Qué es la 'visión ciega' (blindsight) y qué revela sobre la conciencia?",
+    "razonamiento": "<think>La visión ciega es una condición en la que pacientes con daño en la corteza visual primaria (V1) afirman no poder ver, pero pueden responder a estímulos visuales a un nivel superior al azar (ej. adivinar la ubicación de una luz). Esto revela que hay vías visuales subcorticales (que no pasan por V1) que procesan información visual sin dar lugar a una experiencia consciente. Demuestra una disociación fundamental entre el procesamiento de la información y la conciencia subjetiva de esa información.</think>",
+    "respuesta": "Es la capacidad de responder a estímulos visuales sin tener una percepción consciente de ellos, demostrando que el procesamiento visual puede ocurrir sin conciencia."
+  },
+  {
+    "pregunta": "¿Cómo el cerebro de los bilingües gestiona dos idiomas?",
+    "razonamiento": "<think>El cerebro bilingüe no tiene dos sistemas de lenguaje separados; ambos idiomas están representados en las mismas áreas cerebrales superpuestas. La clave está en un mayor desarrollo de las funciones ejecutivas, especialmente el control inhibitorio, mediado por la corteza prefrontal y los ganglios basales. El bilingüe debe suprimir constantemente la interferencia del idioma no deseado, lo que actúa como un entrenamiento constante para las redes de control cognitivo, con beneficios que pueden extenderse a otras tareas no lingüísticas.</think>",
+    "respuesta": "Los bilingües utilizan una red de control ejecutivo mejorada para gestionar e inhibir constantemente el idioma no relevante en un momento dado."
+  },
+  {
+    "pregunta": "¿Qué es la 'Teoría de la Emoción Construida'?",
+    "razonamiento": "<think>Esta teoría desafía la idea de que las emociones son circuitos innatos y universales. Postula que las emociones son construcciones que el cerebro hace en el momento. El cerebro recibe información sensorial del mundo y señales interoceptivas del cuerpo. Usando el conocimiento conceptual basado en la experiencia pasada (y la cultura), el cerebro predice, categoriza y da sentido a estas sensaciones para construir una instancia de emoción. 'Felicidad' o 'tristeza' no son circuitos, sino categorías que el cerebro aplica a un estado fisiológico en un contexto.</think>",
+    "respuesta": "Sostiene que las emociones no son innatas, sino que son construidas por el cerebro al categorizar las sensaciones corporales internas en un contexto determinado."
+  },
+  {
+    "pregunta": "¿Qué es un 'percepto'?",
+    "razonamiento": "<think>Un 'percepto' es el producto final del proceso de percepción; es la experiencia fenomenológica consciente de ver, oír, oler, etc. No es la sensación cruda, sino la interpretación coherente y significativa que el cerebro construye a partir de la entrada sensorial y el conocimiento previo. Por ejemplo, la sensación son las longitudes de onda de la luz que llegan a la retina; el percepto es la experiencia consciente de 'ver una manzana roja'.</think>",
+    "respuesta": "Es la experiencia consciente y significativa que resulta del proceso de interpretación de la información sensorial por parte del cerebro."
+  },
+  {
+    "pregunta": "¿Cómo el cerebro distingue entre el movimiento propio y el movimiento de objetos externos?",
+    "razonamiento": "<think>El cerebro utiliza un mecanismo llamado 'copia de eferencia' o 'descarga corolaria'. Cuando el cerebro envía un comando motor (ej. mover los ojos), también envía una copia de ese comando a las áreas sensoriales. Esta 'copia de eferencia' predice las consecuencias sensoriales del movimiento. El sistema visual puede entonces restar esta predicción de la entrada visual real. Si queda una diferencia, se interpreta como movimiento externo. Si no hay diferencia, el movimiento se atribuye a uno mismo. Esto explica por qué no podemos hacernos cosquillas a nosotros mismos.</think>",
+    "respuesta": "Mediante una 'copia de eferencia' del comando motor, que permite al cerebro predecir y cancelar las consecuencias sensoriales de sus propios movimientos."
+  },
+  {
+    "pregunta": "¿Qué es la 'depresión a largo plazo' (LTD) a nivel sináptico?",
+    "razonamiento": "<think>La LTD es el proceso opuesto a la LTP y es igualmente importante para el aprendizaje y la memoria. Es un debilitamiento duradero de las sinapsis que resulta de patrones de baja frecuencia de actividad. La LTD es crucial para el olvido de información irrelevante, para 'limpiar la pizarra' y permitir nueva plasticidad, y para refinar los circuitos neuronales. El aprendizaje no consiste solo en fortalecer conexiones, sino también en debilitar las incorrectas o inútiles.</think>",
+    "respuesta": "Es el debilitamiento duradero de las conexiones sinápticas, un mecanismo crucial para el olvido, la flexibilidad y el refinamiento de los circuitos neuronales."
+  },
+  {
+    "pregunta": "¿Qué es el 'efecto de desinformación' en la memoria?",
+    "razonamiento": "<think>Es el deterioro de la memoria de un evento después de haber estado expuesto a información engañosa sobre él. Esto ocurre debido al mecanismo de reconsolidación. Cuando se recuerda el evento original, su engrama se vuelve lábil. Si en ese momento se introduce información nueva (la desinformación), puede incorporarse al rastro de memoria original antes de que se vuelva a consolidar. El resultado es un recuerdo híbrido y distorsionado que la persona cree que es el original. Es una demostración poderosa de la maleabilidad de la memoria.</think>",
+    "respuesta": "Ocurre cuando información engañosa post-evento se incorpora a la memoria original durante el proceso de reconsolidación, alterando el recuerdo."
+  },
+  {
+    "pregunta": "¿Qué es la 'integración multisensorial' y dónde ocurre?",
+    "razonamiento": "<think>Es el proceso por el cual el cerebro combina información de diferentes sentidos (vista, oído, tacto) para crear una percepción unificada y más robusta. Ocurre en varias regiones, pero áreas como el colículo superior y la corteza parietal son centros clave. El 'efecto McGurk', donde ver a una persona articular un sonido mientras se escucha otro crea la percepción de un tercer sonido, es un ejemplo clásico de cómo la información visual puede alterar drásticamente la percepción auditiva, demostrando que los sentidos no funcionan de forma aislada.</think>",
+    "respuesta": "Es la combinación de información de diferentes sentidos para crear una percepción unificada, un proceso que ocurre en áreas como la corteza parietal."
+  }
+]

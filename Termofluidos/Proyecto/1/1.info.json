@@ -4,7 +4,7 @@
     "project_name": "Caldera",
     "config_name": "Default",
     "project_path": "C:\\Cursando\\Termofluidos\\Proyecto\\1\\1.xmlconfig",
-    "finished": true,
+    "finished": false,
     "mesh": {
         "cells_total": 28784,
         "cells_fluid": 13743,
@@ -12,16 +12,16 @@
         "cells_fluid_containing_solid": 7717
     },
     "telemetry": {
-        "prepare_geometry_finished": "11:16:50-0500",
-        "prepare_geometry_total_time": 2,
-        "cpu_time_solver_total": 105,
+        "prepare_geometry_finished": null,
+        "prepare_geometry_total_time": 0,
+        "cpu_time_solver_total": 88,
         "iteration": 192,
         "travel": 4.0078431700674635,
         "phys_time": 0.0,
         "time_step": 0.0,
-        "last_iteration_finished": "11:18:15-0500",
-        "cpu_time_per_last_iter": 1,
-        "cpu_time_left": 0,
+        "last_iteration_finished": null,
+        "cpu_time_per_last_iter": 0,
+        "cpu_time_left": -1,
         "iterations_per_travel": 48
     },
     "goals": [
@@ -192,9 +192,7 @@
         }
     ],
     "settings": {
-        "default_fluids": [
-            "Water"
-        ],
+        "default_fluids": [],
         "analysis_type": "internal",
         "heat_conduction_in_solids": true,
         "radiation": false,
@@ -215,7 +213,7 @@
         "os": "Windows 11 (or higher) (Version 10.0.26200)",
         "cpu": "AMD Ryzen 5 5500U with Radeon Graphics         ",
         "number_of_cores": 12,
-        "memory_avail": 7295,
+        "memory_avail": 6892,
         "memory_total": 15694
     }
 }
