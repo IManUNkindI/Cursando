@@ -1,0 +1,16 @@
+"""
+Inserte su prompt aquí
+
+Output format:
+[
+  {
+    "point": [y, x],
+    "label": "isolated cellphone"
+  }
+]
+
+Important:
+- Coordinates must be normalized between 0 and 1000.
+- Return ONLY valid JSON.
+- Do not include explanations or markdown.
+"""
