@@ -1,7 +1,0 @@
-2026-Apr-29 10:14:54
-Computer name:	MANUNKIND
-Number of cores used in calculation:	12
-Configuration name:	Default
-Project name:	Condensador
-
-Warnings on last iteration: 

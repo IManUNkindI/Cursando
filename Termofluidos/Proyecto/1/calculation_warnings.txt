@@ -1,9 +1,0 @@
-2026-Apr-25 11:18:16
-Computer name:	MANUNKIND
-Number of cores used in calculation:	12
-Configuration name:	Default
-Project name:	Caldera
-
-Warnings on last iteration: 
-1. Solid is melting :
-	Material: Aluminum 6061 ; Max temperature=2233.59 K; Melting temperature=855.15 K
