@@ -1,0 +1,124 @@
+using System.Collections;
+using System.Collections.Concurrent;
+using UnityEngine;
+
+public class CameraStreamer : MonoBehaviour
+{
+    [Header("Camera")]
+    public Camera targetCamera;
+
+    [Header("Stream Settings")]
+    public int width = 640;
+    public int height = 360;
+
+    [Range(1, 60)]
+    public int fps = 20;
+
+    [Range(1, 100)]
+    public int jpegQuality = 70;
+
+
+    private RenderTexture renderTexture;
+    private Texture2D texture;
+
+
+    // Siempre guardamos únicamente el frame más reciente.
+    public static byte[] LatestFrame;
+
+    private float frameInterval;
+
+
+    void Start()
+    {
+        if (targetCamera == null)
+        {
+            targetCamera = Camera.main;
+        }
+
+
+        frameInterval = 1f / fps;
+
+
+        renderTexture = new RenderTexture(
+            width,
+            height,
+            24
+        );
+
+
+        texture = new Texture2D(
+            width,
+            height,
+            TextureFormat.RGB24,
+            false
+        );
+
+
+        targetCamera.targetTexture = renderTexture;
+
+
+        StartCoroutine(CaptureFrames());
+    }
+
+
+    IEnumerator CaptureFrames()
+    {
+        while (true)
+        {
+            yield return new WaitForEndOfFrame();
+
+
+            RenderTexture.active =
+                renderTexture;
+
+
+            texture.ReadPixels(
+                new Rect(
+                    0,
+                    0,
+                    width,
+                    height
+                ),
+                0,
+                0
+            );
+
+
+            texture.Apply();
+
+
+            RenderTexture.active = null;
+
+
+            byte[] jpgData =
+                texture.EncodeToJPG(
+                    jpegQuality
+                );
+
+
+            // Reemplazamos el frame anterior.
+            CameraStreamer.LatestFrame =
+                jpgData;
+
+
+            yield return new WaitForSeconds(
+                frameInterval
+            );
+        }
+    }
+
+
+    void OnDestroy()
+    {
+        if (targetCamera != null)
+        {
+            targetCamera.targetTexture = null;
+        }
+
+
+        if (renderTexture != null)
+        {
+            renderTexture.Release();
+        }
+    }
+}

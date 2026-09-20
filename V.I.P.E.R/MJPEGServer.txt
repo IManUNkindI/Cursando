@@ -1,0 +1,246 @@
+using System;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+using System.Threading;
+using UnityEngine;
+
+public class MJPEGServer : MonoBehaviour
+{
+    public int port = 8080;
+
+
+    private TcpListener server;
+    private Thread serverThread;
+
+    private volatile bool running;
+
+
+    void Start()
+    {
+        running = true;
+
+
+        serverThread =
+            new Thread(StartServer);
+
+
+        serverThread.IsBackground = true;
+
+
+        serverThread.Start();
+
+
+        Debug.Log(
+            "Servidor MJPEG iniciado en puerto: "
+            + port
+        );
+    }
+
+
+    void StartServer()
+    {
+        try
+        {
+            server =
+                new TcpListener(
+                    IPAddress.Any,
+                    port
+                );
+
+
+            server.Start();
+
+
+            Debug.Log(
+                "Esperando clientes de video..."
+            );
+
+
+            while (running)
+            {
+                TcpClient client =
+                    server.AcceptTcpClient();
+
+
+                Thread clientThread =
+                    new Thread(
+                        () => HandleClient(client)
+                    );
+
+
+                clientThread.IsBackground = true;
+
+
+                clientThread.Start();
+            }
+        }
+        catch (Exception e)
+        {
+            if (running)
+            {
+                Debug.LogError(
+                    "Error servidor MJPEG: "
+                    + e.Message
+                );
+            }
+        }
+    }
+
+
+    void HandleClient(
+        TcpClient client
+    )
+    {
+        try
+        {
+            NetworkStream stream =
+                client.GetStream();
+
+
+            // Leemos la petición HTTP.
+            byte[] requestBuffer =
+                new byte[1024];
+
+
+            stream.Read(
+                requestBuffer,
+                0,
+                requestBuffer.Length
+            );
+
+
+            string header =
+                "HTTP/1.1 200 OK\r\n" +
+                "Connection: close\r\n" +
+                "Cache-Control: no-cache\r\n" +
+                "Pragma: no-cache\r\n" +
+                "Content-Type: multipart/x-mixed-replace; boundary=frame\r\n\r\n";
+
+
+            byte[] headerBytes =
+                Encoding.ASCII.GetBytes(
+                    header
+                );
+
+
+            stream.Write(
+                headerBytes,
+                0,
+                headerBytes.Length
+            );
+
+
+            while (
+                running &&
+                client.Connected
+            )
+            {
+                byte[] frame =
+                    CameraStreamer.LatestFrame;
+
+
+                if (
+                    frame == null ||
+                    frame.Length == 0
+                )
+                {
+                    Thread.Sleep(10);
+
+                    continue;
+                }
+
+
+                string frameHeader =
+                    "--frame\r\n" +
+                    "Content-Type: image/jpeg\r\n" +
+                    "Content-Length: " +
+                    frame.Length +
+                    "\r\n\r\n";
+
+
+                byte[] frameHeaderBytes =
+                    Encoding.ASCII.GetBytes(
+                        frameHeader
+                    );
+
+
+                try
+                {
+                    stream.Write(
+                        frameHeaderBytes,
+                        0,
+                        frameHeaderBytes.Length
+                    );
+
+
+                    stream.Write(
+                        frame,
+                        0,
+                        frame.Length
+                    );
+
+
+                    byte[] newline =
+                        Encoding.ASCII.GetBytes(
+                            "\r\n"
+                        );
+
+
+                    stream.Write(
+                        newline,
+                        0,
+                        newline.Length
+                    );
+
+
+                    stream.Flush();
+                }
+                catch
+                {
+                    break;
+                }
+
+
+                // Evita saturar la conexión.
+                Thread.Sleep(15);
+            }
+
+
+            client.Close();
+        }
+        catch
+        {
+            try
+            {
+                client.Close();
+            }
+            catch { }
+        }
+    }
+
+
+    void OnApplicationQuit()
+    {
+        StopServer();
+    }
+
+
+    void OnDestroy()
+    {
+        StopServer();
+    }
+
+
+    void StopServer()
+    {
+        running = false;
+
+
+        try
+        {
+            server?.Stop();
+        }
+        catch { }
+    }
+}

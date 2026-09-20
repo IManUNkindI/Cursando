@@ -1,0 +1,147 @@
+using System;
+using System.IO;
+using System.Net;
+using System.Net.Sockets;
+using System.Threading;
+using UnityEngine;
+
+public class TCPServer : MonoBehaviour
+{
+    public int port = 5000;
+
+    private TcpListener server;
+    private TcpClient client;
+    private Thread serverThread;
+
+    public static float horizontalInput;
+    public static float verticalInput;
+
+    private bool running = true;
+
+
+    void Start()
+    {
+        serverThread =
+            new Thread(StartServer);
+
+        serverThread.IsBackground = true;
+
+        serverThread.Start();
+    }
+
+
+    void StartServer()
+    {
+        try
+        {
+            server =
+                new TcpListener(
+                    IPAddress.Any,
+                    port
+                );
+
+            server.Start();
+
+            Debug.Log(
+                "Servidor iniciado puerto: " +
+                port
+            );
+
+
+            while (running)
+            {
+                client =
+                    server.AcceptTcpClient();
+
+                Debug.Log(
+                    "Android conectado"
+                );
+
+
+                NetworkStream stream =
+                    client.GetStream();
+
+
+                StreamReader reader =
+                    new StreamReader(stream);
+
+
+                while (
+                    running &&
+                    client.Connected
+                )
+                {
+                    string message =
+                        reader.ReadLine();
+
+                    if (
+                        message == null
+                    )
+                        break;
+
+
+                    ProcessMessage(message);
+                }
+
+
+                client.Close();
+
+                Debug.Log(
+                    "Cliente desconectado"
+                );
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(
+                e.Message
+            );
+        }
+    }
+
+
+    void ProcessMessage(
+        string message
+    )
+    {
+        try
+        {
+            string[] parts =
+                message.Split(',');
+
+
+            if (
+                parts.Length == 3 &&
+                parts[0] == "MOVE"
+            )
+            {
+                float x =
+                    float.Parse(parts[1]);
+
+                float y =
+                    float.Parse(parts[2]);
+
+
+                horizontalInput = x;
+                verticalInput = y;
+            }
+        }
+        catch
+        {
+            Debug.Log(
+                "Mensaje inválido: " +
+                message
+            );
+        }
+    }
+
+
+    void OnApplicationQuit()
+    {
+        running = false;
+
+        client?.Close();
+
+        server?.Stop();
+    }
+}

@@ -1,0 +1,114 @@
+using System;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+using System.Threading;
+using UnityEngine;
+
+public class TCPServer : MonoBehaviour
+{
+    public int port = 5000;
+
+    private TcpListener server;
+    private TcpClient client;
+    private Thread serverThread;
+
+    public static float horizontalInput = 0f;
+    public static float verticalInput = 0f;
+
+    private volatile bool running = false;
+
+    void Start()
+    {
+        running = true;
+
+        serverThread = new Thread(StartServer);
+        serverThread.IsBackground = true;
+        serverThread.Start();
+
+        Debug.Log("Servidor TCP iniciado en puerto: " + port);
+    }
+
+    void StartServer()
+    {
+        try
+        {
+            server = new TcpListener(IPAddress.Any, port);
+            server.Start();
+
+            Debug.Log("Esperando conexión Android...");
+
+            while (running)
+            {
+                client = server.AcceptTcpClient();
+
+                Debug.Log("Cliente conectado");
+
+                NetworkStream stream = client.GetStream();
+
+                byte[] buffer = new byte[1024];
+
+                while (running && client.Connected)
+                {
+                    try
+                    {
+                        int bytesRead = stream.Read(buffer, 0, buffer.Length);
+
+                        if (bytesRead == 0)
+                            break;
+
+                        string message = Encoding.UTF8.GetString(
+                            buffer,
+                            0,
+                            bytesRead
+                        );
+
+                        ProcessMessage(message);
+                    }
+                    catch
+                    {
+                        break;
+                    }
+                }
+
+                client.Close();
+                Debug.Log("Cliente desconectado");
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Error TCP: " + e.Message);
+        }
+    }
+
+    void ProcessMessage(string message)
+    {
+        try
+        {
+            string[] parts = message.Split(',');
+
+            if (parts.Length >= 3 && parts[0] == "MOVE")
+            {
+                horizontalInput = float.Parse(parts[1]);
+
+                verticalInput = float.Parse(parts[2]);
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.Log("Error procesando mensaje: " + e.Message);
+        }
+    }
+
+    void OnApplicationQuit()
+    {
+        running = false;
+
+        try
+        {
+            client?.Close();
+            server?.Stop();
+        }
+        catch { }
+    }
+}
